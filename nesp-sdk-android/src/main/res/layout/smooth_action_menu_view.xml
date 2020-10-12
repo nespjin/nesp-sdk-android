@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="?attr/smoothActionBarHeight">
+
+    <ImageView
+        android:id="@+id/ivMenuIndicator"
+        android:layout_width="?attr/smoothActionBarMenuIndicatorSize"
+        android:layout_height="?attr/smoothActionBarMenuIndicatorSize"
+        android:layout_gravity="center_vertical|start"
+        android:src="?attr/smoothActionBarMenuIndicator"
+        app:tint="?attr/smoothActionBarMenuIndicatorColor" />
+
+</LinearLayout>

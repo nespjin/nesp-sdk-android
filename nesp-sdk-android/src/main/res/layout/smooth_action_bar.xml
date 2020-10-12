@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlSmoothActionBarContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:background="@color/transparent">
+
+    <com.github.mmin18.widget.RealtimeBlurView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:visibility="visible"
+        app:realtimeBlurRadius="?attr/smoothRealtimeBlurRadius"
+        app:realtimeOverlayColor="?smoothActionBarBackground" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?smoothActionBarHeight"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="?attr/smoothActionBarHorizontalPadding"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivBackIndicator"
+                android:layout_width="?attr/smoothActionBarBackIndicatorSize"
+                android:layout_height="?attr/smoothActionBarBackIndicatorSize"
+                android:layout_gravity="center_vertical|start"
+                android:src="?attr/smoothActionBarBackIndicator"
+                app:tint="?attr/smoothActionBarBackIndicatorColor" />
+
+            <TextView
+                android:id="@+id/tvLeftAction"
+                style="?attr/smoothActionBarLeftActionStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llLeftActionContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvRightAction"
+                style="?attr/smoothActionBarRightActionStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginEnd="?attr/smoothActivityHorizontalPadding"
+                android:ellipsize="end"
+                android:lines="1"
+                android:singleLine="true" />
+
+            <com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
+                android:id="@+id/smoothActionMenuView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="?attr/smoothActivityHorizontalPadding"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llRightActionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="?attr/smoothActionBarTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                style="?attr/smoothActionBarSubtitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?attr/smoothActionBarTitleSpacing"
+                android:ellipsize="end"
+                android:lines="1"
+                android:singleLine="true"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

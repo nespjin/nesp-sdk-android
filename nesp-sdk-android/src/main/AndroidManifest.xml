@@ -1,5 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nesp.sdk.android">
 
-    /
+
+    <application>
+        <activity android:name=".smooth.app.SmoothBaseActivity" />
+        <activity
+            android:name=".smooth.app.SmoothBottomNavigationActivity"
+            android:theme="@style/SmoothAppTheme.Light.BottomNavigationActivity" />
+        <activity
+            android:name=".smooth.app.SmoothActivity"
+            android:theme="@style/SmoothAppTheme.Light.Activity" />
+    </application>
+
 </manifest>

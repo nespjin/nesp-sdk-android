@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="smoothBottomNavigationHeight" format="dimension" />
+    <attr name="smoothBottomNavigationBackgroundColor" format="color" />
+
+    <attr name="smoothActionBarBackground" format="color" />
+    <attr name="smoothActionBarHeight" format="dimension" />
+    <attr name="smoothActionBarVerticalPadding" format="dimension" />
+    <attr name="smoothActionBarHorizontalPadding" format="dimension" />
+    <attr name="smoothActionBarBackIndicator" format="reference" />
+    <attr name="smoothActionBarBackIndicatorColor" format="color" />
+    <attr name="smoothActionBarBackIndicatorSize" format="dimension" />
+
+    <attr name="smoothActionBarMenuIndicator" format="reference" />
+    <attr name="smoothActionBarMenuIndicatorColor" format="color" />
+    <attr name="smoothActionBarMenuIndicatorSize" format="dimension" />
+    <attr name="smoothActionBarMenuCornerRadius" format="dimension" />
+    <attr name="smoothActionBarMenuElevation" format="dimension" />
+    <attr name="smoothActionBarMenuBackgroundColor" format="color" />
+    <attr name="smoothActionBarMenuItemTitleStyle" format="reference" />
+    <attr name="smoothActionBarMenuItemSubtitleStyle" format="reference" />
+
+    <attr name="smoothActionBarTitleStyle" format="reference" />
+    <attr name="smoothActionBarSubtitleStyle" format="reference" />
+    <attr name="smoothActionBarLeftActionStyle" format="reference" />
+    <attr name="smoothActionBarRightActionStyle" format="reference" />
+    <attr name="smoothActionBarTitleSpacing" format="dimension" />
+    <attr name="smoothActionBarActionMenuIndicator" format="reference" />
+
+    <attr name="smoothActivityVerticalPadding" format="dimension" />
+    <attr name="smoothActivityHorizontalPadding" format="dimension" />
+
+    <attr name="smoothWidgetCommonBackgroundColor" format="color" />
+
+    <attr name="smoothCommonItemBackgroundColor" format="color" />
+    <attr name="smoothCommonItemNormalBackgroundColor" format="color" />
+    <attr name="smoothCommonItemClickBackgroundColor" format="color" />
+
+    <attr name="smoothRealtimeBlurRadius" format="dimension"/>
+    <attr name="smoothWidgetRealtimeBlurRadius" format="dimension"/>
+
+</resources>
