@@ -6,9 +6,12 @@ import android.graphics.drawable.StateListDrawable
 import android.os.Bundle
 import android.view.*
 import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
 import com.nesp.sdk.android.R
+import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
 import com.nesp.sdk.android.util.DisplayUtil
 import kotlinx.android.synthetic.main.activity_smooth.*
 
@@ -108,6 +111,26 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
         smoothActionBar.setBackIndicatorColorStateList(id)
     }
 
+    override fun getBackIndicator(): ImageView {
+        return smoothActionBar.getBackIndicator()
+    }
+
+    override fun backIndicatorIsHidden(): Boolean {
+        return smoothActionBar.backIndicatorIsHidden()
+    }
+
+    override fun hideBackIndicator() {
+        smoothActionBar.hideBackIndicator()
+    }
+
+    override fun showBackIndicator() {
+        smoothActionBar.showBackIndicator()
+    }
+
+    override fun toggleBackIndicatorHidden() {
+        smoothActionBar.toggleBackIndicatorHidden()
+    }
+
     override fun setOnBackIndicatorClickListener(onBackIndicatorClickListener: View.OnClickListener) {
         smoothActionBar.setOnBackIndicatorClickListener(onBackIndicatorClickListener)
     }
@@ -123,12 +146,38 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
         smoothActionBar.setLeftAction(id, onLeftActionClickListener)
     }
 
+    override fun setLeftAction(
+        drawable: Drawable,
+        onLeftActionClickListener: View.OnClickListener
+    ) {
+        smoothActionBar.setLeftAction(drawable, onLeftActionClickListener)
+    }
+
+    override fun setLeftAction(
+        stateListDrawable: StateListDrawable,
+        onLeftActionClickListener: View.OnClickListener
+    ) {
+        smoothActionBar.setLeftAction(stateListDrawable, onLeftActionClickListener)
+    }
+
     override fun setLeftActionText(text: CharSequence) {
         smoothActionBar.setLeftActionText(text)
     }
 
     override fun setLeftActionText(id: Int) {
         smoothActionBar.setLeftActionText(id)
+    }
+
+    override fun setLeftActionDrawable(drawable: Drawable) {
+        smoothActionBar.setLeftActionDrawable(drawable)
+    }
+
+    override fun setLeftActionDrawable(id: Int) {
+        smoothActionBar.setLeftActionDrawable(id)
+    }
+
+    override fun setLeftActionDrawable(stateListDrawable: StateListDrawable) {
+        smoothActionBar.setLeftActionDrawable(stateListDrawable)
     }
 
     override fun setLeftActionTextColor(color: Int) {
@@ -151,6 +200,30 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
         smoothActionBar.setOnLeftActionClickListener(onLeftActionClickListener)
     }
 
+    override fun getLeftActionTextView(): TextView {
+        return smoothActionBar.getLeftActionTextView()
+    }
+
+    override fun getLeftActionImageView(): ImageView {
+        return smoothActionBar.getLeftActionImageView()
+    }
+
+    override fun hideLeftAction() {
+        smoothActionBar.hideLeftAction()
+    }
+
+    override fun showLeftAction() {
+        smoothActionBar.showLeftAction()
+    }
+
+    override fun leftActionIsHidden(): Boolean {
+        return smoothActionBar.leftActionIsHidden()
+    }
+
+    override fun toggleLeftActionHidden() {
+        smoothActionBar.toggleLeftActionHidden()
+    }
+
     override fun setRightAction(
         text: CharSequence,
         onRightActionClickListener: View.OnClickListener
@@ -162,12 +235,38 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
         smoothActionBar.setRightAction(id, onRightActionClickListener)
     }
 
+    override fun setRightAction(
+        drawable: Drawable,
+        onRightActionClickListener: View.OnClickListener
+    ) {
+        smoothActionBar.setRightAction(drawable, onRightActionClickListener)
+    }
+
+    override fun setRightAction(
+        stateListDrawable: StateListDrawable,
+        onRightActionClickListener: View.OnClickListener
+    ) {
+        smoothActionBar.setRightAction(stateListDrawable, onRightActionClickListener)
+    }
+
     override fun setRightActionText(text: CharSequence) {
         smoothActionBar.setRightActionText(text)
     }
 
     override fun setRightActionText(id: Int) {
         smoothActionBar.setRightActionText(id)
+    }
+
+    override fun setRightActionDrawable(drawable: Drawable) {
+        smoothActionBar.setRightActionDrawable(drawable)
+    }
+
+    override fun setRightActionDrawable(id: Int) {
+        smoothActionBar.setRightActionDrawable(id)
+    }
+
+    override fun setRightActionDrawable(stateListDrawable: StateListDrawable) {
+        smoothActionBar.setRightActionDrawable(stateListDrawable)
     }
 
     override fun setRightActionTextColor(color: Int) {
@@ -188,6 +287,30 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
 
     override fun setOnRightActionClickListener(onRightActionClickListener: View.OnClickListener) {
         smoothActionBar.setOnRightActionClickListener(onRightActionClickListener)
+    }
+
+    override fun getRightActionTextView(): TextView {
+        return smoothActionBar.getRightActionTextView()
+    }
+
+    override fun getRightActionImageView(): ImageView {
+        return smoothActionBar.getRightActionImageView()
+    }
+
+    override fun hideRightAction() {
+        smoothActionBar.hideRightAction()
+    }
+
+    override fun showRightAction() {
+        smoothActionBar.showRightAction()
+    }
+
+    override fun rightActionIsHidden(): Boolean {
+        return smoothActionBar.rightActionIsHidden()
+    }
+
+    override fun toggleRightActionHidden() {
+        smoothActionBar.toggleRightActionHidden()
     }
 
     override fun setTitle(text: CharSequence) {
@@ -214,6 +337,26 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
         smoothActionBar.setTitleTextColorStateList(id)
     }
 
+    override fun getTitleView(): TextView {
+        return smoothActionBar.getTitleView()
+    }
+
+    override fun hideTitle() {
+        smoothActionBar.hideTitle()
+    }
+
+    override fun showTitle() {
+        smoothActionBar.showTitle()
+    }
+
+    override fun titleIsHidden(): Boolean {
+        return smoothActionBar.titleIsHidden()
+    }
+
+    override fun toggleTitleHidden() {
+        smoothActionBar.toggleTitleHidden()
+    }
+
     override fun setSubtitle(text: CharSequence) {
         smoothActionBar.setSubtitle(text)
     }
@@ -238,12 +381,60 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
         smoothActionBar.setSubtitleTextColorStateList(id)
     }
 
+    override fun getSubtitleView(): TextView {
+        return smoothActionBar.getSubtitleView()
+    }
+
+    override fun hideSubtitle() {
+        smoothActionBar.hideSubtitle()
+    }
+
+    override fun showSubtitle() {
+        smoothActionBar.showSubtitle()
+    }
+
+    override fun subtitleViewIsHidden(): Boolean {
+        return smoothActionBar.subtitleViewIsHidden()
+    }
+
+    override fun toggleSubtitleHidden() {
+        smoothActionBar.toggleSubtitleHidden()
+    }
+
+    override fun hideAllTitle() {
+        smoothActionBar.hideAllTitle()
+    }
+
+    override fun showAllTitle() {
+        smoothActionBar.showAllTitle()
+    }
+
     override fun createRightMenu(id: Int, menuInflater: MenuInflater) {
         smoothActionBar.createRightMenu(id, menuInflater)
     }
 
     override fun setMenu(menu: Menu) {
         smoothActionBar.setMenu(menu)
+    }
+
+    override fun getMenuView(): SmoothActionMenuView {
+        return smoothActionBar.getMenuView()
+    }
+
+    override fun hideMenu() {
+        smoothActionBar.hideMenu()
+    }
+
+    override fun showMenu() {
+        smoothActionBar.showMenu()
+    }
+
+    override fun menuIsHidden(): Boolean {
+        return smoothActionBar.menuIsHidden()
+    }
+
+    override fun toggleMenuHidden() {
+        smoothActionBar.toggleMenuHidden()
     }
 
     override fun setOnRightMenuItemClickListener(onMenuItemClickListener: MenuItem.OnMenuItemClickListener) {

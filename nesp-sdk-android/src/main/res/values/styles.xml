@@ -64,11 +64,15 @@
     <style name="SmoothAppTheme.Light.Activity.ActionBarLeftAction" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
         <item name="android:textSize">@dimen/smooth_action_bar_left_action_text_size</item>
         <item name="android:textColor">@color/smooth_action_bar_left_action_text_color</item>
+        <item name="android:tint">@color/smooth_action_bar_left_action_text_color</item>
+        <item name="android:backgroundTint">@color/smooth_action_bar_left_action_text_color</item>
     </style>
 
     <style name="SmoothAppTheme.Light.Activity.ActionBarRightAction" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
         <item name="android:textSize">@dimen/smooth_action_bar_right_action_text_size</item>
         <item name="android:textColor">@color/smooth_action_bar_right_action_text_color</item>
+        <item name="android:tint">@color/smooth_action_bar_right_action_text_color</item>
+        <item name="android:backgroundTint">@color/smooth_action_bar_right_action_text_color</item>
     </style>
 
     <style name="SmoothAppTheme.Light.Activity.ActionBarMenuItemTitle">

@@ -38,16 +38,30 @@
                 android:src="?attr/smoothActionBarBackIndicator"
                 app:tint="?attr/smoothActionBarBackIndicatorColor" />
 
-            <TextView
-                android:id="@+id/tvLeftAction"
-                style="?attr/smoothActionBarLeftActionStyle"
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|start"
-                android:layout_marginStart="8dp"
-                android:ellipsize="end"
-                android:lines="1"
-                android:singleLine="true" />
+                android:layout_marginStart="8dp">
+
+                <TextView
+                    android:id="@+id/tvLeftAction"
+                    style="?attr/smoothActionBarLeftActionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:singleLine="true"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivLeftAction"
+                    style="?attr/smoothActionBarLeftActionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+            </FrameLayout>
 
         </LinearLayout>
 
@@ -59,16 +73,30 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvRightAction"
-                style="?attr/smoothActionBarRightActionStyle"
+            <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|start"
-                android:layout_marginEnd="?attr/smoothActivityHorizontalPadding"
-                android:ellipsize="end"
-                android:lines="1"
-                android:singleLine="true" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvRightAction"
+                    style="?attr/smoothActionBarRightActionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginEnd="?attr/smoothActivityHorizontalPadding"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:singleLine="true"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivRightAction"
+                    style="?attr/smoothActionBarRightActionStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+            </FrameLayout>
 
             <com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
                 android:id="@+id/smoothActionMenuView"
