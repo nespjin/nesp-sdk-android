@@ -1,4 +1,4 @@
-package com.nesp.sdk.android.smooth.widget
+package com.nesp.sdk.android.smooth.app
 
 import android.content.DialogInterface
 import android.view.View
@@ -8,7 +8,7 @@ import com.nesp.sdk.android.text.TextStyle
 
 /**
  *
- * Author: <a href="mailto:jinzhaolu@numob.com">Jack Email:jinzhaolu@numob.com</a>
+ * @@author: <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
  * Time: Created 2020/10/13 3:41 PM
  * Project: NespAndroidSdk
  * Description:

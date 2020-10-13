@@ -7,7 +7,7 @@ import androidx.viewpager.widget.ViewPager
 
 /**
  *
- * Author: <a href="mailto:jinzhaolu@numob.com">Jack Email:jinzhaolu@numob.com</a>
+ * @@author: <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
  * Time: Created 2020/10/13 11:41 AM
  * Project: NespAndroidSdk
  * Description:

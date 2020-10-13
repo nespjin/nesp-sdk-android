@@ -1,9 +1,8 @@
-package com.nesp.sdk.android.smooth.widget
+package com.nesp.sdk.android.smooth.app
 
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -20,7 +19,7 @@ import kotlinx.android.synthetic.main.smooth_action_menu_list.*
 
 /**
  *
- * Author: <a href="mailto:jinzhaolu@numob.com">Jack Email:jinzhaolu@numob.com</a>
+ * @@author: <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
  * Time: Created 2020/10/13 12:45 PM
  * Project: NespAndroidSdk
  * Description:

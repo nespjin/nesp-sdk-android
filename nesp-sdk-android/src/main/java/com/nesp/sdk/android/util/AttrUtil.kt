@@ -10,7 +10,7 @@ import com.nesp.sdk.android.core.ktx.cast
 
 /**
  *
- * Author: <a href="mailto:jinzhaolu@numob.com">Jack Email:jinzhaolu@numob.com</a>
+ * @@author: <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
  * Time: Created 2020/10/13 4:34 PM
  * Project: NespAndroidSdk
  * Description:
