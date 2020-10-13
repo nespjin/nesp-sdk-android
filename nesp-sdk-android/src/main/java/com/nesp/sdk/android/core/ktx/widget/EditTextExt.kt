@@ -5,7 +5,7 @@ import android.widget.EditText
 
 /**
  *
- * Author: <a href="mailto:jinzhaolu@numob.com">Jack Email:jinzhaolu@numob.com</a>
+ * Author: <a href="mailto:1756404649@qq.com">JinZhaolu Email:1756404649@qq.com</a>
  * Time: Created 2020/7/9 9:18 AM
  * Project: NespAndroidSdk
  * Description:

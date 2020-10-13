@@ -20,22 +20,6 @@ import com.nesp.sdk.android.core.ktx.cast
 class DisplayUtil {
     companion object {
 
-        fun getDimensionAttrValue(context: Context, id: Int): Float {
-            val outTypeValue = TypedValue()
-            context.theme.resolveAttribute(id, outTypeValue, true)
-            val windowManager =
-                context.getSystemService(Context.WINDOW_SERVICE).cast<WindowManager>()
-            val outDisplayMetrics = DisplayMetrics()
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && context is AppCompatActivity) {
-                context.display!!.getRealMetrics(outDisplayMetrics)
-            } else {
-                windowManager.defaultDisplay!!.getRealMetrics(outDisplayMetrics)
-            }
-            outTypeValue.string
-            return outTypeValue.getDimension(outDisplayMetrics)
-        }
-
         fun sp2dp(context: Context, spValue: Float): Float {
             return px2dp(context, sp2px(context, spValue).toFloat())
         }

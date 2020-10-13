@@ -31,74 +31,100 @@
         <item name="smoothActionBarMenuCornerRadius">@dimen/smooth_action_bar_menu_corner_radius</item>
         <item name="smoothActionBarMenuElevation">@dimen/smooth_action_bar_menu_elevation</item>
         <item name="smoothActionBarMenuBackgroundColor">@color/smooth_action_bar_menu_background_color</item>
-        <item name="smoothActionBarMenuItemTitleStyle">@style/SmoothAppTheme.Light.Activity.ActionBarMenuItemTitle</item>
-        <item name="smoothActionBarMenuItemSubtitleStyle">@style/SmoothAppTheme.Light.Activity.ActionBarMenuItemSubtitle</item>
-        <item name="smoothActionBarTitleStyle">@style/SmoothAppTheme.Light.Activity.ActionBarTitle</item>
-        <item name="smoothActionBarSubtitleStyle">@style/SmoothAppTheme.Light.Activity.ActionBarSubtitle</item>
-        <item name="smoothActionBarLeftActionStyle">@style/SmoothAppTheme.Light.Activity.ActionBarLeftAction</item>
-        <item name="smoothActionBarRightActionStyle">@style/SmoothAppTheme.Light.Activity.ActionBarRightAction</item>
+        <item name="smoothActionBarMenuItemTitleStyle">@style/SmoothAppTheme.Light.ActionBarMenuItemTitle</item>
+        <item name="smoothActionBarMenuItemSubtitleStyle">@style/SmoothAppTheme.Light.ActionBarMenuItemSubtitle</item>
+        <item name="smoothActionBarTitleStyle">@style/SmoothAppTheme.Light.ActionBarTitle</item>
+        <item name="smoothActionBarSubtitleStyle">@style/SmoothAppTheme.Light.ActionBarSubtitle</item>
+        <item name="smoothActionBarLeftActionStyle">@style/SmoothAppTheme.Light.ActionBarLeftAction</item>
+        <item name="smoothActionBarRightActionStyle">@style/SmoothAppTheme.Light.ActionBarRightAction</item>
         <item name="smoothActionBarHeight">?android:actionBarSize</item>
         <item name="smoothActionBarBackground">@color/smooth_action_bar_background_color</item>
         <item name="smoothActionBarTitleSpacing">@dimen/smooth_action_bar_title_spacing</item>
-        <item name="smoothActivityVerticalPadding">@dimen/smooth_activity_vertical_margin</item>
-        <item name="smoothActivityHorizontalPadding">@dimen/smooth_activity_horizontal_margin</item>
         <item name="smoothActionBarVerticalPadding">0dp</item>
         <item name="smoothActionBarHorizontalPadding">?attr/smoothActivityHorizontalPadding</item>
+        <item name="smoothActivityVerticalPadding">@dimen/smooth_activity_vertical_margin</item>
+        <item name="smoothActivityHorizontalPadding">@dimen/smooth_activity_horizontal_margin</item>
         <item name="smoothWidgetCommonBackgroundColor">@color/smooth_widget_common_background_color</item>
         <item name="smoothCommonItemBackgroundColor">@color/smooth_common_item_background_color</item>
         <item name="smoothCommonItemNormalBackgroundColor">@color/smooth_common_item_normal_background_color</item>
         <item name="smoothCommonItemClickBackgroundColor">@color/smooth_common_item_click_background_color</item>
         <item name="smoothRealtimeBlurRadius">@dimen/smooth_real_time_blur_radius</item>
         <item name="smoothWidgetRealtimeBlurRadius">@dimen/smooth_widget_real_time_blur_radius</item>
+
+        <item name="smoothDialogStyle">@style/SmoothAppTheme.Light.SmoothDialog</item>
+        <item name="smoothDialogActionStyle">@style/SmoothAppTheme.Light.SmoothDialog.Action</item>
+        <item name="smoothDialogTitleStyle">@style/SmoothAppTheme.Light.SmoothDialog.Title</item>
+        <item name="smoothDialogMessageStyle">@style/SmoothAppTheme.Light.SmoothDialog.Message</item>
+        <item name="smoothDialogBackgroundColor">@color/smooth_dialog_background</item>
+        <item name="smoothDialogCornerRadius">@dimen/smooth_dialog_corner_radius</item>
+        <item name="smoothDialogElevation">@dimen/smooth_dialog_elevation</item>
     </style>
 
-    <style name="SmoothAppTheme.Light.Activity.ActionBarTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+    <style name="SmoothAppTheme.Light.SmoothDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowAnimationStyle">@style/SmoothAppTheme.Light.SmoothDialog.Animation</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothDialog.Animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/smooth_dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/smooth_dialog_exit</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothDialog.Action">
+        <item name="android:textColor">@color/smooth_dialog_action_text_color</item>
+        <item name="android:textSize">@dimen/smooth_dialog_action_text_size</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothDialog.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/smooth_dialog_title_text_color</item>
+        <item name="android:textSize">@dimen/smooth_dialog_title_text_size</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothDialog.Message">
+        <item name="android:textColor">@color/smooth_dialog_message_text_color</item>
+        <item name="android:textSize">@dimen/smooth_dialog_message_text_size</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.ActionBarTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/smooth_action_bar_title_text_size</item>
     </style>
 
-    <style name="SmoothAppTheme.Light.Activity.ActionBarSubtitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+    <style name="SmoothAppTheme.Light.ActionBarSubtitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
         <item name="android:textSize">@dimen/smooth_action_bar_subtitle_text_size</item>
     </style>
 
-    <style name="SmoothAppTheme.Light.Activity.ActionBarLeftAction" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+    <style name="SmoothAppTheme.Light.ActionBarLeftAction" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
         <item name="android:textSize">@dimen/smooth_action_bar_left_action_text_size</item>
         <item name="android:textColor">@color/smooth_action_bar_left_action_text_color</item>
         <item name="android:tint">@color/smooth_action_bar_left_action_text_color</item>
         <item name="android:backgroundTint">@color/smooth_action_bar_left_action_text_color</item>
     </style>
 
-    <style name="SmoothAppTheme.Light.Activity.ActionBarRightAction" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+    <style name="SmoothAppTheme.Light.ActionBarRightAction" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
         <item name="android:textSize">@dimen/smooth_action_bar_right_action_text_size</item>
         <item name="android:textColor">@color/smooth_action_bar_right_action_text_color</item>
         <item name="android:tint">@color/smooth_action_bar_right_action_text_color</item>
         <item name="android:backgroundTint">@color/smooth_action_bar_right_action_text_color</item>
     </style>
 
-    <style name="SmoothAppTheme.Light.Activity.ActionBarMenuItemTitle">
+    <style name="SmoothAppTheme.Light.ActionBarMenuItemTitle">
         <item name="android:textSize">@dimen/smooth_action_bar_menu_item_title_text_size</item>
         <item name="android:textColor">@color/smooth_action_bar_menu_item_title_text_color</item>
     </style>
 
-    <style name="SmoothAppTheme.Light.Activity.ActionBarMenuItemSubtitle">
+    <style name="SmoothAppTheme.Light.ActionBarMenuItemSubtitle">
         <item name="android:textSize">@dimen/smooth_action_bar_menu_item_subtitle_text_size</item>
         <item name="android:textColor">@color/smooth_action_bar_menu_item_subtitle_text_color</item>
     </style>
 
-    <style name="SmoothAppTheme.Light" parent="Theme.MaterialComponents.Light">
+    <style name="SmoothAppTheme.Light" parent="Theme.MaterialComponents.Light"/>
 
-    </style>
+    <style name="SmoothAppTheme.Light.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar"/>
 
-    <style name="SmoothAppTheme.Light.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="SmoothAppTheme.DayNight" parent="Theme.MaterialComponents.DayNight"/>
 
-    </style>
-
-    <style name="SmoothAppTheme.DayNight" parent="Theme.MaterialComponents.DayNight">
-
-    </style>
-
-    <style name="SmoothAppTheme.DayNight.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-
-    </style>
+    <style name="SmoothAppTheme.DayNight.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
 
 </resources>
