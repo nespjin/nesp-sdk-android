@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".smooth.app.SmoothBottomNavigationActivity">
 
-    <androidx.viewpager.widget.ViewPager
+    <com.nesp.sdk.android.smooth.widget.SmoothViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

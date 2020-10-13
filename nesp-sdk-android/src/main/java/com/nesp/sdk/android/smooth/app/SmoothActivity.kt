@@ -12,7 +12,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
 import com.nesp.sdk.android.R
 import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
-import com.nesp.sdk.android.util.DisplayUtil
+import com.nesp.sdk.android.util.AttrUtil
 import kotlinx.android.synthetic.main.activity_smooth.*
 
 /**
@@ -486,7 +486,7 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
     }
 
     fun adaptScrollerViewFitActivity(view: View, paddingTop: Int = 0) {
-        val dimensionAttrValue = DisplayUtil.getDimensionAttrValue(
+        val dimensionAttrValue = AttrUtil.getDimensionAttrValue(
             this, R.attr.smoothActivityVerticalPadding
         ).toInt()
 

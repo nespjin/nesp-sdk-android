@@ -19,6 +19,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nesp.sdk.android.R
+import com.nesp.sdk.android.smooth.widget.SmoothViewPager
+import com.nesp.sdk.android.util.AttrUtil
 import com.nesp.sdk.android.util.DisplayUtil
 import kotlinx.android.synthetic.main.activity_smooth_bottom_navigation.*
 import java.lang.reflect.Field
@@ -43,6 +45,8 @@ abstract class SmoothBottomNavigationActivity : SmoothBaseActivity(),
 
         viewPager.addOnPageChangeListener(this)
         viewPager.adapter = getFragmentPagerAdapter()
+        viewPager.setScrollEnable(getIsScrollEnable())
+        viewPager.overScrollMode = getOverScrollMode()
 
 //        inflateBottomNavigationMenu(getBottomNavigationMenuResId())
 
@@ -53,6 +57,14 @@ abstract class SmoothBottomNavigationActivity : SmoothBaseActivity(),
 
     override fun swipeBackEnable(): Boolean {
         return false
+    }
+
+    protected open fun getIsScrollEnable(): Boolean {
+        return false
+    }
+
+    protected fun setScrollEnable(isScrollEnable: Boolean) {
+        viewPager.setScrollEnable(isScrollEnable)
     }
 
     protected open fun getDefaultSelectedItemId(): Int {
@@ -76,6 +88,18 @@ abstract class SmoothBottomNavigationActivity : SmoothBaseActivity(),
     }
 
     protected abstract fun getFragments(): List<Fragment>
+
+    protected fun getViewPager(): SmoothViewPager {
+        return viewPager
+    }
+
+    protected fun setOverScrollMode(overScrollMode: Int) {
+        viewPager.overScrollMode = overScrollMode
+    }
+
+    protected open fun getOverScrollMode(): Int {
+        return View.OVER_SCROLL_NEVER
+    }
 
 //    @MenuRes
 //    protected abstract fun getBottomNavigationMenuResId(): Int
@@ -170,7 +194,7 @@ abstract class SmoothBottomNavigationActivity : SmoothBaseActivity(),
     }
 
     fun adaptScrollerViewFitActivity(view: View, paddingTop: Int = 0) {
-        val dimensionAttrValue = DisplayUtil.getDimensionAttrValue(
+        val dimensionAttrValue = AttrUtil.getDimensionAttrValue(
             this, R.attr.smoothActivityVerticalPadding
         ).toInt()
 
@@ -200,6 +224,6 @@ abstract class SmoothBottomNavigationActivity : SmoothBaseActivity(),
     }
 
     private fun getBottomNavigationViewHeight(): Float {
-        return DisplayUtil.getDimensionAttrValue(this, R.attr.smoothBottomNavigationHeight)
+        return AttrUtil.getDimensionAttrValue(this, R.attr.smoothBottomNavigationHeight)
     }
 }

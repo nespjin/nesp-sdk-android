@@ -22,10 +22,17 @@
     <color name="smooth_action_bar_menu_indicator_color">@color/smoothSystemBlue</color>
     <color name="smooth_action_bar_menu_background_color">@color/smoothSystemGray</color>
     <color name="smooth_action_bar_background_color">@color/smoothSystemGray</color>
-    <color name="smooth_widget_common_background_color">@color/smoothSystemGray</color>
     <color name="smooth_action_bar_menu_item_title_text_color">@color/black</color>
     <color name="smooth_action_bar_menu_item_subtitle_text_color">@color/gray</color>
+
     <color name="smooth_common_item_background_color">@color/common_item_bg_selector</color>
     <color name="smooth_common_item_normal_background_color">@color/transparent</color>
     <color name="smooth_common_item_click_background_color">@color/white</color>
+    <color name="smooth_widget_common_background_color">@color/smoothSystemGray</color>
+
+    <color name="smooth_dialog_action_text_color">@color/smoothSystemBlue</color>
+    <color name="smooth_dialog_title_text_color">@color/black</color>
+    <color name="smooth_dialog_message_text_color">@color/black</color>
+    <color name="smooth_dialog_background">@color/smooth_widget_common_background_color</color>
+
 </resources>

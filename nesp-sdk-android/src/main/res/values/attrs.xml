@@ -36,7 +36,15 @@
     <attr name="smoothCommonItemNormalBackgroundColor" format="color" />
     <attr name="smoothCommonItemClickBackgroundColor" format="color" />
 
-    <attr name="smoothRealtimeBlurRadius" format="dimension"/>
-    <attr name="smoothWidgetRealtimeBlurRadius" format="dimension"/>
+    <attr name="smoothRealtimeBlurRadius" format="dimension" />
+    <attr name="smoothWidgetRealtimeBlurRadius" format="dimension" />
+
+    <attr name="smoothDialogStyle" format="reference" />
+    <attr name="smoothDialogActionStyle" format="reference" />
+    <attr name="smoothDialogTitleStyle" format="reference" />
+    <attr name="smoothDialogMessageStyle" format="reference" />
+    <attr name="smoothDialogBackgroundColor" format="color" />
+    <attr name="smoothDialogCornerRadius" format="dimension"/>
+    <attr name="smoothDialogElevation" format="dimension"/>
 
 </resources>

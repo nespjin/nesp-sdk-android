@@ -27,6 +27,7 @@ import com.nesp.sdk.android.core.ktx.widget.gone
 import com.nesp.sdk.android.core.ktx.widget.invisible
 import com.nesp.sdk.android.core.ktx.widget.visible
 import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
+import com.nesp.sdk.android.util.AttrUtil
 import com.nesp.sdk.android.util.DisplayUtil
 import com.nesp.sdk.android.util.WindowUtil
 
@@ -590,7 +591,7 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
     }
 
     override fun getInitActionBarHeight(): Float {
-        return DisplayUtil.getDimensionAttrValue(context, R.attr.smoothActionBarHeight)
+        return AttrUtil.getDimensionAttrValue(context, R.attr.smoothActionBarHeight)
     }
 
     override fun getRealActionBarHeight(): Float {
