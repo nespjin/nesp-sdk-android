@@ -13,6 +13,7 @@
     <color name="smoothSystemGray">#CCF5F5F5</color>
     <color name="smoothSystemGrayLight">#CCF5F5F5</color>
     <color name="smoothSystemGray16">#F2F2F7</color>
+    <color name="smoothSystemWhiteDark">#EEEEEE</color>
     <color name="smoothSystemBlue">#007AFF</color>
     <color name="smoothSystemRed">#FF3B30</color>
 
@@ -25,7 +26,7 @@
     <color name="smooth_action_bar_menu_item_title_text_color">@color/black</color>
     <color name="smooth_action_bar_menu_item_subtitle_text_color">@color/gray</color>
 
-    <color name="smooth_common_item_background_color">@color/common_item_bg_selector</color>
+    <color name="smooth_common_item_background_color">@color/smooth_common_item_bg_selector</color>
     <color name="smooth_common_item_normal_background_color">@color/transparent</color>
     <color name="smooth_common_item_click_background_color">@color/white</color>
     <color name="smooth_widget_common_background_color">@color/smoothSystemGray</color>
@@ -34,5 +35,9 @@
     <color name="smooth_dialog_title_text_color">@color/black</color>
     <color name="smooth_dialog_message_text_color">@color/black</color>
     <color name="smooth_dialog_background">@color/smooth_widget_common_background_color</color>
+    <color name="smooth_dialog_divider_line_color">#C5C5C5</color>
+    <color name="smooth_dialog_action_background_color" />
+    <color name="smooth_dialog_action_normal_background_color">@color/transparent</color>
+    <color name="smooth_dialog_action_click_background_color" >@color/smoothSystemWhiteDark</color>
 
 </resources>

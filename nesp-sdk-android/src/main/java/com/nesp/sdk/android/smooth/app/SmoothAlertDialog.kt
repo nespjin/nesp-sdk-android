@@ -3,30 +3,38 @@ package com.nesp.sdk.android.smooth.app
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.annotation.IntDef
 import androidx.annotation.StyleRes
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.mmin18.widget.RealtimeBlurView
 import com.nesp.sdk.android.R
+import com.nesp.sdk.android.core.ktx.content.getColorCompat
+import com.nesp.sdk.android.core.ktx.widget.gone
+import com.nesp.sdk.android.core.ktx.widget.visible
 import com.nesp.sdk.android.text.Text
-import com.nesp.sdk.android.text.TextStyle
 import com.nesp.sdk.android.util.AttrUtil
-import kotlinx.android.synthetic.main.smooth_action_menu_list.*
 
 /**
  *
- * @@author: <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
+ * @author: <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
  * Time: Created 2020/10/13 12:45 PM
  * Project: NespAndroidSdk
  * Description:
  **/
 class SmoothAlertDialog : Dialog, ISmoothDialog {
 
-    class Builder : ISmoothDialog {
+    class Builder {
 
         internal var context: Context? = null
 
@@ -38,27 +46,13 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
         internal var title: Text = Text.empty()
         internal var message: Text = Text.empty()
 
-        @ConstructorType
-        private var constructorType = ConstructorType.ONE
-
-        @IntDef(ConstructorType.ONE, ConstructorType.TWO, ConstructorType.THREE)
-        annotation class ConstructorType {
-            companion object {
-                const val ONE = 0
-                const val TWO = 1
-                const val THREE = 2
-            }
-        }
-
         constructor(context: Context) {
             this.context = context
-            this.constructorType = ConstructorType.ONE
         }
 
         constructor(context: Context, @StyleRes themeResId: Int) {
             this.context = context
             this.themeResId = themeResId
-            this.constructorType = ConstructorType.TWO
         }
 
         constructor(
@@ -67,109 +61,117 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
             this.context = context
             this.cancelable = cancelable
             this.onCancelListener = cancelListener
-            this.constructorType = ConstructorType.THREE
         }
 
-        override fun addAction(action: ISmoothDialog.Action) {
+        fun addAction(action: ISmoothDialog.Action): Builder {
             this.actions.add(action)
+            return this
         }
 
-        override fun addAction(index: Int, action: ISmoothDialog.Action) {
+        fun addAction(index: Int, action: ISmoothDialog.Action): Builder {
             this.actions.add(index, action)
+            return this
         }
 
-        override fun addActions(vararg actions: ISmoothDialog.Action) {
+        fun addActions(vararg actions: ISmoothDialog.Action): Builder {
             this.actions.addAll(actions)
+            return this
         }
 
-        override fun addActions(actions: ArrayList<ISmoothDialog.Action>) {
+        fun addActions(actions: ArrayList<ISmoothDialog.Action>): Builder {
             this.actions.addAll(actions)
+            return this
         }
 
-        override fun removeAction(action: ISmoothDialog.Action) {
+        fun removeAction(action: ISmoothDialog.Action): Builder {
             this.actions.remove(action)
+            return this
         }
 
-        override fun removeActionAt(index: Int) {
+        fun removeActionAt(index: Int): Builder {
             this.actions.removeAt(index)
+            return this
         }
 
-        override fun getActions(): ArrayList<ISmoothDialog.Action> {
+        fun getActions(): ArrayList<ISmoothDialog.Action> {
             return this.actions
         }
 
-        override fun setTitle(text: String) {
+        fun setTitle(text: String): Builder {
             this.title = Text(text)
+            return this
         }
 
-        override fun setTitle(id: Int) {
+        fun setTitle(id: Int): Builder {
             this.title = Text(context!!.getString(id))
+            return this
         }
 
-        override fun setTitle(text: Text) {
+        fun setTitle(text: Text): Builder {
             this.title = text
+            return this
         }
 
-        override fun getTitle(): Text {
+        fun getTitle(): Text {
             return title
         }
 
-        override fun getTitleText(): String {
+        fun getTitleText(): String {
             return title.content
         }
 
-        override fun setMessage(text: String) {
+        fun setMessage(text: String): Builder {
             this.message = Text(text)
+            return this
         }
 
-        override fun setMessage(id: Int) {
+        fun setMessage(id: Int): Builder {
             this.message = Text(context!!.getString(id))
+            return this
         }
 
-        override fun setMessage(text: Text) {
+        fun setMessage(text: Text): Builder {
             this.message = text
+            return this
         }
 
-        override fun getMessage(): Text {
+        fun getMessage(): Text {
             return this.message
         }
 
-        override fun getMessageText(): String {
+        fun getMessageText(): String {
             return this.message.content
         }
 
-        fun setTheme(id: Int) {
+        fun setTheme(id: Int): Builder {
             this.themeResId = id
+            return this
         }
 
-        override fun setCancelable(cancelable: Boolean) {
+        fun setCancelable(cancelable: Boolean): Builder {
             this.cancelable = cancelable
+            return this
         }
 
-        override fun getCancelable(): Boolean {
+        fun getCancelable(): Boolean {
             return this.cancelable
         }
 
-        override fun setOnCancelListener(onCancelListener: DialogInterface.OnCancelListener?) {
+        fun setOnCancelListener(onCancelListener: DialogInterface.OnCancelListener?): Builder {
             this.onCancelListener = onCancelListener
+            return this
         }
 
         fun create(): SmoothAlertDialog {
-            return when (constructorType) {
-                ConstructorType.ONE -> SmoothAlertDialog(context!!, this)
-                ConstructorType.TWO -> {
-                    if (themeResId == 0) {
-                        themeResId =
-                            AttrUtil.getAttrOutTypeValue(context!!, R.attr.smoothDialogStyle)
-                                .resourceId
-                    }
-                    SmoothAlertDialog(context!!, themeResId, this)
-                }
-                ConstructorType.THREE -> SmoothAlertDialog(
-                    context!!, cancelable, onCancelListener, this
-                )
-                else -> SmoothAlertDialog(context!!, this)
+            if (themeResId == 0) {
+                themeResId =
+                    AttrUtil.getAttrOutTypeValue(context!!, R.attr.smoothDialogStyle)
+                        .resourceId
             }
+            val smoothAlertDialog = SmoothAlertDialog(context!!, themeResId, this)
+            smoothAlertDialog.setCancelable(cancelable)
+            smoothAlertDialog.setOnCancelListener(onCancelListener)
+            return smoothAlertDialog
         }
     }
 
@@ -177,6 +179,13 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
     private val tvTitle: TextView by lazy { findViewById(R.id.tvTitle) }
     private val tvMessage: TextView by lazy { findViewById(R.id.tvMessage) }
     private val actionsRecyclerView: RecyclerView by lazy { findViewById(R.id.actionsRecyclerView) }
+    private val cardView: CardView by lazy { findViewById(R.id.cardView) }
+    private val realtimeBlurView: RealtimeBlurView by lazy { findViewById(R.id.realtimeBlurView) }
+    private val rlActionContainer: RelativeLayout by lazy { findViewById(R.id.rlActionContainer) }
+    private val llActionContainer: LinearLayout by lazy { findViewById(R.id.llActionContainer) }
+    private val vActionDivider: View by lazy { findViewById(R.id.vActionDivider) }
+    private val tvAction1: TextView by lazy { findViewById(R.id.tvAction1) }
+    private val tvAction2: TextView by lazy { findViewById(R.id.tvAction2) }
     private var actionAdapter: ActionAdapter? = null
 
     private constructor(context: Context, builder: Builder) : super(context) {
@@ -198,16 +207,77 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        window?.decorView?.setBackgroundColor(Color.TRANSPARENT)
+
         setContentView(R.layout.alert_dialog_smooth)
+
+        tvTitle.text = builder.title.content
+        builder.title.textStyle?.setToTextView(tvTitle)
+
+        tvMessage.text = builder.message.content
+        builder.message.textStyle?.setToTextView(tvMessage)
         initActions()
+
+        cardView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
+        realtimeBlurView.layoutParams.apply {
+            height = cardView.measuredHeight
+        }
+
+        rlActionContainer.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
+        vActionDivider.layoutParams.apply {
+            height = rlActionContainer.measuredHeight
+        }
     }
 
     private fun initActions() {
-        val orientation =
-            if (builder.actions.size > 2) RecyclerView.VERTICAL else RecyclerView.HORIZONTAL
-        recyclerView.layoutManager = LinearLayoutManager(context, orientation, false)
-        actionAdapter = ActionAdapter(builder.actions)
-        recyclerView.adapter = actionAdapter
+        if (builder.actions.size > 2) {
+            val orientation =
+                if (builder.actions.size > 2) RecyclerView.VERTICAL else RecyclerView.HORIZONTAL
+            actionsRecyclerView.layoutManager = LinearLayoutManager(context, orientation, false)
+            actionAdapter = ActionAdapter(builder.actions)
+            actionsRecyclerView.adapter = actionAdapter
+            actionsRecyclerView.overScrollMode = View.OVER_SCROLL_NEVER
+            actionsRecyclerView.addItemDecoration(ActionListDividerItemDecoration())
+
+            actionsRecyclerView.visible()
+            rlActionContainer.gone()
+            vActionDivider.gone()
+        } else {
+            if (builder.actions.size == 1 || builder.actions.size == 2) {
+                if (builder.actions.size == 1) {
+                    tvAction1.text = builder.actions[0].text
+                    builder.actions[0].textStyle?.setToTextView(tvAction1)
+                    tvAction1.setOnClickListener {
+                        builder.actions[0].onActionClickListener?.onClick(it, builder.actions[0], 0)
+                    }
+                    tvAction1.visible()
+                    tvAction2.gone()
+                    vActionDivider.gone()
+                } else {
+                    tvAction1.text = builder.actions[0].text
+                    builder.actions[0].textStyle?.setToTextView(tvAction1)
+                    tvAction1.setOnClickListener {
+                        builder.actions[0].onActionClickListener?.onClick(it, builder.actions[0], 0)
+                    }
+                    tvAction2.text = builder.actions[1].text
+                    builder.actions[1].textStyle?.setToTextView(tvAction2)
+                    tvAction2.setOnClickListener {
+                        builder.actions[1].onActionClickListener?.onClick(it, builder.actions[1], 0)
+                    }
+                    tvAction1.visible()
+                    tvAction2.visible()
+                    vActionDivider.visible()
+                }
+                llActionContainer.weightSum = builder.actions.size.toFloat()
+                actionsRecyclerView.gone()
+                rlActionContainer.visible()
+            } else {
+                actionsRecyclerView.gone()
+                rlActionContainer.gone()
+                vActionDivider.gone()
+            }
+        }
     }
 
     private fun refreshActions() {
@@ -245,7 +315,7 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
     }
 
     override fun getActions(): ArrayList<ISmoothDialog.Action> {
-        return builder.actions
+        return builder.getActions()
     }
 
     override fun setTitle(text: String) {
@@ -254,51 +324,40 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
 
     override fun setTitle(text: Text) {
         tvTitle.text = text.content
-        if (text.textStyle != null) {
-            if (text.textStyle!!.textSize != TextStyle.TEXT_SIZE_NONE) {
-                tvTitle.textSize = text.textStyle!!.textSize
-            }
-
-            if (text.textStyle!!.textColor != TextStyle.TEXT_COLOR_NONE) {
-                tvTitle.setTextColor(text.textStyle!!.textColor)
-            }
-
-            if (text.textStyle!!.textColorStateList != null) {
-                tvTitle.setTextColor(text.textStyle!!.textColorStateList)
-            }
-        }
+        text.textStyle?.setToTextView(tvTitle)
     }
 
     override fun getTitle(): Text {
-        TODO("Not yet implemented")
+        return builder.getTitle()
     }
 
     override fun getTitleText(): String {
-        TODO("Not yet implemented")
+        return builder.getTitleText()
     }
 
     override fun setMessage(text: String) {
-        TODO("Not yet implemented")
+        tvMessage.text = text
     }
 
     override fun setMessage(id: Int) {
-        TODO("Not yet implemented")
+        tvMessage.text = context.getString(id)
     }
 
     override fun setMessage(text: Text) {
-        TODO("Not yet implemented")
+        tvMessage.text = text.content
+        text.textStyle?.setToTextView(tvMessage)
     }
 
     override fun getMessage(): Text {
-        TODO("Not yet implemented")
+        return builder.getMessage()
     }
 
     override fun getMessageText(): String {
-        TODO("Not yet implemented")
+        return builder.getMessageText()
     }
 
     override fun getCancelable(): Boolean {
-        TODO("Not yet implemented")
+        return builder.getCancelable()
     }
 
     private class ActionAdapter(private val actions: ArrayList<ISmoothDialog.Action>) :
@@ -311,20 +370,7 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
         override fun onBindViewHolder(holder: ActionViewHolder, position: Int) {
             val action = actions[position]
             holder.tvAction.text = action.text
-            if (action.textStyle != null) {
-                if (action.textStyle!!.textSize != TextStyle.TEXT_SIZE_NONE) {
-                    holder.tvAction.textSize = action.textStyle!!.textSize
-                }
-
-                if (action.textStyle!!.textColor != TextStyle.TEXT_COLOR_NONE) {
-                    holder.tvAction.setTextColor(action.textStyle!!.textColor)
-                }
-
-                if (action.textStyle!!.textColorStateList != null) {
-                    holder.tvAction.setTextColor(action.textStyle!!.textColorStateList)
-                }
-            }
-
+            action.textStyle?.setToTextView(holder.tvAction)
             holder.itemView.setOnClickListener {
                 action.onActionClickListener?.onClick(it, action, position)
             }
@@ -341,7 +387,31 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
         LayoutInflater.from(parent.context)
             .inflate(R.layout.smooth_alert_dialog_action_item, parent, false)
     ) {
-        val tvAction = itemView.findViewById<TextView>(R.id.tvAction)
+        val tvAction: TextView = itemView.findViewById(R.id.tvAction)
+    }
+
+    private class ActionListDividerItemDecoration : RecyclerView.ItemDecoration() {
+        private val dividerPaint = Paint()
+        override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+            dividerPaint.color = parent.context.getColorCompat(
+                AttrUtil.getAttrOutTypeValue(parent.context, R.attr.smoothDialogDividerLineColor)
+                    .resourceId
+            )
+            val childCount = parent.childCount
+            val left = parent.paddingLeft
+            val right = parent.width - parent.paddingRight
+
+            for (i in 0 until childCount - 1) {
+                val view: View = parent.getChildAt(i)
+                val top: Float =
+                    view.bottom.toFloat() - AttrUtil.getDimensionAttrValue(
+                        parent.context,
+                        R.attr.smoothDialogDividerLineWidth
+                    )
+                val bottom: Float = view.bottom.toFloat()
+                c.drawRect(left.toFloat(), top, right.toFloat(), bottom, dividerPaint)
+            }
+        }
     }
 
 }

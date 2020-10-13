@@ -39,7 +39,17 @@ class TextStyle {
     }
 
     fun setToTextView(textView: TextView) {
+        if (textSize != TEXT_SIZE_NONE) {
+            textView.textSize = textSize
+        }
 
+        if (textColor != TEXT_COLOR_NONE) {
+            textView.setTextColor(textColor)
+        }
+
+        if (textColorStateList != null) {
+            textView.setTextColor(textColorStateList)
+        }
     }
 
     companion object {

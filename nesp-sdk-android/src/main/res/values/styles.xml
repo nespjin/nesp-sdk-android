@@ -58,11 +58,17 @@
         <item name="smoothDialogBackgroundColor">@color/smooth_dialog_background</item>
         <item name="smoothDialogCornerRadius">@dimen/smooth_dialog_corner_radius</item>
         <item name="smoothDialogElevation">@dimen/smooth_dialog_elevation</item>
+        <item name="smoothDialogRealtimeBlurRadius">@dimen/smooth_dialog_real_time_blur_radius</item>
+        <item name="smoothDialogDividerLineWidth">@dimen/smooth_dialog_divider_line_width</item>
+        <item name="smoothDialogDividerLineColor">@color/smooth_dialog_divider_line_color</item>
+        <item name="smoothDialogActionBackgroundColor">@color/smooth_dialog_action_bg_selector</item>
+        <item name="smoothDialogActionClickBackgroundColor">@color/smooth_dialog_action_click_background_color</item>
+        <item name="smoothDialogActionNormalBackgroundColor">@color/smooth_dialog_action_normal_background_color</item>
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothDialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowAnimationStyle">@style/SmoothAppTheme.Light.SmoothDialog.Animation</item>
-        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothDialog.Animation" parent="android:Animation">

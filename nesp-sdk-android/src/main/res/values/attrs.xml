@@ -46,5 +46,12 @@
     <attr name="smoothDialogBackgroundColor" format="color" />
     <attr name="smoothDialogCornerRadius" format="dimension"/>
     <attr name="smoothDialogElevation" format="dimension"/>
+    <attr name="smoothDialogRealtimeBlurRadius" format="dimension" />
+    <attr name="smoothDialogDividerLineWidth" format="dimension" />
+    <attr name="smoothDialogDividerLineColor" format="color" />
+    <attr name="smoothDialogActionBackgroundColor" format="color" />
+    <attr name="smoothDialogActionClickBackgroundColor" format="color" />
+    <attr name="smoothDialogActionNormalBackgroundColor" format="color" />
+
 
 </resources>
