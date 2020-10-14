@@ -235,7 +235,7 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
             val orientation =
                 if (builder.actions.size > 2) RecyclerView.VERTICAL else RecyclerView.HORIZONTAL
             actionsRecyclerView.layoutManager = LinearLayoutManager(context, orientation, false)
-            actionAdapter = ActionAdapter(builder.actions)
+            actionAdapter = ActionAdapter(this, builder.actions)
             actionsRecyclerView.adapter = actionAdapter
             actionsRecyclerView.overScrollMode = View.OVER_SCROLL_NEVER
             actionsRecyclerView.addItemDecoration(ActionListDividerItemDecoration())
@@ -250,6 +250,7 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
                     builder.actions[0].textStyle?.setToTextView(tvAction1)
                     tvAction1.setOnClickListener {
                         builder.actions[0].onActionClickListener?.onClick(it, builder.actions[0], 0)
+                        dismiss()
                     }
                     tvAction1.visible()
                     tvAction2.gone()
@@ -259,11 +260,13 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
                     builder.actions[0].textStyle?.setToTextView(tvAction1)
                     tvAction1.setOnClickListener {
                         builder.actions[0].onActionClickListener?.onClick(it, builder.actions[0], 0)
+                        dismiss()
                     }
                     tvAction2.text = builder.actions[1].text
                     builder.actions[1].textStyle?.setToTextView(tvAction2)
                     tvAction2.setOnClickListener {
                         builder.actions[1].onActionClickListener?.onClick(it, builder.actions[1], 1)
+                        dismiss()
                     }
                     tvAction1.visible()
                     tvAction2.visible()
@@ -360,7 +363,10 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
         return builder.getCancelable()
     }
 
-    private class ActionAdapter(private val actions: ArrayList<ISmoothDialog.Action>) :
+    private class ActionAdapter(
+        private val smoothAlertDialog: SmoothAlertDialog,
+        private val actions: ArrayList<ISmoothDialog.Action>
+    ) :
         RecyclerView.Adapter<ActionViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActionViewHolder {
@@ -373,6 +379,7 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
             action.textStyle?.setToTextView(holder.tvAction)
             holder.itemView.setOnClickListener {
                 action.onActionClickListener?.onClick(it, action, position)
+                smoothAlertDialog.dismiss()
             }
         }
 
