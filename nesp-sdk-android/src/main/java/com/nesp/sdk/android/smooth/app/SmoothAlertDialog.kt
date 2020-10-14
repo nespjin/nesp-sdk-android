@@ -263,7 +263,7 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
                     tvAction2.text = builder.actions[1].text
                     builder.actions[1].textStyle?.setToTextView(tvAction2)
                     tvAction2.setOnClickListener {
-                        builder.actions[1].onActionClickListener?.onClick(it, builder.actions[1], 0)
+                        builder.actions[1].onActionClickListener?.onClick(it, builder.actions[1], 1)
                     }
                     tvAction1.visible()
                     tvAction2.visible()
