@@ -7,6 +7,8 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import com.nesp.sdk.android.core.ktx.content.res.getColorCompat
+import com.nesp.sdk.android.core.ktx.content.res.getDrawableCompat
 
 /**
  *
@@ -17,13 +19,13 @@ import androidx.core.content.ContextCompat
  * Project: NespAndroidSdk
  **/
 
-fun Context.getDrawableCompat(@DrawableRes drawableRes: Int): Drawable? {
-    return ContextCompat.getDrawable(this, drawableRes)
+fun Context.getDrawableCompat(@DrawableRes id: Int): Drawable? {
+    return resources.getDrawableCompat(id, theme)
 }
 
 @ColorInt
 fun Context.getColorCompat(@ColorRes id: Int): Int {
-    return ContextCompat.getColor(this, id)
+    return resources.getColorCompat(id, theme)
 }
 
 fun Context.getColorStateListCompat(id: Int): ColorStateList? {

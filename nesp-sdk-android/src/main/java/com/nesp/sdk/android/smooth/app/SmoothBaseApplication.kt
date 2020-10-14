@@ -23,7 +23,15 @@ open class SmoothBaseApplication : Application() {
         private var instance: SmoothBaseApplication? = null
 
         @JvmStatic
-        fun getInstance() = instance
+        fun getInstance(): SmoothBaseApplication {
+            if (instance == null) {
+                throw IllegalArgumentException(
+                    "SmoothBaseApplication is null," +
+                            "are you extends SmoothBaseApplication with your Application?"
+                )
+            }
+            return instance!!
+        }
 
     }
 
