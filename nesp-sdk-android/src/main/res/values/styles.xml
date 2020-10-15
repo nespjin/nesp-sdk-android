@@ -66,6 +66,21 @@
         <item name="smoothDialogActionNormalBackgroundColor">@color/smooth_dialog_action_normal_background_color</item>
     </style>
 
+    <style name="SmoothAppTheme.Light.SmoothSwitch" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="track">@drawable/abc_switch_track_mtrl_alpha</item>
+        <item name="android:thumb">@drawable/abc_switch_thumb_material</item>
+        <item name="switchTextAppearance">@style/SmoothAppTheme.Light.SmoothSwitch.TextAppearance</item>
+        <item name="android:background">?attr/controlBackground</item>
+        <item name="showText">true</item>
+        <item name="switchPadding">@dimen/abc_switch_padding</item>
+        <item name="android:textOn">@string/abc_capital_on</item>
+        <item name="android:textOff">@string/abc_capital_off</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothSwitch.TextAppearance" parent="TextAppearance.AppCompat.Widget.Switch">
+
+    </style>
+
     <style name="SmoothAppTheme.Light.SmoothDialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowAnimationStyle">@style/SmoothAppTheme.Light.SmoothDialog.Animation</item>
         <item name="android:backgroundDimEnabled">true</item>
@@ -125,12 +140,12 @@
         <item name="android:textColor">@color/smooth_action_bar_menu_item_subtitle_text_color</item>
     </style>
 
-    <style name="SmoothAppTheme.Light" parent="Theme.MaterialComponents.Light"/>
+    <style name="SmoothAppTheme.Light" parent="Theme.MaterialComponents.Light" />
 
-    <style name="SmoothAppTheme.Light.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar"/>
+    <style name="SmoothAppTheme.Light.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar" />
 
-    <style name="SmoothAppTheme.DayNight" parent="Theme.MaterialComponents.DayNight"/>
+    <style name="SmoothAppTheme.DayNight" parent="Theme.MaterialComponents.DayNight" />
 
-    <style name="SmoothAppTheme.DayNight.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
+    <style name="SmoothAppTheme.DayNight.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 
 </resources>
