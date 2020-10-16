@@ -16,6 +16,10 @@
     <color name="smoothSystemWhiteDark">#EEEEEE</color>
     <color name="smoothSystemBlue">#007AFF</color>
     <color name="smoothSystemRed">#FF3B30</color>
+    <color name="smoothSystemGreen">#2EC150</color>
+    <color name="smoothSystemYellow">#FFC500</color>
+    <color name="smoothSystemPurple">#A648D9</color>
+    <color name="smoothSystemOrange">#FF8A04</color>
 
     <color name="smooth_action_bar_left_action_text_color">@color/smoothSystemBlue</color>
     <color name="smooth_action_bar_right_action_text_color">@color/smoothSystemBlue</color>

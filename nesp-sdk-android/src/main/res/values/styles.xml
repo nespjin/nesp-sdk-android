@@ -67,11 +67,11 @@
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothSwitch" parent="Widget.AppCompat.CompoundButton.Switch">
-        <item name="track">@drawable/abc_switch_track_mtrl_alpha</item>
-        <item name="android:thumb">@drawable/abc_switch_thumb_material</item>
+        <item name="track">@drawable/smooth_switch_track</item>
+        <item name="android:thumb">@drawable/smooth_switch_thumb</item>
         <item name="switchTextAppearance">@style/SmoothAppTheme.Light.SmoothSwitch.TextAppearance</item>
         <item name="android:background">?attr/controlBackground</item>
-        <item name="showText">true</item>
+        <item name="showText">false</item>
         <item name="switchPadding">@dimen/abc_switch_padding</item>
         <item name="android:textOn">@string/abc_capital_on</item>
         <item name="android:textOff">@string/abc_capital_off</item>

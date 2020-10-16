@@ -1,113 +1,39 @@
 package com.nesp.sdk.android.smooth.widget
 
-
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.content.res.ColorStateList
+import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.PorterDuff
-import android.graphics.Rect
-import android.graphics.drawable.Drawable
-import android.text.Layout
 import android.text.TextPaint
-import android.text.method.TransformationMethod
 import android.util.AttributeSet
 import android.util.Property
-import android.view.MotionEvent
-import android.view.VelocityTracker
-import android.widget.CompoundButton
-import androidx.annotation.IntDef
-import androidx.appcompat.widget.TintTypedArray
+import android.view.View
+import androidx.core.view.ViewCompat
 import com.nesp.sdk.android.R
+import com.nesp.sdk.android.core.ktx.content.getColorCompat
 
 /**
  *
- * Author: <a href="mailto:1756404649@qq.com">JinZhaolu Email:1756404649@qq.com</a>
- * Time: Created 2020/10/15 8:41 AM
- * Project: NespAndroidSdk
+ * Author: <a href="mailto:jinzhaolu@numob.com">Jack Email:jinzhaolu@numob.com</a>
+ * Time: Created 2020/10/16 11:02 AM
+ * Project: NespAndroidSdkSample
  * Description:
  **/
-class SmoothSwitch : CompoundButton {
+class SmoothSwitch : View {
 
-    private var mThumbDrawable: Drawable? = null
-    private var mThumbTintList: ColorStateList? = null
-    private var mThumbTintMode: PorterDuff.Mode? = null
-    private var mHasThumbTint = false
-    private var mHasThumbTintMode = false
-
-    private var mTrackDrawable: Drawable? = null
-    private var mTrackTintList: ColorStateList? = null
-    private var mTrackTintMode: PorterDuff.Mode? = null
-    private var mHasTrackTint = false
-    private var mHasTrackTintMode = false
-
-    private val mThumbTextPadding = 0
-    private val mSwitchMinWidth = 0
-    private val mSwitchPadding = 0
-    private val mSplitTrack = false
-    private val mTextOn: CharSequence? = null
-    private val mTextOff: CharSequence? = null
-    private val mShowText = false
-
-    @TouchMode
-    private val mTouchMode = 0
-    private val mTouchSlop = 0
-    private val mTouchX = 0f
-    private val mTouchY = 0f
-    private val mVelocityTracker = VelocityTracker.obtain()
-    private val mMinFlingVelocity = 0
-
-    var mThumbPosition = 0f
-        set(value) {
-            field = value
-            invalidate()
-        }
-
-    /**
-     * Width required to draw the switch track and thumb. Includes padding and
-     * optical bounds for both the track and thumb.
-     */
-    private val mSwitchWidth = 0
-
-    /**
-     * Height required to draw the switch track and thumb. Includes padding and
-     * optical bounds for both the track and thumb.
-     */
-    private val mSwitchHeight = 0
-
-    /**
-     * Width of the thumb's content region. Does not include padding or
-     * optical bounds.
-     */
-    private val mThumbWidth = 0
-
-    /** Left bound for drawing the switch track and thumb.  */
-    private val mSwitchLeft = 0
-
-    /** Top bound for drawing the switch track and thumb.  */
-    private val mSwitchTop = 0
-
-    /** Right bound for drawing the switch track and thumb.  */
-    private val mSwitchRight = 0
-
-    /** Bottom bound for drawing the switch track and thumb.  */
-    private val mSwitchBottom = 0
-
+    private var mTrackPaint: Paint? = null
+    private var mThumbPaint: Paint? = null
     private var mTextPaint: TextPaint? = null
-    private val mTextColors: ColorStateList? = null
-    private val mOnLayout: Layout? = null
-    private val mOffLayout: Layout? = null
-    private val mSwitchTransformationMethod: TransformationMethod? = null
-    var mPositionAnimator: ObjectAnimator? = null
-    private val mTextHelper: AppCompatTextHelper? = null
 
-    private val mTempRect = Rect()
+    private var mHeight = 0F
+    private var mWidth = 0F
 
-    private val CHECKED_STATE_SET = intArrayOf(
-        android.R.attr.state_checked
-    )
+    private var mThumbPadding = 10F
+    internal var mThumbPosition = 0F
 
-    constructor(context: Context) : this(context, null)
+    internal var mPositionAnimator: ObjectAnimator? = null
+
+    private var isChecked = false
 
     constructor(context: Context, attrs: AttributeSet?) :
             this(context, attrs, R.attr.smoothSwitchStyle)
@@ -115,42 +41,100 @@ class SmoothSwitch : CompoundButton {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context, attrs, defStyleAttr
     ) {
-        mTextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
 
-        val resources = resources
-        mTextPaint!!.density = resources.displayMetrics.density
+        mTrackPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        mTrackPaint!!.strokeWidth = 5F
+        mTrackPaint!!.color = context.getColorCompat(R.color.smoothSystemGreen)
 
+        mThumbPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        mThumbPaint!!.color = context.getColorCompat(R.color.white)
 
+        setOnClickListener {
+            animateThumbToCheckedState(!isChecked)
+        }
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return super.onTouchEvent(event)
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+    }
+
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        mHeight = 160F
+        mWidth = 300F
+        drawTrack(canvas)
+
+
+        val radius = (mHeight - 2 * mThumbPadding) / 2
+        canvas.drawCircle(
+            mThumbPadding + radius, mThumbPadding + radius, radius,
+            mThumbPaint!!
+        )
+        super.onDraw(canvas)
+    }
+
+    private fun drawTrack(canvas: Canvas) {
+        val radiusArc = mHeight / 2
+        canvas.drawRect(radiusArc, 0F, mWidth - radiusArc, mHeight, mTrackPaint!!)
+        canvas.drawArc(0F, 0F, radiusArc * 2, mHeight, 90F, 180F, true, mTrackPaint!!)
+        canvas.drawArc(mWidth - radiusArc * 2, 0F, mWidth, mHeight, -90F, 180F, true, mTrackPaint!!)
+    }
+
+    fun toggle() {
+        setChecked(!isChecked())
+    }
+
+    fun setChecked(checked: Boolean): SmoothSwitch {
+        if (windowToken != null && ViewCompat.isLaidOut(this)) {
+            animateThumbToCheckedState(checked)
+        } else {
+            // Immediately move the thumb to the new position.
+            cancelPositionAnimator()
+            setThumbPosition(if (checked) 1F else 0F)
+        }
+        this.isChecked = checked
+        return this
+    }
+
+    fun isChecked(): Boolean {
+        return this.isChecked
+    }
+
+
+    internal fun setThumbPosition(position: Float): SmoothSwitch {
+        this.mThumbPosition = position
+        invalidate()
+        return this
+    }
+
+    private fun animateThumbToCheckedState(newCheckedState: Boolean) {
+        val targetPosition = if (newCheckedState) 1F else 0F
+        mPositionAnimator = ObjectAnimator.ofFloat(this, THUMB_POS, targetPosition)
+        mPositionAnimator!!.duration = THUMB_ANIMATION_DURATION
+        mPositionAnimator!!.setAutoCancel(true)
+        mPositionAnimator!!.start()
+        isChecked = !newCheckedState
+    }
+
+    private fun cancelPositionAnimator() {
+        mPositionAnimator?.cancel()
+    }
+
+    private fun getTargetCheckedState(): Boolean {
+        return mThumbPosition > 0.5F
     }
 
     companion object {
-        private const val THUMB_ANIMATION_DURATION = 250
 
-        @IntDef(TouchMode.IDLE, TouchMode.DOWN, TouchMode.DRAGGING)
-        private annotation class TouchMode {
-            companion object {
-                internal const val IDLE = 0
-                internal const val DOWN = 1
-                internal const val DRAGGING = 2
-            }
-        }
+        private const val THUMB_ANIMATION_DURATION = 250L
 
-        // We force the accessibility events to have a class name of SmoothSwitch, since screen
-        // readers already know how to handle their events
-        private const val ACCESSIBILITY_EVENT_CLASS_NAME =
-            "com.nesp.sdk.android.smooth.widget.SmoothSwitch"
-
-        // Enum for the "typeface" XML parameter.
-        private const val SANS = 1
-        private const val SERIF = 2
-        private const val MONOSPACE = 3
-
-        private val THUMB_POS =
-            object : Property<SmoothSwitch, Float>(Float::class.java, "thumbPos") {
+        private val THUMB_POS: Property<SmoothSwitch, Float> =
+            object : Property<SmoothSwitch, Float>(
+                Float::class.java, "thumbPos"
+            ) {
                 override fun get(`object`: SmoothSwitch): Float {
                     return `object`.mThumbPosition
                 }
@@ -160,4 +144,5 @@ class SmoothSwitch : CompoundButton {
                 }
             }
     }
+
 }
