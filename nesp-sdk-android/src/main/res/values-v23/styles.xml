@@ -50,6 +50,7 @@
         <item name="smoothCommonItemClickBackgroundColor">@color/smooth_common_item_click_background_color</item>
         <item name="smoothRealtimeBlurRadius">@dimen/smooth_real_time_blur_radius</item>
         <item name="smoothWidgetRealtimeBlurRadius">@dimen/smooth_widget_real_time_blur_radius</item>
+        <item name="smoothElevationColor">@color/smooth_elevation_color</item>
 
         <item name="smoothDialogStyle">@style/SmoothAppTheme.Light.SmoothDialog</item>
         <item name="smoothDialogActionStyle">@style/SmoothAppTheme.Light.SmoothDialog.Action</item>
@@ -66,6 +67,7 @@
         <item name="smoothDialogActionNormalBackgroundColor">@color/smooth_dialog_action_normal_background_color</item>
 
         <item name="smoothSwitchStyle">@style/SmoothAppTheme.Light.SmoothSwitch</item>
+        <item name="smoothSliderStyle">@style/SmoothAppTheme.Light.SmoothSlider</item>
 
         <item name="android:windowLightStatusBar">true</item>
     </style>

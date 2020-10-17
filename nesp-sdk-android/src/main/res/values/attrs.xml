@@ -38,6 +38,7 @@
 
     <attr name="smoothRealtimeBlurRadius" format="dimension" />
     <attr name="smoothWidgetRealtimeBlurRadius" format="dimension" />
+    <attr name="smoothElevationColor" format="color" />
 
     <attr name="smoothDialogStyle" format="reference" />
     <attr name="smoothDialogActionStyle" format="reference" />
@@ -53,6 +54,10 @@
     <attr name="smoothDialogActionClickBackgroundColor" format="color" />
     <attr name="smoothDialogActionNormalBackgroundColor" format="color" />
 
+    <attr name="thumbRadius" format="dimension" />
+    <attr name="thumbElevation" format="dimension" />
+    <attr name="thumbColor" format="color" />
+
     <attr name="smoothSwitchStyle" format="reference" />
 
     <declare-styleable name="SmoothSwitch">
@@ -64,12 +69,26 @@
         <attr name="android:showText" format="boolean" />
         <attr name="textColorActive" format="color" />
         <attr name="textColorInactive" format="color" />
-        <attr name="thumbColor" format="color" />
-        <attr name="thumbRadius" format="dimension" />
-        <attr name="thumbElevation" format="dimension" />
+        <attr name="thumbColor" />
+        <attr name="thumbRadius" />
+        <attr name="thumbElevation" />
         <attr name="thumbPosition" format="dimension" />
         <attr name="trackColorActive" format="color" />
         <attr name="trackColorInactive" format="color" />
+    </declare-styleable>
+
+    <attr name="smoothSliderStyle" format="reference" />
+
+    <declare-styleable name="SmoothSlider">
+        <attr name="android:progress" format="integer" />
+        <attr name="android:max" format="integer" />
+        <attr name="stepSize" format="integer" />
+        <attr name="progressHeight" format="dimension" />
+        <attr name="progressColor" format="color" />
+        <attr name="progressBackgroundColor" format="color" />
+        <attr name="thumbColor" />
+        <attr name="thumbRadius" />
+        <attr name="thumbElevation" />
     </declare-styleable>
 
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="smooth_slider_progress">0</integer>
+    <integer name="smooth_slider_max_progress">100</integer>
+    <integer name="smooth_slider_step_size">0</integer>
+</resources>

@@ -20,6 +20,8 @@ import com.nesp.sdk.android.core.ktx.TAG
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
 import com.nesp.sdk.android.core.ktx.graphics.getFontHeight
 import com.nesp.sdk.android.core.ktx.graphics.getFontWidth
+import com.nesp.sdk.android.util.AttrUtil
+import com.nesp.sdk.android.util.DisplayUtil
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -49,7 +51,7 @@ class SmoothSwitch : View {
     @ColorInt
     private var mThumbColor: Int = Color.WHITE
     private var mThumbRadius: Float = -1F
-    private var mThumbElevation: Float = 0F
+    private var mThumbElevation: Float = 5F
 
     private var mPositionAnimator: ObjectAnimator? = null
 
@@ -76,8 +78,10 @@ class SmoothSwitch : View {
     private var mIsChecked = false
     private var mOnCheckChangedListener: OnCheckChangedListener? = null
 
+    constructor(context: Context) : this(context, null)
+
     constructor(context: Context, attrs: AttributeSet?) :
-            this(context, attrs, R.attr.smoothSwitchStyle)
+            this(context, attrs, 0)
 
     @SuppressLint("RestrictedApi")
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -85,7 +89,10 @@ class SmoothSwitch : View {
     ) {
 
         val typedArray =
-            context.obtainStyledAttributes(attrs, R.styleable.SmoothSwitch, defStyleAttr, 0)
+            context.obtainStyledAttributes(
+                attrs, R.styleable.SmoothSwitch, defStyleAttr,
+                AttrUtil.getAttrOutTypeValue(context, R.attr.smoothSwitchStyle).resourceId
+            )
         mIsChecked = typedArray.getBoolean(R.styleable.SmoothSwitch_android_checked, mIsChecked)
         typedArray.getString(R.styleable.SmoothSwitch_android_textOn)?.apply { mTextOn = this }
         typedArray.getString(R.styleable.SmoothSwitch_android_textOff)?.apply { mTextOff = this }
@@ -120,7 +127,7 @@ class SmoothSwitch : View {
             typedArray.getDimension(R.styleable.SmoothSwitch_thumbElevation, mThumbElevation)
         mThumbPosition =
             typedArray.getDimension(R.styleable.SmoothSwitch_thumbPosition, mThumbPosition)
-        
+
         if (mThumbPosition < 0F) mThumbPosition = 0F
         if (mThumbPosition > 1F) mThumbPosition = 1F
 
@@ -160,7 +167,10 @@ class SmoothSwitch : View {
                     mTouchMode = TOUCH_MODE_DOWN
                     mTouchX = event.x
                     mTouchY = event.y
+                } else {
+                    performClick()
                 }
+                return true
             }
 
             MotionEvent.ACTION_MOVE -> {
@@ -197,7 +207,7 @@ class SmoothSwitch : View {
                         }
                         val newPos = constrain(mThumbPosition + dPos, 0f, 1f)
                         if (newPos != mThumbPosition) {
-                            mTouchX = x
+                            mTouchX = event.x
                             setThumbPosition(newPos)
                         }
                         return true
@@ -205,7 +215,8 @@ class SmoothSwitch : View {
                 }
             }
 
-            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+            MotionEvent.ACTION_UP,
+            MotionEvent.ACTION_CANCEL -> {
                 if (mTouchMode == TOUCH_MODE_DRAGGING) {
                     stopDrag(event)
                     // Allow super class to handle pressed state, etc.
@@ -342,6 +353,15 @@ class SmoothSwitch : View {
     }
 
     private fun drawThumb(canvas: Canvas) {
+        val elevationX = if (mThumbPosition != 1F) 5F else 0F
+        val elevationY = if (mThumbPosition != 1F) 5F else 0F
+
+        mThumbPaint!!.setShadowLayer(
+            mThumbElevation, elevationX, elevationY,
+            context.getColorCompat(
+                AttrUtil.getAttrOutTypeValue(context, R.attr.smoothElevationColor).resourceId
+            )
+        )
         val radius = getThumbRadius()
         canvas.drawCircle(
             getThumbCircleX(), mThumbPadding + paddingTop + radius, radius,
@@ -375,7 +395,7 @@ class SmoothSwitch : View {
     }
 
     private fun getThumbRadius(): Float {
-        if (mThumbRadius != -1F) return mThumbRadius
+        if (mThumbRadius > 0F) return mThumbRadius
         return (mSwitchHeight - 2 * mThumbPadding - paddingTop - paddingBottom) / 2
     }
 
@@ -389,7 +409,7 @@ class SmoothSwitch : View {
     }
 
     private fun getTrackAlpha(): Int {
-        val minAlpha = 200
+        val minAlpha = 80
         return if (mThumbPosition in 0F..0.5F) {
             max((255 * (0.5F - mThumbPosition) / 0.5).toInt(), minAlpha)
         } else {

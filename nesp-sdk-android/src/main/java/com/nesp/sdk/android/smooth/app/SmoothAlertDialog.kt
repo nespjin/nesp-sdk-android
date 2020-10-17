@@ -46,11 +46,9 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
         internal var title: Text = Text.empty()
         internal var message: Text = Text.empty()
 
-        constructor(context: Context) {
-            this.context = context
-        }
+        constructor(context: Context) : this(context, 0)
 
-        constructor(context: Context, @StyleRes themeResId: Int) {
+        constructor(context: Context, @StyleRes themeResId: Int) : this(context, true, null) {
             this.context = context
             this.themeResId = themeResId
         }

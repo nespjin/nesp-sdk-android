@@ -50,6 +50,7 @@
         <item name="smoothCommonItemClickBackgroundColor">@color/smooth_common_item_click_background_color</item>
         <item name="smoothRealtimeBlurRadius">@dimen/smooth_real_time_blur_radius</item>
         <item name="smoothWidgetRealtimeBlurRadius">@dimen/smooth_widget_real_time_blur_radius</item>
+        <item name="smoothElevationColor">@color/smooth_elevation_color</item>
 
         <item name="smoothDialogStyle">@style/SmoothAppTheme.Light.SmoothDialog</item>
         <item name="smoothDialogActionStyle">@style/SmoothAppTheme.Light.SmoothDialog.Action</item>
@@ -66,18 +67,36 @@
         <item name="smoothDialogActionNormalBackgroundColor">@color/smooth_dialog_action_normal_background_color</item>
 
         <item name="smoothSwitchStyle">@style/SmoothAppTheme.Light.SmoothSwitch</item>
+        <item name="smoothSliderStyle">@style/SmoothAppTheme.Light.SmoothSlider</item>
     </style>
 
-    <style name="SmoothAppTheme.Light.SmoothSwitch" parent="Widget.AppCompat.CompoundButton.Switch">
-        <item name="track">@drawable/smooth_switch_track</item>
-        <item name="android:thumb">@drawable/smooth_switch_thumb</item>
-        <item name="switchTextAppearance">@style/SmoothAppTheme.Light.SmoothSwitch.TextAppearance</item>
-        <item name="android:background">?attr/controlBackground</item>
-        <item name="showText">false</item>
-        <item name="android:foreground">@null</item>
-        <item name="switchPadding">@dimen/abc_switch_padding</item>
-        <item name="android:textOn">@string/abc_capital_on</item>
-        <item name="android:textOff">@string/abc_capital_off</item>
+    <style name="SmoothAppTheme.Light.SmoothSlider">
+        <item name="android:progress">@integer/smooth_slider_progress</item>
+        <item name="android:max">@integer/smooth_slider_max_progress</item>
+        <item name="stepSize">@integer/smooth_slider_step_size</item>
+        <item name="progressHeight">@dimen/smooth_slider_progress_height</item>
+        <item name="progressColor">@color/smooth_slider_progress_color</item>
+        <item name="progressBackgroundColor">@color/smooth_progress_background_color</item>
+        <item name="thumbRadius">@dimen/smooth_slider_thumb_radius</item>
+        <item name="thumbElevation">@dimen/smooth_slider_thumb_elevation</item>
+        <item name="thumbColor">@color/smooth_slider_thumb_color</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothSwitch">
+        <item name="android:checked">false</item>
+        <item name="android:textOn">@string/smooth_switch_text_on</item>
+        <item name="android:textOff">@string/smooth_switch_text_off</item>
+        <item name="android:textSize">@dimen/smooth_switch_text_size</item>
+        <item name="android:thumbTextPadding">0dp</item>
+        <item name="android:showText">true</item>
+        <item name="textColorActive">@color/smooth_switch_text_color_active</item>
+        <item name="textColorInactive">@color/smooth_switch_text_color_inactive</item>
+        <item name="thumbColor">@color/smooth_switch_thumb_color</item>
+        <item name="thumbRadius">0dp</item>
+        <item name="thumbElevation">@dimen/smooth_switch_thumb_elevation</item>
+        <item name="thumbPosition">0dp</item>
+        <item name="trackColorActive">@null</item>
+        <item name="trackColorInactive">@null</item>
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothSwitch.TextAppearance" parent="TextAppearance.AppCompat.Widget.Switch">
