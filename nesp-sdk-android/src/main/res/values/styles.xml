@@ -64,6 +64,8 @@
         <item name="smoothDialogActionBackgroundColor">@color/smooth_dialog_action_bg_selector</item>
         <item name="smoothDialogActionClickBackgroundColor">@color/smooth_dialog_action_click_background_color</item>
         <item name="smoothDialogActionNormalBackgroundColor">@color/smooth_dialog_action_normal_background_color</item>
+
+        <item name="smoothSwitchStyle">@style/SmoothAppTheme.Light.SmoothSwitch</item>
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothSwitch" parent="Widget.AppCompat.CompoundButton.Switch">
@@ -72,6 +74,7 @@
         <item name="switchTextAppearance">@style/SmoothAppTheme.Light.SmoothSwitch.TextAppearance</item>
         <item name="android:background">?attr/controlBackground</item>
         <item name="showText">false</item>
+        <item name="android:foreground">@null</item>
         <item name="switchPadding">@dimen/abc_switch_padding</item>
         <item name="android:textOn">@string/abc_capital_on</item>
         <item name="android:textOff">@string/abc_capital_off</item>

@@ -13,6 +13,7 @@
     <color name="smoothSystemGray">#CCF5F5F5</color>
     <color name="smoothSystemGrayLight">#CCF5F5F5</color>
     <color name="smoothSystemGray16">#F2F2F7</color>
+    <color name="smoothSystemGray50">#B5B5B8</color>
     <color name="smoothSystemWhiteDark">#EEEEEE</color>
     <color name="smoothSystemBlue">#007AFF</color>
     <color name="smoothSystemRed">#FF3B30</color>

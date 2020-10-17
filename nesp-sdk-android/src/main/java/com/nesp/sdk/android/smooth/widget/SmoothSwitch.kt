@@ -1,20 +1,25 @@
 package com.nesp.sdk.android.smooth.widget
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
+import android.content.res.ColorStateList
+import android.graphics.*
 import android.text.TextPaint
 import android.util.AttributeSet
+import android.util.Log
 import android.util.Property
-import android.view.MotionEvent
-import android.view.VelocityTracker
-import android.view.View
-import android.view.ViewConfiguration
+import android.view.*
 import androidx.annotation.ColorInt
+import androidx.appcompat.widget.DrawableUtils
+import androidx.cardview.widget.CardView
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.ViewCompat
 import com.nesp.sdk.android.R
+import com.nesp.sdk.android.core.ktx.TAG
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
+import com.nesp.sdk.android.core.ktx.graphics.getFontHeight
+import com.nesp.sdk.android.core.ktx.graphics.getFontWidth
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -34,18 +39,32 @@ class SmoothSwitch : View {
     private var mTrackPaint: Paint? = null
     private var mTrackBackgroundPaint: Paint? = null
 
-    private var mTrackCheckedColor: Int? = null
-    private var mTrackNormalColor: Int? = null
+    private var mTrackColorActive: Int? = null
+    private var mTrackColorInactive: Int? = null
 
     private var mThumbPaint: Paint? = null
     private var mThumbPadding = 10F
-    internal var mThumbPosition = 0F
+    internal var mThumbPosition = 0.5F
+
+    @ColorInt
+    private var mThumbColor: Int = Color.WHITE
+    private var mThumbRadius: Float = -1F
+    private var mThumbElevation: Float = 0F
 
     private var mPositionAnimator: ObjectAnimator? = null
 
+    private var mShowText = false
     private var mTextPaint: TextPaint? = null
-    private var mTextOn = "ON"
-    private var mTextOff = "OFF"
+    private var mTextOn = "开"
+    private var mTextOff = "关"
+    private var mTextPadding = 20F
+    private var mTextSize = 70F
+
+    @ColorInt
+    private var mTextColorActive: Int? = null
+
+    @ColorInt
+    private var mTextColorInactive: Int? = null
 
     private var mTouchMode: Int = 0
     private var mTouchSlop: Int = 0
@@ -60,13 +79,54 @@ class SmoothSwitch : View {
     constructor(context: Context, attrs: AttributeSet?) :
             this(context, attrs, R.attr.smoothSwitchStyle)
 
+    @SuppressLint("RestrictedApi")
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context, attrs, defStyleAttr
     ) {
 
+        val typedArray =
+            context.obtainStyledAttributes(attrs, R.styleable.SmoothSwitch, defStyleAttr, 0)
+        mIsChecked = typedArray.getBoolean(R.styleable.SmoothSwitch_android_checked, mIsChecked)
+        typedArray.getString(R.styleable.SmoothSwitch_android_textOn)?.apply { mTextOn = this }
+        typedArray.getString(R.styleable.SmoothSwitch_android_textOff)?.apply { mTextOff = this }
+        mShowText = typedArray.getBoolean(R.styleable.SmoothSwitch_android_showText, mShowText)
+        mTextSize = typedArray.getDimension(R.styleable.SmoothSwitch_android_textSize, mTextSize)
+        mTextPadding =
+            typedArray.getDimension(R.styleable.SmoothSwitch_android_thumbTextPadding, mTextPadding)
+        val defaultTextColorActive = context.getColorCompat(R.color.white)
+        mTextColorActive =
+            typedArray.getColor(R.styleable.SmoothSwitch_textColorActive, defaultTextColorActive)
+        val defaultTextColorInactive = context.getColorCompat(R.color.smoothSystemGray50)
+        mTextColorInactive =
+            typedArray.getColor(
+                R.styleable.SmoothSwitch_textColorInactive, defaultTextColorInactive
+            )
+
+
+        val defaultTrackColorActive = context.getColorCompat(R.color.smoothSystemGreen)
+        mTrackColorActive =
+            typedArray.getColor(R.styleable.SmoothSwitch_trackColorActive, defaultTrackColorActive)
+        val defaultTrackColorInactive = context.getColorCompat(R.color.smoothSystemGray)
+        mTrackColorInactive =
+            typedArray.getColor(
+                R.styleable.SmoothSwitch_trackColorInactive, defaultTrackColorInactive
+            )
+
+        mThumbColor =
+            typedArray.getColor(R.styleable.SmoothSwitch_thumbColor, mThumbColor)
+        mThumbRadius =
+            typedArray.getDimension(R.styleable.SmoothSwitch_thumbRadius, mThumbRadius)
+        mThumbElevation =
+            typedArray.getDimension(R.styleable.SmoothSwitch_thumbElevation, mThumbElevation)
+        mThumbPosition =
+            typedArray.getDimension(R.styleable.SmoothSwitch_thumbPosition, mThumbPosition)
+        Log.e(TAG,"SmoothSwitch.mThumbPosition: " +mThumbPosition)
+
+        if (mThumbPosition < 0F) mThumbPosition = 0F
+        if (mThumbPosition > 1F) mThumbPosition = 1F
+
+
         mTrackPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        mTrackCheckedColor = context.getColorCompat(R.color.smoothSystemGreen)
-        mTrackNormalColor = context.getColorCompat(R.color.smoothSystemGray)
         mTrackPaint!!.color = getTrackColor()
         mTrackPaint!!.alpha = getTrackAlpha()
 
@@ -74,19 +134,28 @@ class SmoothSwitch : View {
         mTrackBackgroundPaint!!.color = context.getColorCompat(R.color.white)
 
         mThumbPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        mThumbPaint!!.color = context.getColorCompat(R.color.white)
+        mThumbPaint!!.color = mThumbColor
         mThumbPaint!!.alpha = 250
+
+        mTextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
+        mTextPaint!!.density = resources.displayMetrics.density
+        mTextPaint!!.textSize = mTextSize
 
         val configuration = ViewConfiguration.get(context)
         mTouchSlop = configuration.scaledTouchSlop
         mMinFlingVelocity = configuration.scaledMinimumFlingVelocity
 
+        typedArray.recycle()
+
         // Refresh display with current params
         setChecked(isChecked())
     }
 
+
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        when (event.action) {
+        mVelocityTracker.addMovement(event)
+        val action = event.action
+        when (action) {
             MotionEvent.ACTION_DOWN -> {
                 if (isEnabled && hitThumb(event.x, event.y)) {
                     mTouchMode = TOUCH_MODE_DOWN
@@ -102,31 +171,110 @@ class SmoothSwitch : View {
                     }
 
                     TOUCH_MODE_DOWN -> {
-                        if (abs(x - mTouchX!!) > mTou)
+                        if (abs(x - mTouchX) > mTouchSlop ||
+                            abs(y - mTouchY) > mTouchSlop
+                        ) {
+                            mTouchMode = TOUCH_MODE_DRAGGING
+                            parent.requestDisallowInterceptTouchEvent(true)
+                            mTouchX = event.x
+                            mTouchY = event.y
+                            return true
+                        }
+                    }
+
+                    TOUCH_MODE_DRAGGING -> {
+                        val thumbScrollRange: Int = getThumbScrollRange()
+                        val thumbScrollOffset = event.x - mTouchX
+                        var dPos: Float
+                        if (thumbScrollRange != 0) {
+                            dPos = thumbScrollOffset / thumbScrollRange
+                        } else {
+                            // If the thumb scroll range is empty, just use the
+                            // movement direction to snap on or off.
+                            dPos = if (thumbScrollOffset > 0) 1F else -1F
+                        }
+                        if (isLayoutRtl()) {
+                            dPos = -dPos
+                        }
+                        val newPos = constrain(mThumbPosition + dPos, 0f, 1f)
+                        if (newPos != mThumbPosition) {
+                            mTouchX = x
+                            setThumbPosition(newPos)
+                        }
+                        return true
                     }
                 }
             }
 
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-
+                if (mTouchMode == TOUCH_MODE_DRAGGING) {
+                    stopDrag(event)
+                    // Allow super class to handle pressed state, etc.
+                    super.onTouchEvent(event)
+                    return true
+                }
+                mTouchMode = TOUCH_MODE_IDLE
+                mVelocityTracker.clear()
             }
 
         }
         return super.onTouchEvent(event)
     }
 
+    private fun stopDrag(event: MotionEvent) {
+        mTouchMode = TOUCH_MODE_IDLE
+
+        // Commit the change if the event is up and not canceled and the switch
+        // has not been disabled during the drag.
+        val commitChange = event.action == MotionEvent.ACTION_UP && isEnabled
+        val oldState = isChecked()
+        val newState: Boolean
+        if (commitChange) {
+            mVelocityTracker.computeCurrentVelocity(1000)
+            val xVelocity = mVelocityTracker.xVelocity
+            if (abs(xVelocity) > mMinFlingVelocity) {
+                newState = if (isLayoutRtl()) xVelocity < 0 else xVelocity > 0
+            } else {
+                newState = !getTargetCheckedState()
+            }
+        } else {
+            newState = oldState
+        }
+
+        if (newState != oldState) {
+            playSoundEffect(SoundEffectConstants.CLICK)
+        }
+        // Always call setChecked so that the thumb is moved back to the correct edge
+        setChecked(newState)
+        cancelSuperTouch(event)
+    }
+
+    private fun cancelSuperTouch(ev: MotionEvent) {
+        val cancel = MotionEvent.obtain(ev)
+        cancel.action = MotionEvent.ACTION_CANCEL
+        super.onTouchEvent(cancel)
+        cancel.recycle()
+    }
+
+    private fun isLayoutRtl(): Boolean {
+        return ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL
+    }
+
     override fun performClick(): Boolean {
         toggle()
-        return super.performClick()
+        val handled = super.performClick()
+        if (!handled) {
+            // View only makes a sound effect if the onClickListener was
+            // called, so we'll need to make one here instead.
+            playSoundEffect(SoundEffectConstants.CLICK)
+        }
+        return handled
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         mSwitchWidth = measuredWidth.toFloat()
         mSwitchHeight = min(mSwitchWidth / 2F, measuredHeight.toFloat())
-//        mHeight = 160F
-//        mWidth = 300F
-
     }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
@@ -134,10 +282,38 @@ class SmoothSwitch : View {
     }
 
     override fun onDraw(canvas: Canvas) {
-        drawTrackBackground(canvas)
+//        drawTrackBackground(canvas)
         drawTrackForeground(canvas)
         drawThumb(canvas)
+        drawText(canvas)
         super.onDraw(canvas)
+    }
+
+    private fun drawText(canvas: Canvas) {
+        if (!mShowText) return
+        if (mThumbPosition in 0F..0.3F) {
+            mTextPaint!!.color = mTextColorInactive!!
+            mTextPaint!!.alpha = ((0.3F - mThumbPosition) / 0.3F).toInt() * 255
+            val textWidth = mTextPaint!!.getFontWidth(mTextOff)
+            val textHeight = mTextPaint!!.getFontHeight()
+            canvas.drawText(
+                mTextOff,
+                getMaxThumbCircleX() - textWidth / 2,
+                (mSwitchHeight + textHeight) / 2,
+                mTextPaint!!
+            )
+        } else if (mThumbPosition in 0.7F..1F) {
+            mTextPaint!!.color = mTextColorActive!!
+            mTextPaint!!.alpha = ((mThumbPosition - 0.7F) / 0.3F).toInt() * 255
+            val textWidth = mTextPaint!!.getFontWidth(mTextOn)
+            val textHeight = mTextPaint!!.getFontHeight()
+            canvas.drawText(
+                mTextOn,
+                max(getMinThumbCircleX() - textWidth / 2, mTextPadding),
+                (mSwitchHeight + textHeight) / 2,
+                mTextPaint!!
+            )
+        }
     }
 
     private fun drawTrackForeground(canvas: Canvas) {
@@ -169,7 +345,7 @@ class SmoothSwitch : View {
     private fun drawThumb(canvas: Canvas) {
         val radius = getThumbRadius()
         canvas.drawCircle(
-            getThumbCircleX(), mThumbPadding + radius, radius,
+            getThumbCircleX(), mThumbPadding + paddingTop + radius, radius,
             mThumbPaint!!
         )
     }
@@ -181,32 +357,31 @@ class SmoothSwitch : View {
         return thumbCircleX
     }
 
+    private fun getThumbScrollRange(): Int {
+        return (mSwitchWidth - getThumbRadius() * 2 - mThumbPadding * 2 - paddingLeft - paddingRight)
+            .toInt()
+    }
+
     private fun getThumbOffset(): Float {
         val maxOffset = mSwitchWidth - 2 * getThumbRadius()
         return maxOffset * mThumbPosition
     }
 
     private fun getMaxThumbCircleX(): Float {
-        return mSwitchWidth - mThumbPadding - getThumbRadius()
+        return mSwitchWidth - mThumbPadding - paddingRight - getThumbRadius()
     }
 
     private fun getMinThumbCircleX(): Float {
-        return mThumbPadding + getThumbRadius()
+        return paddingLeft + mThumbPadding + getThumbRadius()
     }
 
     private fun getThumbRadius(): Float {
-        return (mSwitchHeight - 2 * mThumbPadding) / 2
+        if (mThumbRadius != -1F) return mThumbRadius
+        return (mSwitchHeight - 2 * mThumbPadding - paddingTop - paddingBottom) / 2
     }
 
     @ColorInt
     private fun getTrackColor(): Int {
-        val fromColor = if (isChecked()) mTrackNormalColor else mTrackCheckedColor
-        val toColor = if (isChecked()) mTrackCheckedColor else mTrackNormalColor
-        if (mThumbPosition in 0F..0.5F) {
-
-        } else {
-
-        }
         return if (mThumbPosition in 0F..0.5F) {
             context.getColorCompat(R.color.smoothSystemGray)
         } else {
@@ -215,21 +390,25 @@ class SmoothSwitch : View {
     }
 
     private fun getTrackAlpha(): Int {
+        val minAlpha = 200
         return if (mThumbPosition in 0F..0.5F) {
-            (255 * (0.5F - mThumbPosition) / 0.5).toInt()
+            max((255 * (0.5F - mThumbPosition) / 0.5).toInt(), minAlpha)
         } else {
-            (255 * (mThumbPosition - 0.5) / 0.5).toInt()
+            max((255 * (mThumbPosition - 0.5) / 0.5).toInt(), minAlpha)
         }
     }
 
     private fun hitThumb(x: Float, y: Float): Boolean {
         val thumbCircleX = getThumbCircleX()
         val thumbRadius = getThumbRadius()
-        var maxThumbX = min(thumbCircleX + thumbRadius, mSwitchWidth - mThumbPadding)
-        var minThumbX = max(thumbCircleX - thumbRadius, mThumbPadding)
+        var maxThumbX = min(
+            thumbCircleX + thumbRadius, mSwitchWidth -
+                    mThumbPadding - paddingRight
+        )
+        var minThumbX = max(thumbCircleX - thumbRadius, mThumbPadding + paddingLeft)
         minThumbX = min(minThumbX, maxThumbX)
         maxThumbX = max(minThumbX, maxThumbX)
-        return (y in mThumbPadding..mSwitchHeight - mThumbPadding) &&
+        return (y in (mThumbPadding + paddingTop)..(mSwitchHeight - mThumbPadding - paddingBottom)) &&
                 (x in minThumbX..maxThumbX)
     }
 
@@ -252,7 +431,6 @@ class SmoothSwitch : View {
             setThumbPosition(if (checked) 1F else 0F)
         }
         this.mIsChecked = checked
-
         mOnCheckChangedListener?.onChanged(this, isChecked())
         return this
     }
@@ -263,6 +441,20 @@ class SmoothSwitch : View {
 
     fun setOnCheckChangedListener(onCheckChangedListener: OnCheckChangedListener): SmoothSwitch {
         this.mOnCheckChangedListener = onCheckChangedListener
+        return this
+    }
+
+    fun setSwitchTypeface(typeface: Typeface) {
+        if ((mTextPaint!!.typeface != null && mTextPaint!!.typeface != typeface) ||
+            (mTextPaint!!.typeface == null)
+        ) {
+            mTextPaint!!.typeface = typeface
+            invalidate()
+        }
+    }
+
+    fun setShowText(showText: Boolean): SmoothSwitch {
+        this.mShowText = showText
         return this
     }
 
@@ -312,6 +504,14 @@ class SmoothSwitch : View {
                     `object`.setThumbPosition(value)
                 }
             }
+
+
+        /**
+         * Taken from android.util.MathUtils
+         */
+        private fun constrain(amount: Float, low: Float, high: Float): Float {
+            return if (amount < low) low else if (amount > high) high else amount
+        }
     }
 
 }
