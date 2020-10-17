@@ -4,12 +4,12 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import com.google.android.material.slider.Slider
 import com.nesp.sdk.android.R
-import com.nesp.sdk.android.core.ktx.TAG
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
 import com.nesp.sdk.android.util.AttrUtil
 import kotlin.math.max
@@ -21,7 +21,7 @@ import kotlin.math.min
  * Team: NESP Technology
  * @author: <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
  * Time: Created 2020/10/17 14:31
- * Project: NespAndroidSdkSample
+ * Project: NespAndroidSdk
  **/
 class SmoothSlider : View {
 
@@ -282,6 +282,15 @@ class SmoothSlider : View {
         return this
     }
 
+    fun setStep(step: Int): SmoothSlider {
+        this.mStepSize = step
+        return this
+    }
+
+    fun getStep(): Int {
+        return this.mStepSize
+    }
+
     fun setProgress(progress: Int): SmoothSlider {
         setThumbPosition(getThumbPositionFromProgress(progress))
         return this
@@ -297,11 +306,71 @@ class SmoothSlider : View {
 
     fun setMaxProgress(maxProgress: Int): SmoothSlider {
         this.mMaxProgress = maxProgress
+        invalidate()
         return this
     }
 
     fun getMaxProgress(): Int {
         return mMaxProgress
+    }
+
+    fun setThumbRadius(thumbRadius: Float): SmoothSlider {
+        this.mThumbRadius = thumbRadius
+        requestLayout()
+        invalidate()
+        return this
+    }
+
+    fun getThumbRadius(): Float {
+        return this.mThumbRadius
+    }
+
+    fun setThumbColorResource(@ColorRes id: Int): SmoothSlider {
+        return setThumbColor(context.getColorCompat(id))
+    }
+
+    fun setThumbColor(@ColorInt color: Int): SmoothSlider {
+        this.mThumbColor = color
+        this.mThumbPaint!!.color = color
+        invalidate()
+        return this
+    }
+
+    @ColorInt
+    fun getThumbColor(): Int {
+        return this.mThumbColor!!
+    }
+
+    fun setProgressColorResource(@ColorRes id: Int) {
+        setProgressColor(context.getColorCompat(id))
+    }
+
+    fun setProgressColor(@ColorInt color: Int): SmoothSlider {
+        this.mProgressColor = color
+        this.mProgressPaint!!.color = color
+        invalidate()
+        return this
+    }
+
+    @ColorInt
+    fun getProgressColor(): Int {
+        return this.mProgressColor!!
+    }
+
+    fun setProgressBackgroundColorResource(@ColorRes id: Int): SmoothSlider {
+        return setProgressBackgroundColor(context.getColorCompat(id))
+    }
+
+    fun setProgressBackgroundColor(@ColorInt color: Int): SmoothSlider {
+        this.mProgressBackgroundColor = color
+        this.mProgressBackgroundPaint!!.color = color
+        invalidate()
+        return this
+    }
+
+    @ColorInt
+    fun getProgressBackgroundColor(): Int {
+        return this.mProgressBackgroundColor!!
     }
 
     fun setOnSliderChangeListener(onSliderChangeListener: OnSliderChangeListener?): SmoothSlider {
