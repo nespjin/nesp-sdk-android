@@ -120,8 +120,7 @@ class SmoothSwitch : View {
             typedArray.getDimension(R.styleable.SmoothSwitch_thumbElevation, mThumbElevation)
         mThumbPosition =
             typedArray.getDimension(R.styleable.SmoothSwitch_thumbPosition, mThumbPosition)
-        Log.e(TAG,"SmoothSwitch.mThumbPosition: " +mThumbPosition)
-
+        
         if (mThumbPosition < 0F) mThumbPosition = 0F
         if (mThumbPosition > 1F) mThumbPosition = 1F
 
