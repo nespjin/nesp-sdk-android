@@ -218,10 +218,15 @@ class SmoothSwitch : View {
             MotionEvent.ACTION_UP,
             MotionEvent.ACTION_CANCEL -> {
                 if (mTouchMode == TOUCH_MODE_DRAGGING) {
-                    stopDrag(event)
-                    // Allow super class to handle pressed state, etc.
-                    super.onTouchEvent(event)
-                    return true
+                    return if (mTouchX == event.x && mTouchY == event.y) {
+                        performClick()
+                        true
+                    } else {
+                        stopDrag(event)
+                        // Allow super class to handle pressed state, etc.
+                        super.onTouchEvent(event)
+                        true
+                    }
                 }
                 mTouchMode = TOUCH_MODE_IDLE
                 mVelocityTracker.clear()
@@ -245,7 +250,7 @@ class SmoothSwitch : View {
             if (abs(xVelocity) > mMinFlingVelocity) {
                 newState = if (isLayoutRtl()) xVelocity < 0 else xVelocity > 0
             } else {
-                newState = !getTargetCheckedState()
+                newState = getTargetCheckedState()
             }
         } else {
             newState = oldState
