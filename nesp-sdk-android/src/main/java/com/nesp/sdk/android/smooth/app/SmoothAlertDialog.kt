@@ -323,6 +323,10 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
         tvTitle.text = text
     }
 
+    override fun setTitle(id: Int) {
+        tvTitle.text = context.getString(id)
+    }
+
     override fun setTitle(text: Text) {
         tvTitle.text = text.content
         text.textStyle?.setToTextView(tvTitle)

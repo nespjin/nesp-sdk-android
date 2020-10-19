@@ -50,6 +50,20 @@ interface ISmoothActionSheetDialog {
 
     fun getDescriptionText(): String
 
+    fun setCancel(action: Action)
+
+    fun setCancel(@StringRes id: Int)
+
+    fun setCancel(text: String)
+
+    fun setCancel(@StringRes id: Int, onActionClickListener: OnActionClickListener?)
+
+    fun setCancel(text: String, onActionClickListener: OnActionClickListener?)
+
+    fun getCancel(): Action?
+
+    fun getCancelText(): String
+
     fun setCancelable(cancelable: Boolean)
 
     fun getCancelable(): Boolean
@@ -66,7 +80,7 @@ interface ISmoothActionSheetDialog {
             this.text = text
         }
 
-        constructor(text: String, onActionClickListener: OnActionClickListener) {
+        constructor(text: String, onActionClickListener: OnActionClickListener?) {
             this.text = text
             this.onActionClickListener = onActionClickListener
         }
