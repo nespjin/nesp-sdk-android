@@ -30,7 +30,7 @@ Widgets that have been implemented:
 
 
 
-<img src="./doc/img/SmoothAlertDialog1.png"  height=400 /><img src="./doc/img/SmoothAlertDialog2.png"  height=400 /> <img src="./doc/img/SmoothAlertDialog3.png"  height=400 />
+<img src="./doc/img/SmoothAlertDialog1.png"  height=400 /> <img src="./doc/img/SmoothAlertDialog2.png"  height=400 /> <img src="./doc/img/SmoothAlertDialog3.png"  height=400 />
 
 4. SmoothSwitch:
 
