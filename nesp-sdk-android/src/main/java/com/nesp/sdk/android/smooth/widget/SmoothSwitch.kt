@@ -28,9 +28,9 @@ import kotlin.math.min
 
 /**
  *
- * Author: <a href="mailto:jinzhaolu@numob.com">Jack Email:jinzhaolu@numob.com</a>
+ * Author: <a href="mailto:1756404649@qq.com">JinZhaolu Email:1756404649@qq.com</a>
  * Time: Created 2020/10/16 11:02 AM
- * Project: NespAndroidSdkSample
+ * Project: NespAndroidSdk
  * Description:
  **/
 class SmoothSwitch : View {
@@ -218,14 +218,14 @@ class SmoothSwitch : View {
             MotionEvent.ACTION_UP,
             MotionEvent.ACTION_CANCEL -> {
                 if (mTouchMode == TOUCH_MODE_DRAGGING) {
-                    return if (mTouchX == event.x && mTouchY == event.y) {
+                    stopDrag(event)
+                    // Allow super class to handle pressed state, etc.
+                    super.onTouchEvent(event)
+                    return true
+                } else {
+                    if (mTouchX == event.x && mTouchY == event.y) {
                         performClick()
-                        true
-                    } else {
-                        stopDrag(event)
-                        // Allow super class to handle pressed state, etc.
-                        super.onTouchEvent(event)
-                        true
+                        return true
                     }
                 }
                 mTouchMode = TOUCH_MODE_IDLE
