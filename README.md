@@ -22,7 +22,7 @@ Widgets that have been implemented:
 
 <img src="./doc/img/SmoothActionBar.gif" height=400/>
 
-2.SmoothBottomNavationView:
+2.SmoothBottomNavigationView:
 
 <img src="./doc/img/SmoothBottomNavigationView.gif" height=400 />
 
