@@ -69,6 +69,21 @@
         <item name="smoothSwitchStyle">@style/SmoothAppTheme.Light.SmoothSwitch</item>
         <item name="smoothSliderStyle">@style/SmoothAppTheme.Light.SmoothSlider</item>
 
+        <item name="smoothActionSheetDialogStyle">@style/SmoothAppTheme.Light.SmoothActionSheetDialog</item>
+        <item name="smoothActionSheetDialogActionStyle">@style/SmoothAppTheme.Light.SmoothActionSheetDialog.Action</item>
+        <item name="smoothActionSheetDialogDangerActionStyle">@style/SmoothAppTheme.Light.SmoothActionSheetDialog.DangerAction</item>
+        <item name="smoothActionSheetDialogTitleStyle">@style/SmoothAppTheme.Light.SmoothActionSheetDialog.Title</item>
+        <item name="smoothActionSheetDialogDescriptionStyle">@style/SmoothAppTheme.Light.SmoothActionSheetDialog.Description</item>
+        <item name="smoothActionSheetDialogBackgroundColor">@color/smooth_action_sheet_dialog_background</item>
+        <item name="smoothActionSheetDialogCornerRadius">@dimen/smooth_action_sheet_dialog_corner_radius</item>
+        <item name="smoothActionSheetDialogElevation">@dimen/smooth_action_sheet_dialog_elevation</item>
+        <item name="smoothActionSheetDialogRealtimeBlurRadius">@dimen/smooth_action_sheet_dialog_real_time_blur_radius</item>
+        <item name="smoothActionSheetDialogDividerLineWidth">@dimen/smooth_action_sheet_dialog_divider_line_width</item>
+        <item name="smoothActionSheetDialogDividerLineColor">@color/smooth_action_sheet_dialog_divider_line_color</item>
+        <item name="smoothActionSheetDialogActionBackgroundColor">@color/smooth_action_sheet_dialog_action_bg_selector</item>
+        <item name="smoothActionSheetDialogActionClickBackgroundColor">@color/smooth_action_sheet_dialog_action_click_background_color</item>
+        <item name="smoothActionSheetDialogActionNormalBackgroundColor">@color/smooth_action_sheet_dialog_action_normal_background_color</item>
+
         <item name="android:windowLightStatusBar">true</item>
     </style>
 

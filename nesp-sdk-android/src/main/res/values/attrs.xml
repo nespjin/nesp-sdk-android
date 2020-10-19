@@ -91,4 +91,20 @@
         <attr name="thumbElevation" />
     </declare-styleable>
 
+
+    <attr name="smoothActionSheetDialogStyle" format="reference" />
+    <attr name="smoothActionSheetDialogActionStyle" format="reference" />
+    <attr name="smoothActionSheetDialogDangerActionStyle" format="reference" />
+    <attr name="smoothActionSheetDialogTitleStyle" format="reference" />
+    <attr name="smoothActionSheetDialogDescriptionStyle" format="reference" />
+    <attr name="smoothActionSheetDialogBackgroundColor" format="color" />
+    <attr name="smoothActionSheetDialogCornerRadius" format="dimension" />
+    <attr name="smoothActionSheetDialogElevation" format="dimension" />
+    <attr name="smoothActionSheetDialogRealtimeBlurRadius" format="dimension" />
+    <attr name="smoothActionSheetDialogDividerLineWidth" format="dimension" />
+    <attr name="smoothActionSheetDialogDividerLineColor" format="color" />
+    <attr name="smoothActionSheetDialogActionBackgroundColor" format="color" />
+    <attr name="smoothActionSheetDialogActionClickBackgroundColor" format="color" />
+    <attr name="smoothActionSheetDialogActionNormalBackgroundColor" format="color" />
+
 </resources>

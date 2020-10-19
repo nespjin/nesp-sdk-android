@@ -208,7 +208,7 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
 
         window?.decorView?.setBackgroundColor(Color.TRANSPARENT)
 
-        setContentView(R.layout.alert_dialog_smooth)
+        setContentView(R.layout.smooth_alert_dialog)
 
         tvTitle.text = builder.title.content
         builder.title.textStyle?.setToTextView(tvTitle)
