@@ -3,4 +3,8 @@
     <integer name="smooth_slider_progress">0</integer>
     <integer name="smooth_slider_max_progress">100</integer>
     <integer name="smooth_slider_step_size">0</integer>
+
+    <integer name="smooth_activity_indicator_start_angle" >0</integer>
+    <integer name="smooth_activity_indicator_line_width">0</integer>
+    <integer name="smooth_activity_indicator_period">50</integer>
 </resources>

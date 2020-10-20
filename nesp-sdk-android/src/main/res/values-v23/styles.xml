@@ -84,7 +84,10 @@
         <item name="smoothActionSheetDialogActionClickBackgroundColor">@color/smooth_action_sheet_dialog_action_click_background_color</item>
         <item name="smoothActionSheetDialogActionNormalBackgroundColor">@color/smooth_action_sheet_dialog_action_normal_background_color</item>
 
+        <item name="smoothActivityIndicatorStyle">@style/SmoothAppTheme.Light.SmoothActivityIndicator</item>
+
         <item name="android:windowLightStatusBar">true</item>
+
     </style>
 
 </resources>

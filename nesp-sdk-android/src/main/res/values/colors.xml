@@ -64,4 +64,6 @@
     <color name="smooth_action_sheet_dialog_action_normal_background_color">@color/transparent</color>
     <color name="smooth_action_sheet_dialog_action_click_background_color">@color/smoothSystemWhiteDark</color>
 
+    <color name="smooth_activity_indicator_color" >@color/smoothSystemGray50</color>
+
 </resources>

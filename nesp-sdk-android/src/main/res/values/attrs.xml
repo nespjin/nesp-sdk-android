@@ -91,7 +91,6 @@
         <attr name="thumbElevation" />
     </declare-styleable>
 
-
     <attr name="smoothActionSheetDialogStyle" format="reference" />
     <attr name="smoothActionSheetDialogActionStyle" format="reference" />
     <attr name="smoothActionSheetDialogDangerActionStyle" format="reference" />
@@ -106,5 +105,15 @@
     <attr name="smoothActionSheetDialogActionBackgroundColor" format="color" />
     <attr name="smoothActionSheetDialogActionClickBackgroundColor" format="color" />
     <attr name="smoothActionSheetDialogActionNormalBackgroundColor" format="color" />
+
+    <attr name="smoothActivityIndicatorStyle" format="reference" />
+
+    <declare-styleable name="SmoothActivityIndicator">
+        <attr name="indicatorColor" format="color" />
+        <attr name="startAngle" format="integer" />
+        <attr name="lineWidth" format="float" />
+        <attr name="autoStart" format="boolean" />
+        <attr name="period" format="float" />
+    </declare-styleable>
 
 </resources>

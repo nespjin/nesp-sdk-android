@@ -29,7 +29,8 @@ import com.nesp.sdk.android.util.AttrUtil
 
 /**
  *
- * Author: <a href="mailto:jinzhaolu@numob.com">Jack Email:jinzhaolu@numob.com</a>
+ * Team: NESP Technology
+ * @author: <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
  * Time: Created 2020/10/19 2:18 PM
  * Project: NespAndroidSdkSample
  * Description:
