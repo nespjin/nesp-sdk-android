@@ -6,15 +6,8 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.StateListDrawable
-import android.os.Build
 import android.util.AttributeSet
-import android.util.DisplayMetrics
-import android.util.TypedValue
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
+import android.view.*
 import android.widget.*
 import androidx.annotation.MenuRes
 import androidx.core.view.isVisible
@@ -24,11 +17,9 @@ import com.nesp.sdk.android.core.ktx.content.getColorCompat
 import com.nesp.sdk.android.core.ktx.content.getColorStateListCompat
 import com.nesp.sdk.android.core.ktx.content.getDrawableCompat
 import com.nesp.sdk.android.core.ktx.widget.gone
-import com.nesp.sdk.android.core.ktx.widget.invisible
 import com.nesp.sdk.android.core.ktx.widget.visible
 import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
 import com.nesp.sdk.android.util.AttrUtil
-import com.nesp.sdk.android.util.DisplayUtil
 import com.nesp.sdk.android.util.WindowUtil
 
 /**
@@ -42,6 +33,7 @@ import com.nesp.sdk.android.util.WindowUtil
 class SmoothActionBar : RelativeLayout, ISmoothActionBar {
 
     private val rlSmoothActionBarContainer: RelativeLayout by lazy { findViewById(R.id.rlSmoothActionBarContainer) }
+    private val rlContentRoot: RelativeLayout by lazy { findViewById(R.id.rlContentRoot) }
     private val ivBackIndicator: ImageView by lazy { findViewById(R.id.ivBackIndicator) }
     private val tvLeftAction: TextView by lazy { findViewById(R.id.tvLeftAction) }
     private val ivLeftAction: ImageView by lazy { findViewById(R.id.ivLeftAction) }
@@ -50,6 +42,8 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
     private val ivRightAction: ImageView by lazy { findViewById(R.id.ivRightAction) }
     private val smoothActionMenuView: SmoothActionMenuView by lazy { findViewById(R.id.smoothActionMenuView) }
     private val llRightActionContainer: LinearLayout by lazy { findViewById(R.id.llRightActionContainer) }
+    private val flCustomViewContainer: FrameLayout by lazy { findViewById(R.id.flCustomViewContainer) }
+    private val llCenterTitleContainer: LinearLayout by lazy { findViewById(R.id.llCenterTitleContainer) }
     private val tvTitle: TextView by lazy { findViewById(R.id.tvTitle) }
     private val tvSubtitle: TextView by lazy { findViewById(R.id.tvSubtitle) }
 
@@ -115,6 +109,18 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
 
     override fun setOnBackIndicatorClickListener(onBackIndicatorClickListener: OnClickListener) {
         ivBackIndicator.setOnClickListener(onBackIndicatorClickListener)
+    }
+
+    override fun getLeftActionContainer(): LinearLayout {
+        return llLeftActionContainer
+    }
+
+    override fun hideLeftActionContainer() {
+        hideView(llLeftActionContainer)
+    }
+
+    override fun showLeftActionContainer() {
+        showView(llLeftActionContainer)
     }
 
     override fun setLeftAction(text: CharSequence, onLeftActionClickListener: OnClickListener) {
@@ -264,6 +270,18 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
         }
     }
 
+    override fun getRightActionContainer(): LinearLayout {
+        return llRightActionContainer
+    }
+
+    override fun hideRightActionContainer() {
+        hideView(llRightActionContainer)
+    }
+
+    override fun showRightActionContainer() {
+        showView(llRightActionContainer)
+    }
+
     override fun setRightAction(text: CharSequence, onRightActionClickListener: OnClickListener) {
         tvRightAction.visible()
         ivRightAction.gone()
@@ -409,6 +427,42 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
         } else {
             hideRightAction()
         }
+    }
+
+    override fun setCustomActionBarView(view: View) {
+        flCustomViewContainer.removeAllViews()
+        flCustomViewContainer.visible()
+        flCustomViewContainer.addView(view)
+    }
+
+    override fun setCustomActionBarView(id: Int) {
+        flCustomViewContainer.removeAllViews()
+        flCustomViewContainer.visible()
+        inflate(context, id, flCustomViewContainer)
+    }
+
+    override fun getCustomViewContainer(): FrameLayout {
+        return flCustomViewContainer
+    }
+
+    override fun hideCustomViewContainer() {
+        hideView(flCustomViewContainer)
+    }
+
+    override fun showCustomViewContainer() {
+        showView(flCustomViewContainer)
+    }
+
+    override fun getCenterTitleContainer(): LinearLayout {
+        return llCenterTitleContainer
+    }
+
+    override fun hideCenterTitleContainer() {
+        hideView(llCenterTitleContainer)
+    }
+
+    override fun showCenterTitleContainer() {
+        showView(llCenterTitleContainer)
     }
 
     override fun setTitle(text: CharSequence) {

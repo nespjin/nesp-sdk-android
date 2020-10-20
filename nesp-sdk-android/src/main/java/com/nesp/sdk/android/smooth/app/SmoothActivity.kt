@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
@@ -135,6 +136,18 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
         smoothActionBar.setOnBackIndicatorClickListener(onBackIndicatorClickListener)
     }
 
+    override fun getLeftActionContainer(): LinearLayout {
+        return smoothActionBar.getLeftActionContainer()
+    }
+
+    override fun hideLeftActionContainer() {
+        smoothActionBar.hideLeftActionContainer()
+    }
+
+    override fun showLeftActionContainer() {
+        smoothActionBar.showLeftActionContainer()
+    }
+
     override fun setLeftAction(
         text: CharSequence,
         onLeftActionClickListener: View.OnClickListener
@@ -224,6 +237,18 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
         smoothActionBar.toggleLeftActionHidden()
     }
 
+    override fun getRightActionContainer(): LinearLayout {
+        return smoothActionBar.getRightActionContainer()
+    }
+
+    override fun hideRightActionContainer() {
+        smoothActionBar.hideRightActionContainer()
+    }
+
+    override fun showRightActionContainer() {
+        smoothActionBar.showRightActionContainer()
+    }
+
     override fun setRightAction(
         text: CharSequence,
         onRightActionClickListener: View.OnClickListener
@@ -311,6 +336,38 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
 
     override fun toggleRightActionHidden() {
         smoothActionBar.toggleRightActionHidden()
+    }
+
+    override fun setCustomActionBarView(view: View) {
+        smoothActionBar.setCustomActionBarView(view)
+    }
+
+    override fun setCustomActionBarView(id: Int) {
+        smoothActionBar.setCustomActionBarView(id)
+    }
+
+    override fun getCustomViewContainer(): FrameLayout {
+        return smoothActionBar.getCustomViewContainer()
+    }
+
+    override fun hideCustomViewContainer() {
+        smoothActionBar.hideCustomViewContainer()
+    }
+
+    override fun showCustomViewContainer() {
+        smoothActionBar.showCustomViewContainer()
+    }
+
+    override fun getCenterTitleContainer(): LinearLayout {
+        return smoothActionBar.getCenterTitleContainer()
+    }
+
+    override fun hideCenterTitleContainer() {
+        smoothActionBar.hideCenterTitleContainer()
+    }
+
+    override fun showCenterTitleContainer() {
+        smoothActionBar.showCenterTitleContainer()
     }
 
     override fun setTitle(text: CharSequence) {

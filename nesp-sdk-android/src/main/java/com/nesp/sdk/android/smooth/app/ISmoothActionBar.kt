@@ -7,13 +7,11 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
-import androidx.annotation.MenuRes
-import androidx.annotation.StringRes
+import androidx.annotation.*
 import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
 
 /**
@@ -51,6 +49,12 @@ interface ISmoothActionBar {
     fun toggleBackIndicatorHidden()
 
     fun setOnBackIndicatorClickListener(onBackIndicatorClickListener: View.OnClickListener)
+
+    fun getLeftActionContainer(): LinearLayout
+
+    fun hideLeftActionContainer()
+
+    fun showLeftActionContainer()
 
     fun setLeftAction(text: CharSequence, onLeftActionClickListener: View.OnClickListener)
 
@@ -98,6 +102,12 @@ interface ISmoothActionBar {
 
     fun toggleLeftActionHidden()
 
+    fun getRightActionContainer(): LinearLayout
+
+    fun hideRightActionContainer()
+
+    fun showRightActionContainer()
+
     fun setRightAction(text: CharSequence, onRightActionClickListener: View.OnClickListener)
 
     fun setRightAction(
@@ -143,6 +153,22 @@ interface ISmoothActionBar {
     fun rightActionIsHidden(): Boolean
 
     fun toggleRightActionHidden()
+
+    fun setCustomActionBarView(view: View)
+
+    fun setCustomActionBarView(@LayoutRes id: Int)
+
+    fun getCustomViewContainer(): FrameLayout
+
+    fun hideCustomViewContainer()
+
+    fun showCustomViewContainer()
+
+    fun getCenterTitleContainer(): LinearLayout
+
+    fun hideCenterTitleContainer()
+
+    fun showCenterTitleContainer()
 
     fun setTitle(text: CharSequence)
 

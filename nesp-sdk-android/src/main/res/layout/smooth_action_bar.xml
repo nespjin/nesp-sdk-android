@@ -16,6 +16,7 @@
         app:realtimeOverlayColor="?smoothActionBarBackground" />
 
     <RelativeLayout
+        android:id="@+id/rlContentRoot"
         android:layout_width="match_parent"
         android:layout_height="?smoothActionBarHeight"
         android:layout_alignParentBottom="true"
@@ -23,6 +24,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/llLeftActionContainer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
@@ -66,7 +68,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/llLeftActionContainer"
+            android:id="@+id/llRightActionContainer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
@@ -107,8 +109,15 @@
 
         </LinearLayout>
 
+        <FrameLayout
+            android:id="@+id/flCustomViewContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@color/transparent" />
+
         <LinearLayout
-            android:id="@+id/llRightActionContainer"
+            android:id="@+id/llCenterTitleContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/transparent"

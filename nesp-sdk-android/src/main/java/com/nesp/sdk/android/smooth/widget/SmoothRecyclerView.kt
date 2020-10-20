@@ -5,11 +5,12 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nesp.sdk.android.R
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
 import com.nesp.sdk.android.util.AttrUtil
-import org.w3c.dom.Attr
 
 /**
  *
@@ -32,11 +33,26 @@ class SmoothRecyclerView : RecyclerView {
 
     }
 
-    fun addDefaultListDividerItemDecoration(){
-        addItemDecoration(ListDividerItemDecoration())
+    fun addDefaultListDividerItemDecoration(paddingStart: Float = -1F) {
+        addItemDecoration(ListDividerItemDecoration(paddingStart))
     }
 
-    class ListDividerItemDecoration : RecyclerView.ItemDecoration() {
+    fun addDefaultListDividerItemDecorationWithoutPaddingStart() {
+        addItemDecoration(ListDividerItemDecoration(0F))
+    }
+
+    fun addDefaultGridDividerItemDecoration() {
+        RecyclerViewSpace(AttrUtil.getDimensionAttrValue(
+            context, R.attr.listDividerWidth
+        ).toInt(), context.getColorCompat(
+            AttrUtil.getAttrOutTypeValue(
+                context, R.attr.listDividerColor
+            ).resourceId
+        ))
+    }
+
+    class ListDividerItemDecoration(private val paddingStart: Float = -1F) :
+        RecyclerView.ItemDecoration() {
 
         private val dividerPaint = Paint()
 
@@ -47,22 +63,29 @@ class SmoothRecyclerView : RecyclerView {
                     context, R.attr.listDividerColor
                 ).resourceId
             )
+            val dividerLineWidth = AttrUtil.getDimensionAttrValue(
+                context, R.attr.listDividerWidth
+            )
             val childCount = parent.childCount
-            val left =
-                AttrUtil.getDimensionAttrValue(context, R.attr.smoothActivityHorizontalPadding)
-            val right = parent.width - parent.paddingRight
 
-            for (i in 0 until childCount - 1) {
-                val view: View = parent.getChildAt(i)
-                val top: Float =
-                    view.bottom.toFloat() - AttrUtil.getDimensionAttrValue(
-                        context, R.attr.listDividerWidth
-                    )
-                val bottom: Float = view.bottom.toFloat()
-                c.drawRect(left, top, right.toFloat(), bottom, dividerPaint)
+            val layoutManager = parent.layoutManager
+            if (layoutManager is LinearLayoutManager) {
+                val left =
+                    if (paddingStart == -1F)
+                        AttrUtil.getDimensionAttrValue(context,
+                            R.attr.smoothActivityHorizontalPadding)
+                    else
+                        paddingStart
+                val right = parent.width - parent.paddingRight
+
+                for (i in 0 until childCount - 1) {
+                    val view: View = parent.getChildAt(i)
+                    val top: Float =
+                        view.bottom.toFloat() - dividerLineWidth
+                    val bottom: Float = view.bottom.toFloat()
+                    c.drawRect(left, top, right.toFloat(), bottom, dividerPaint)
+                }
             }
         }
-
     }
-
 }
