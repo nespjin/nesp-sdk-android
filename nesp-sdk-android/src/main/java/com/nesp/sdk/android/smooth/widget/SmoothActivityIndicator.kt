@@ -29,7 +29,7 @@ class SmoothActivityIndicator : View {
     private var mIsAutoStart = true
     private val minAlpha = 0
     private val mAngleGradient = 360 / mLineCount
-    private var mPeriod = 50
+    private var mPeriod = 60
 
     private val mIndicatorColors = arrayOfNulls<Int>(mLineCount)
     private var mIndicatorPaint: Paint? = null
@@ -93,7 +93,7 @@ class SmoothActivityIndicator : View {
             min(width - paddingStart - paddingEnd, height - paddingTop - paddingBottom) / 2f
 
         if (mLineWidth == 0F) {
-            mLineWidth = pointX(mAngleGradient / 2, radius / 2) / 2
+            mLineWidth = pointX(mAngleGradient / 2, radius / 2) / 3
         }
         mIndicatorPaint!!.strokeWidth = mLineWidth.toFloat()
         for (i in mIndicatorColors.indices) {
