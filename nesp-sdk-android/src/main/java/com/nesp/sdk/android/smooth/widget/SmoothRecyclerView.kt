@@ -1,8 +1,15 @@
 package com.nesp.sdk.android.smooth.widget
 
 import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Paint
 import android.util.AttributeSet
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.nesp.sdk.android.R
+import com.nesp.sdk.android.core.ktx.content.getColorCompat
+import com.nesp.sdk.android.util.AttrUtil
+import org.w3c.dom.Attr
 
 /**
  *
@@ -25,27 +32,37 @@ class SmoothRecyclerView : RecyclerView {
 
     }
 
-    override fun overScrollBy(
-        deltaX: Int,
-        deltaY: Int,
-        scrollX: Int,
-        scrollY: Int,
-        scrollRangeX: Int,
-        scrollRangeY: Int,
-        maxOverScrollX: Int,
-        maxOverScrollY: Int,
-        isTouchEvent: Boolean
-    ): Boolean {
-        return super.overScrollBy(
-            deltaX,
-            deltaY,
-            scrollX,
-            scrollY,
-            scrollRangeX,
-            scrollRangeY,
-            200,
-            0,
-            isTouchEvent
-        )
+    fun addDefaultListDividerItemDecoration(){
+        addItemDecoration(ListDividerItemDecoration())
     }
+
+    class ListDividerItemDecoration : RecyclerView.ItemDecoration() {
+
+        private val dividerPaint = Paint()
+
+        override fun onDrawOver(c: Canvas, parent: RecyclerView, state: State) {
+            val context = parent.context
+            dividerPaint.color = context.getColorCompat(
+                AttrUtil.getAttrOutTypeValue(
+                    context, R.attr.listDividerColor
+                ).resourceId
+            )
+            val childCount = parent.childCount
+            val left =
+                AttrUtil.getDimensionAttrValue(context, R.attr.smoothActivityHorizontalPadding)
+            val right = parent.width - parent.paddingRight
+
+            for (i in 0 until childCount - 1) {
+                val view: View = parent.getChildAt(i)
+                val top: Float =
+                    view.bottom.toFloat() - AttrUtil.getDimensionAttrValue(
+                        context, R.attr.listDividerWidth
+                    )
+                val bottom: Float = view.bottom.toFloat()
+                c.drawRect(left, top, right.toFloat(), bottom, dividerPaint)
+            }
+        }
+
+    }
+
 }

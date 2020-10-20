@@ -42,5 +42,7 @@
     <dimen name="smooth_action_sheet_dialog_elevation">0dp</dimen>
     <dimen name="smooth_action_sheet_dialog_real_time_blur_radius">40dp</dimen>
     <dimen name="smooth_action_sheet_dialog_divider_line_width">0.5dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
 
+    <dimen name="list_divider_width">0.5dp</dimen>
 </resources>

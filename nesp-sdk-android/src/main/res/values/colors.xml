@@ -12,6 +12,7 @@
     <!-- Smooth-->
     <color name="smoothSystemGray">#CCF5F5F5</color>
     <color name="smoothSystemGrayLight">#CCF5F5F5</color>
+    <color name="smoothSystemGray10">#F0F0F0</color>
     <color name="smoothSystemGray16">#F2F2F7</color>
     <color name="smoothSystemGray50">#B5B5B8</color>
     <color name="smoothSystemWhiteDark">#EEEEEE</color>
@@ -64,6 +65,9 @@
     <color name="smooth_action_sheet_dialog_action_normal_background_color">@color/transparent</color>
     <color name="smooth_action_sheet_dialog_action_click_background_color">@color/smoothSystemWhiteDark</color>
 
-    <color name="smooth_activity_indicator_color" >@color/smoothSystemGray50</color>
+    <color name="smooth_activity_indicator_color">@color/smoothSystemGray50</color>
+    <color name="list_divider_color">@color/smoothSystemGray10</color>
+<!--    <color name="window_background">#EFEFF4</color>-->
+    <color name="window_background">#F5F5F5</color>
 
 </resources>

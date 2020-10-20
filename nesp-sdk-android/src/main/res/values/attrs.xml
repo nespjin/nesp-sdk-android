@@ -116,4 +116,7 @@
         <attr name="period" format="float" />
     </declare-styleable>
 
+    <attr name="listDividerColor" format="color" />
+    <attr name="listDividerWidth" format="dimension" />
+
 </resources>

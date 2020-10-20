@@ -17,6 +17,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/window_background</item>
         <item name="android:windowTranslucentStatus">true</item>
         <!--        <item name="android:windowTranslucentNavigation">true</item>-->
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -85,6 +86,9 @@
         <item name="smoothActionSheetDialogActionNormalBackgroundColor">@color/smooth_action_sheet_dialog_action_normal_background_color</item>
 
         <item name="smoothActivityIndicatorStyle">@style/SmoothAppTheme.Light.SmoothActivityIndicator</item>
+
+        <item name="listDividerColor">@color/list_divider_color</item>
+        <item name="listDividerWidth">@dimen/list_divider_width</item>
 
         <item name="android:windowLightStatusBar">true</item>
 
