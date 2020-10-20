@@ -39,6 +39,14 @@ Widgets that have been implemented:
 5. SmoothSlider:
 
    <img src="./doc/img/SmoothSlider.gif" height=400 />
+   
+6. SmoothActionSheetDialog:
+
+   <img src="./doc/img/SmoothActionSheetDialog.gif" height=400 />
+
+   7. SmoothActivityIndicator:
+
+      <img src="./doc/img/SmoothActivityIndicator.gif" height=400 />
 
 ## Dependencies
 1. Nesp Java SDK.
