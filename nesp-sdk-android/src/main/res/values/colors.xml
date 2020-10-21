@@ -64,10 +64,10 @@
     <color name="smooth_action_sheet_dialog_action_background_color" />
     <color name="smooth_action_sheet_dialog_action_normal_background_color">@color/transparent</color>
     <color name="smooth_action_sheet_dialog_action_click_background_color">@color/smoothSystemWhiteDark</color>
-
+q
     <color name="smooth_activity_indicator_color">@color/smoothSystemGray50</color>
     <color name="list_divider_color">@color/smoothSystemGray10</color>
 <!--    <color name="window_background">#EFEFF4</color>-->
-    <color name="window_background">#F5F5F5</color>
+    <color name="window_background">#F6F6F6</color>
 
 </resources>

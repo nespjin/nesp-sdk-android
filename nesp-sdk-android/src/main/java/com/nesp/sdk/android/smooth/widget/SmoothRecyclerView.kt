@@ -41,16 +41,6 @@ class SmoothRecyclerView : RecyclerView {
         addItemDecoration(ListDividerItemDecoration(0F))
     }
 
-    fun addDefaultGridDividerItemDecoration() {
-        RecyclerViewSpace(AttrUtil.getDimensionAttrValue(
-            context, R.attr.listDividerWidth
-        ).toInt(), context.getColorCompat(
-            AttrUtil.getAttrOutTypeValue(
-                context, R.attr.listDividerColor
-            ).resourceId
-        ))
-    }
-
     class ListDividerItemDecoration(private val paddingStart: Float = -1F) :
         RecyclerView.ItemDecoration() {
 
@@ -84,6 +74,24 @@ class SmoothRecyclerView : RecyclerView {
                         view.bottom.toFloat() - dividerLineWidth
                     val bottom: Float = view.bottom.toFloat()
                     c.drawRect(left, top, right.toFloat(), bottom, dividerPaint)
+                }
+            } else if (layoutManager is GridLayoutManager) {
+                for (i in 0 until childCount) {
+                    val view: View = parent.getChildAt(i)
+
+                    //DrawBottom
+                    c.drawRect(view.left.toFloat(),
+                        view.bottom.toFloat(),
+                        view.right.toFloat(),
+                        view.bottom + dividerLineWidth,
+                        dividerPaint)
+
+                    //DrawLeft
+                    c.drawRect(view.left.toFloat(),
+                        view.top.toFloat(),
+                        view.left + dividerLineWidth,
+                        view.bottom.toFloat(),
+                        dividerPaint)
                 }
             }
         }
