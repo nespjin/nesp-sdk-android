@@ -12,7 +12,7 @@ import java.lang.ref.SoftReference
  * Time: Created 2020/10/23 19:48
  * Project: NespAndroidSdk
  **/
-class BasePresenterLifecycle<V : IView> : IPresenterLifecycle<V>, DefaultLifecycleObserver {
+open class BasePresenterLifecycle<V : IView> : IPresenterLifecycle<V>, DefaultLifecycleObserver {
 
     private var mReferenceView: SoftReference<V>? = null
 

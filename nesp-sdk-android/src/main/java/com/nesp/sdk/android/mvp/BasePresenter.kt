@@ -10,7 +10,7 @@ import java.lang.ref.SoftReference
  * Time: Created 2020/10/23 19:55
  * Project: FishAccountingAndroid
  **/
-class BasePresenter<V : IView> : IPresenter<V> {
+open class BasePresenter<V : IView> : IPresenter<V> {
 
     private var mReferenceView: SoftReference<V>? = null
 
