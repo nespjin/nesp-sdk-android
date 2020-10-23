@@ -7,12 +7,14 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.StateListDrawable
 import android.util.AttributeSet
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.widget.*
 import androidx.annotation.MenuRes
 import androidx.core.view.isVisible
 import com.nesp.sdk.android.R
-import com.nesp.sdk.android.core.ktx.cast
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
 import com.nesp.sdk.android.core.ktx.content.getColorStateListCompat
 import com.nesp.sdk.android.core.ktx.content.getDrawableCompat
