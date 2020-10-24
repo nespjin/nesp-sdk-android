@@ -10,7 +10,7 @@ import android.util.Log
 * Time: Created 2020/10/11 8:18
 * Project: NespAndroidSdk
 **/
-class Log {
+class LogCompat {
     companion object {
 
         @JvmStatic
