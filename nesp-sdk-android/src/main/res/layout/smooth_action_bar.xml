@@ -8,6 +8,7 @@
     android:background="@color/transparent">
 
     <com.github.mmin18.widget.RealtimeBlurView
+        android:id="@+id/realtimeBlurView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="bottom"

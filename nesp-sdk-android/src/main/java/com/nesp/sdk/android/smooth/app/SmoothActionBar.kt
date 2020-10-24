@@ -14,6 +14,7 @@ import android.view.View
 import android.widget.*
 import androidx.annotation.MenuRes
 import androidx.core.view.isVisible
+import com.github.mmin18.widget.RealtimeBlurView
 import com.nesp.sdk.android.R
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
 import com.nesp.sdk.android.core.ktx.content.getColorStateListCompat
@@ -36,6 +37,7 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
 
     private val rlSmoothActionBarContainer: RelativeLayout by lazy { findViewById(R.id.rlSmoothActionBarContainer) }
     private val rlContentRoot: RelativeLayout by lazy { findViewById(R.id.rlContentRoot) }
+    private val mRealtimeBlurView: RealtimeBlurView by lazy { findViewById(R.id.realtimeBlurView) }
     private val ivBackIndicator: ImageView by lazy { findViewById(R.id.ivBackIndicator) }
     private val tvLeftAction: TextView by lazy { findViewById(R.id.tvLeftAction) }
     private val ivLeftAction: ImageView by lazy { findViewById(R.id.ivLeftAction) }
@@ -55,6 +57,35 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
         context, attrs, defStyleAttr
     ) {
         inflate(context, R.layout.smooth_action_bar, this)
+    }
+
+    override fun setBackgroundColor(color: Int) {
+        this.rlSmoothActionBarContainer.setBackgroundColor(color)
+    }
+
+    override fun setBackgroundColorRes(id: Int) {
+        this.rlSmoothActionBarContainer.setBackgroundColor(context.getColorCompat(id))
+    }
+
+    override fun setBackgroundColorStateList(colorStateList: ColorStateList) {
+        this.rlSmoothActionBarContainer.backgroundTintList = colorStateList
+    }
+
+    override fun setBackgroundColorStateList(id: Int) {
+        this.rlSmoothActionBarContainer.backgroundTintList = context.getColorStateListCompat(id)
+    }
+
+    override fun disableRealtimeBlur() {
+        this.mRealtimeBlurView.setBlurRadius(0F)
+        this.mRealtimeBlurView.gone()
+        rlSmoothActionBarContainer.setBackgroundColor(
+            context.getColorCompat(AttrUtil.getAttrOutTypeValue(context,
+                R.attr.smoothActionBarBackground).resourceId)
+        )
+    }
+
+    override fun getRealtimeBlurView(): RealtimeBlurView {
+        return this.mRealtimeBlurView
     }
 
     override fun setBackIndicatorDrawable(drawable: Drawable) {

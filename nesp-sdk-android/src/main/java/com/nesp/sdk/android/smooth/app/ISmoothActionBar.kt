@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.*
+import com.github.mmin18.widget.RealtimeBlurView
 import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
 
 /**
@@ -23,6 +24,18 @@ import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
  * Project: NespAndroidSdk
  **/
 interface ISmoothActionBar {
+
+    fun setBackgroundColor(@ColorInt color: Int)
+
+    fun setBackgroundColorRes(@ColorRes id: Int)
+
+    fun setBackgroundColorStateList(colorStateList: ColorStateList)
+
+    fun setBackgroundColorStateList(id: Int)
+
+    fun disableRealtimeBlur()
+
+    fun getRealtimeBlurView(): RealtimeBlurView
 
     fun setBackIndicatorDrawable(drawable: Drawable)
 

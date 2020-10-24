@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
+import com.github.mmin18.widget.RealtimeBlurView
 import com.nesp.sdk.android.R
 import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
 import com.nesp.sdk.android.util.AttrUtil
@@ -82,6 +83,30 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
 
     protected fun getSmoothActionBar(): SmoothActionBar {
         return smoothActionBar
+    }
+
+    override fun setBackgroundColor(color: Int) {
+        smoothActionBar.setBackgroundColor(color)
+    }
+
+    override fun setBackgroundColorRes(id: Int) {
+        smoothActionBar.setBackgroundColorRes(id)
+    }
+
+    override fun setBackgroundColorStateList(colorStateList: ColorStateList) {
+        smoothActionBar.setBackgroundColorStateList(colorStateList)
+    }
+
+    override fun setBackgroundColorStateList(id: Int) {
+        smoothActionBar.setBackgroundColorStateList(id)
+    }
+
+    override fun disableRealtimeBlur() {
+        smoothActionBar.disableRealtimeBlur()
+    }
+
+    override fun getRealtimeBlurView(): RealtimeBlurView {
+        return smoothActionBar.getRealtimeBlurView()
     }
 
     override fun setBackIndicatorDrawable(drawable: Drawable) {
