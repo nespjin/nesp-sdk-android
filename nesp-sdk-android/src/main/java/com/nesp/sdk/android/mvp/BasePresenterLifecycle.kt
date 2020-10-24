@@ -21,6 +21,10 @@ open class BasePresenterLifecycle<V : IView> : IPresenterLifecycle<V>, DefaultLi
         source.lifecycle.addObserver(this)
     }
 
+    override fun getView(): V? {
+        return mReferenceView?.get()
+    }
+
     override fun detach(source: LifecycleOwner) {
         source.lifecycle.removeObserver(this)
 
@@ -55,4 +59,5 @@ open class BasePresenterLifecycle<V : IView> : IPresenterLifecycle<V>, DefaultLi
     override fun onAny(source: LifecycleOwner) {
 
     }
+
 }

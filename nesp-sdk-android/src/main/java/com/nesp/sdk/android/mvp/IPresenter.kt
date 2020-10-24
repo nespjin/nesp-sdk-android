@@ -12,6 +12,8 @@ interface IPresenter<V : IView> {
 
     fun attach(view: V)
 
+    fun getView(): V?
+
     fun detach()
 
 }

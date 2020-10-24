@@ -14,6 +14,8 @@ interface IPresenterLifecycle<V : IView> {
 
     fun attach(view: V, source: LifecycleOwner)
 
+    fun getView(): V?
+
     fun detach(source: LifecycleOwner)
 
 }

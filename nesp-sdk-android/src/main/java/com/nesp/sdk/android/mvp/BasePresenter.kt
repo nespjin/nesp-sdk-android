@@ -18,8 +18,13 @@ open class BasePresenter<V : IView> : IPresenter<V> {
         mReferenceView = SoftReference(view)
     }
 
+    override fun getView(): V? {
+        return mReferenceView?.get()
+    }
+
     override fun detach() {
         mReferenceView?.clear()
         mReferenceView = null
     }
+
 }
