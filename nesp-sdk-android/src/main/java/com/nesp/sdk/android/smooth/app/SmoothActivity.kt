@@ -534,6 +534,23 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
         return smoothActionBar.getRealActionBarHeight()
     }
 
+    fun adaptView(viewGroup: View, paddingTop: Int = 0) {
+        viewGroup.setPadding(
+            viewGroup.paddingLeft, getRealActionBarHeight().toInt() + paddingTop,
+            viewGroup.paddingRight, viewGroup.paddingBottom
+        )
+    }
+
+    fun adaptViewFitActivity(viewGroup: View, paddingTop: Int = 0) {
+        val dimensionAttrValue = AttrUtil.getDimensionAttrValue(
+            this, R.attr.smoothActivityVerticalPadding
+        ).toInt()
+
+        val realPaddingTop = paddingTop + dimensionAttrValue
+
+        adaptView(viewGroup, realPaddingTop)
+    }
+
     fun adaptScrollerView(view: View, paddingTop: Int = 0) {
         if (view is RecyclerView) {
             adaptRecyclerView(view, paddingTop)
