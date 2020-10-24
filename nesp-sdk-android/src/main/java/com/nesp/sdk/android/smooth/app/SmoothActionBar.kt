@@ -78,7 +78,8 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
     override fun disableRealtimeBlur() {
         this.mRealtimeBlurView.setBlurRadius(0F)
         this.mRealtimeBlurView.gone()
-        rlSmoothActionBarContainer.setBackgroundColor(
+        this.rlSmoothActionBarContainer.removeView(this.mRealtimeBlurView)
+        this.rlSmoothActionBarContainer.setBackgroundColor(
             context.getColorCompat(AttrUtil.getAttrOutTypeValue(context,
                 R.attr.smoothActionBarBackground).resourceId)
         )
