@@ -22,6 +22,11 @@ import com.nesp.sdk.android.util.AttrUtil
  **/
 class SmoothRecyclerView : RecyclerView {
 
+    private var isScrollTop = false
+    private var isScrollBottom = false
+    private var isScrollUp = false
+    private var isScrollDown = false
+
     constructor(context: Context) : this(context, null)
 
     constructor(context: Context, attrs: AttributeSet?) :
@@ -39,6 +44,29 @@ class SmoothRecyclerView : RecyclerView {
 
     fun addDefaultListDividerItemDecorationWithoutPaddingStart() {
         addItemDecoration(ListDividerItemDecoration(0F))
+    }
+
+    fun isScrollTop(): Boolean {
+        return isScrollTop
+    }
+
+    fun isScrollBottom(): Boolean {
+        return isScrollBottom
+    }
+
+    fun isScrollUp(): Boolean {
+        return isScrollUp
+    }
+
+    fun isScrollDown(): Boolean {
+        return isScrollDown
+    }
+
+    override fun onScrolled(dx: Int, dy: Int) {
+        isScrollTop = !canScrollVertically(-1)
+        isScrollBottom = !canScrollVertically(1)
+        isScrollUp = dy > 0
+        isScrollDown = dy < 0
     }
 
     class ListDividerItemDecoration(private val paddingStart: Float = -1F) :

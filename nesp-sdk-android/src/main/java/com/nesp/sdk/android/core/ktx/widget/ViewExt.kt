@@ -32,24 +32,30 @@ fun View.gone(animal: Boolean = false) {
     }
 }
 
-fun View.visible(animal: Boolean = false) {
+fun View.visible(animal: Boolean = false, onAnimationEnd: () -> Unit = {}) {
     if (!animal) {
         this.visibility = View.VISIBLE
+        onAnimationEnd()
     } else {
         if (this.isVisible) return
         this.alpha = 0f
         this.visibility = View.VISIBLE
         this.animate()
             .setDuration(200L)
-            .setListener(null)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    onAnimationEnd()
+                }
+            })
             .alpha(1F)
             .start()
     }
 }
 
-fun View.invisible(animal: Boolean = false) {
+fun View.invisible(animal: Boolean = false, onAnimationEnd: () -> Unit = {}) {
     if (!animal) {
         this.visibility = View.INVISIBLE
+        onAnimationEnd()
     } else {
         if (!this.isVisible) return
         this.animate()
@@ -57,6 +63,7 @@ fun View.invisible(animal: Boolean = false) {
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     this@invisible.visibility = View.INVISIBLE
+                    onAnimationEnd()
                 }
             })
             .alpha(0f)
