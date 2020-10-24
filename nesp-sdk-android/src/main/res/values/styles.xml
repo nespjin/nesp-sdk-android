@@ -10,7 +10,10 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!--<item name="android:navigationBarColor">@color/colorPrimaryDark</item>-->
         <item name="smoothBottomNavigationHeight">@dimen/smooth_bottom_view_height</item>
+        <item name="smoothBottomNavigationItemIconSize">@dimen/smooth_bottom_view_item_icon_size</item>
         <item name="smoothBottomNavigationBackgroundColor">@color/smoothSystemGray</item>
+        <item name="smoothBottomNavigationItemTextAppearanceActive">@style/SmoothAppTheme.Light.SmoothBottomNavigationViewActiveTextAppearance</item>
+        <item name="smoothBottomNavigationItemTextAppearanceInactive">@style/SmoothAppTheme.Light.SmoothBottomNavigationViewInactiveTextAppearance</item>
     </style>
 
     <style name="SmoothAppTheme.Light.Activity" parent="SmoothAppTheme.Light.NoActionBar">
@@ -126,6 +129,16 @@
         <item name="thumbPosition">0dp</item>
         <item name="trackColorActive">@null</item>
         <item name="trackColorInactive">@null</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothBottomNavigationViewActiveTextAppearance">
+        <item name="android:textColor">@color/smooth_bottom_view_item_text_active_color</item>
+        <item name="android:textSize">@dimen/smooth_bottom_view_item_text_size</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothBottomNavigationViewInactiveTextAppearance">
+        <item name="android:textColor">@color/smooth_bottom_view_item_text_inactive_color</item>
+        <item name="android:textSize">@dimen/smooth_bottom_view_item_text_size</item>
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothSwitch.TextAppearance" parent="TextAppearance.AppCompat.Widget.Switch">

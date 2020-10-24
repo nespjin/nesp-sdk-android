@@ -2,6 +2,9 @@
 <resources>
     <attr name="smoothBottomNavigationHeight" format="dimension" />
     <attr name="smoothBottomNavigationBackgroundColor" format="color" />
+    <attr name="smoothBottomNavigationItemTextAppearanceActive" format="reference" />
+    <attr name="smoothBottomNavigationItemTextAppearanceInactive" format="reference" />
+    <attr name="smoothBottomNavigationItemIconSize" format="dimension" />
 
     <attr name="smoothActionBarBackground" format="color" />
     <attr name="smoothActionBarHeight" format="dimension" />

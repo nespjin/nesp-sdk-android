@@ -32,6 +32,9 @@
     <color name="smooth_action_bar_menu_item_title_text_color">@color/black</color>
     <color name="smooth_action_bar_menu_item_subtitle_text_color">@color/gray</color>
 
+    <color name="smooth_bottom_view_item_text_active_color">@color/smoothSystemBlue</color>
+    <color name="smooth_bottom_view_item_text_inactive_color">@color/smoothSystemGray</color>
+
     <color name="smooth_common_item_background_color">@color/smooth_common_item_bg_selector</color>
     <color name="smooth_common_item_normal_background_color">@color/transparent</color>
     <color name="smooth_common_item_click_background_color">@color/white</color>
