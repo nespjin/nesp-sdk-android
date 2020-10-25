@@ -6,6 +6,7 @@ import android.content.DialogInterface
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +33,7 @@ import com.nesp.sdk.android.util.AttrUtil
  * Project: NespAndroidSdk
  * Description:
  **/
+@Suppress("DEPRECATION")
 class SmoothAlertDialog : Dialog, ISmoothDialog {
 
     class Builder {
@@ -245,6 +247,17 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
             if (builder.actions.size == 1 || builder.actions.size == 2) {
                 if (builder.actions.size == 1) {
                     tvAction1.text = builder.actions[0].text
+                    if (builder.actions[0].type == ISmoothActionSheetDialog.ActionType.DANGER) {
+                        val resourceId = AttrUtil.getAttrOutTypeValue(
+                            tvAction1.context,
+                            R.attr.smoothActionSheetDialogDangerActionStyle
+                        ).resourceId
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            tvAction1.setTextAppearance(resourceId)
+                        } else {
+                            tvAction1.setTextAppearance(tvAction1.context, resourceId)
+                        }
+                    }
                     builder.actions[0].textStyle?.setToTextView(tvAction1)
                     tvAction1.setOnClickListener {
                         builder.actions[0].onActionClickListener?.onClick(it, builder.actions[0], 0)
@@ -255,12 +268,34 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
                     vActionDivider.gone()
                 } else {
                     tvAction1.text = builder.actions[0].text
+                    if (builder.actions[0].type == ISmoothActionSheetDialog.ActionType.DANGER) {
+                        val resourceId = AttrUtil.getAttrOutTypeValue(
+                            tvAction1.context,
+                            R.attr.smoothActionSheetDialogDangerActionStyle
+                        ).resourceId
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            tvAction1.setTextAppearance(resourceId)
+                        } else {
+                            tvAction1.setTextAppearance(tvAction1.context, resourceId)
+                        }
+                    }
                     builder.actions[0].textStyle?.setToTextView(tvAction1)
                     tvAction1.setOnClickListener {
                         builder.actions[0].onActionClickListener?.onClick(it, builder.actions[0], 0)
                         dismiss()
                     }
                     tvAction2.text = builder.actions[1].text
+                    if (builder.actions[1].type == ISmoothActionSheetDialog.ActionType.DANGER) {
+                        val resourceId = AttrUtil.getAttrOutTypeValue(
+                            tvAction2.context,
+                            R.attr.smoothActionSheetDialogDangerActionStyle
+                        ).resourceId
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            tvAction2.setTextAppearance(resourceId)
+                        } else {
+                            tvAction2.setTextAppearance(tvAction2.context, resourceId)
+                        }
+                    }
                     builder.actions[1].textStyle?.setToTextView(tvAction2)
                     tvAction2.setOnClickListener {
                         builder.actions[1].onActionClickListener?.onClick(it, builder.actions[1], 1)
@@ -378,6 +413,17 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
         override fun onBindViewHolder(holder: ActionViewHolder, position: Int) {
             val action = actions[position]
             holder.tvAction.text = action.text
+            if (action.type == ISmoothDialog.ActionType.DANGER) {
+                val resourceId = AttrUtil.getAttrOutTypeValue(
+                    holder.itemView.context,
+                    R.attr.smoothDialogDangerActionStyle
+                ).resourceId
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    holder.tvAction.setTextAppearance(resourceId)
+                } else {
+                    holder.tvAction.setTextAppearance(holder.itemView.context, resourceId)
+                }
+            }
             action.textStyle?.setToTextView(holder.tvAction)
             holder.itemView.setOnClickListener {
                 action.onActionClickListener?.onClick(it, action, position)

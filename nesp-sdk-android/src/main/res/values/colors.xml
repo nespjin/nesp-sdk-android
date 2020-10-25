@@ -42,6 +42,7 @@
     <color name="smooth_elevation_color">#E5E5E5</color>
 
     <color name="smooth_dialog_action_text_color">@color/smoothSystemBlue</color>
+    <color name="smooth_dialog_action_danger_text_color">@color/smoothSystemRed</color>
     <color name="smooth_dialog_title_text_color">@color/black</color>
     <color name="smooth_dialog_message_text_color">@color/black</color>
     <color name="smooth_dialog_background">@color/smooth_widget_common_background_color</color>
@@ -67,10 +68,10 @@
     <color name="smooth_action_sheet_dialog_action_background_color" />
     <color name="smooth_action_sheet_dialog_action_normal_background_color">@color/transparent</color>
     <color name="smooth_action_sheet_dialog_action_click_background_color">@color/smoothSystemWhiteDark</color>
-q
+    q
     <color name="smooth_activity_indicator_color">@color/smoothSystemGray50</color>
     <color name="list_divider_color">@color/smoothSystemGray10</color>
-<!--    <color name="window_background">#EFEFF4</color>-->
+    <!--    <color name="window_background">#EFEFF4</color>-->
     <color name="window_background">#F6F6F6</color>
 
 </resources>

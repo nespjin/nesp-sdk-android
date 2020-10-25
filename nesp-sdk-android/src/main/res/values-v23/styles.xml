@@ -58,6 +58,7 @@
 
         <item name="smoothDialogStyle">@style/SmoothAppTheme.Light.SmoothDialog</item>
         <item name="smoothDialogActionStyle">@style/SmoothAppTheme.Light.SmoothDialog.Action</item>
+        <item name="smoothDialogDangerActionStyle">@style/SmoothAppTheme.Light.SmoothDialog.DangerAction</item>
         <item name="smoothDialogTitleStyle">@style/SmoothAppTheme.Light.SmoothDialog.Title</item>
         <item name="smoothDialogMessageStyle">@style/SmoothAppTheme.Light.SmoothDialog.Message</item>
         <item name="smoothDialogBackgroundColor">@color/smooth_dialog_background</item>

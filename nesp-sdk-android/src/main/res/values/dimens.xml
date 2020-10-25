@@ -23,6 +23,7 @@
 
     <dimen name="smooth_dialog_title_text_size">20sp</dimen>
     <dimen name="smooth_dialog_action_text_size">18sp</dimen>
+    <dimen name="smooth_dialog_action_danger_text_size">18sp</dimen>
     <dimen name="smooth_dialog_message_text_size">16sp</dimen>
     <dimen name="smooth_dialog_corner_radius">10dp</dimen>
     <dimen name="smooth_dialog_elevation">0dp</dimen>
@@ -47,4 +48,5 @@
     <dimen name="dp_10">10dp</dimen>
 
     <dimen name="list_divider_width">0.5dp</dimen>
+
 </resources>

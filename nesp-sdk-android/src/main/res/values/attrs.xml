@@ -45,6 +45,7 @@
 
     <attr name="smoothDialogStyle" format="reference" />
     <attr name="smoothDialogActionStyle" format="reference" />
+    <attr name="smoothDialogDangerActionStyle" format="reference" />
     <attr name="smoothDialogTitleStyle" format="reference" />
     <attr name="smoothDialogMessageStyle" format="reference" />
     <attr name="smoothDialogBackgroundColor" format="color" />

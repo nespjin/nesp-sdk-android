@@ -2,6 +2,7 @@ package com.nesp.sdk.android.smooth.app
 
 import android.content.DialogInterface
 import android.view.View
+import androidx.annotation.IntDef
 import androidx.annotation.StringRes
 import com.nesp.sdk.android.text.Text
 import com.nesp.sdk.android.text.TextStyle
@@ -57,11 +58,36 @@ interface ISmoothDialog {
 
     class Action {
         var text: String = ""
+
+        @ActionType
+        var type: Int = ActionType.NORMAL
         var textStyle: TextStyle? = null
         var onActionClickListener: OnActionClickListener? = null
 
+        constructor(text: String) {
+            this.text = text
+        }
+
         constructor(text: String, onActionClickListener: OnActionClickListener) {
             this.text = text
+            this.onActionClickListener = onActionClickListener
+        }
+
+        constructor(text: String, @ActionType type: Int) {
+            this.text = text
+            this.type = type
+        }
+
+        constructor(text: String, textStyle: TextStyle) {
+            this.text = text
+            this.textStyle = textStyle
+        }
+
+        constructor(
+            text: String, @ActionType type: Int, onActionClickListener: OnActionClickListener?
+        ) {
+            this.text = text
+            this.type = type
             this.onActionClickListener = onActionClickListener
         }
 
@@ -81,4 +107,11 @@ interface ISmoothDialog {
         fun onClick(view: View, action: Action, position: Int)
     }
 
+    @IntDef(ActionType.NORMAL, ActionType.DANGER)
+    annotation class ActionType {
+        companion object {
+            const val NORMAL = 0
+            const val DANGER = 1
+        }
+    }
 }
