@@ -45,6 +45,14 @@ fun <E> List<E>.toArrayString(): String {
     return result
 }
 
+/********************************     MutableList<>     **************************************/
+
+fun <E> MutableList<E>.toArrayList(): ArrayList<E> {
+    val result = arrayListOf<E>()
+    result.addAll(this)
+    return result
+}
+
 /********************************     Int     **************************************/
 
 fun Int.toBoolean() = this == 1

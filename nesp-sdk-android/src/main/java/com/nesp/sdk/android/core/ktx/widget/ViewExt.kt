@@ -15,9 +15,10 @@ import com.nesp.sdk.android.smooth.app.SmoothActionBar
  * Project: NespAndroidSdk
  **/
 
-fun View.gone(animal: Boolean = false) {
+fun View.gone(animal: Boolean = false, onAnimationEnd: () -> Unit = {}) {
     if (!animal) {
         this.visibility = View.GONE
+        onAnimationEnd()
     } else {
         if (!this.isVisible) return
         this.animate()
@@ -25,6 +26,7 @@ fun View.gone(animal: Boolean = false) {
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     this@gone.visibility = View.GONE
+                    onAnimationEnd()
                 }
             })
             .alpha(0f)
