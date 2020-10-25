@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.mmin18.widget.RealtimeBlurView
 import com.nesp.sdk.android.R
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
+import com.nesp.sdk.android.core.ktx.widget.goneIfTextEmpty
 import com.nesp.sdk.android.text.Text
 import com.nesp.sdk.android.util.AttrUtil
 
@@ -262,6 +263,9 @@ class SmoothActionSheetDialog : Dialog, ISmoothActionSheetDialog {
         tvDescription.text = builder.description.content
         builder.description.textStyle?.setToTextView(tvDescription)
 
+        tvTitle.goneIfTextEmpty()
+        tvDescription.goneIfTextEmpty()
+
         vActionDivider.isGone =
             builder.title.content.isEmpty() && builder.description.content.isEmpty()
 
@@ -280,7 +284,7 @@ class SmoothActionSheetDialog : Dialog, ISmoothActionSheetDialog {
         if (builder.cancel?.text?.isNotEmpty() == true) {
             tvActionCancel.text = builder.cancel!!.text
         }
-        builder.title.textStyle?.setToTextView(tvActionCancel)
+        builder.cancel?.textStyle?.setToTextView(tvActionCancel)
         tvActionCancel.setOnClickListener {
             builder.cancel
             dismiss()

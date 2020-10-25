@@ -36,10 +36,10 @@
     <dimen name="smooth_slider_thumb_radius">0dp</dimen>
     <dimen name="smooth_slider_thumb_elevation">-1dp</dimen>
 
-    <dimen name="smooth_action_sheet_dialog_action_text_size">18sp</dimen>
-    <dimen name="smooth_action_sheet_dialog_action_danger_text_size">18sp</dimen>
-    <dimen name="smooth_action_sheet_dialog_title_text_size">16sp</dimen>
-    <dimen name="smooth_action_sheet_dialog_description_text_size">15sp</dimen>
+    <dimen name="smooth_action_sheet_dialog_action_text_size">16sp</dimen>
+    <dimen name="smooth_action_sheet_dialog_action_danger_text_size">16sp</dimen>
+    <dimen name="smooth_action_sheet_dialog_title_text_size">14sp</dimen>
+    <dimen name="smooth_action_sheet_dialog_description_text_size">14sp</dimen>
     <dimen name="smooth_action_sheet_dialog_corner_radius">10dp</dimen>
     <dimen name="smooth_action_sheet_dialog_elevation">0dp</dimen>
     <dimen name="smooth_action_sheet_dialog_real_time_blur_radius">40dp</dimen>

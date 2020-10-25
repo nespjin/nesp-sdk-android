@@ -73,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
+            android:layout_marginEnd="?attr/smoothActivityHorizontalPadding"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -86,7 +87,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|start"
-                    android:layout_marginEnd="?attr/smoothActivityHorizontalPadding"
                     android:ellipsize="end"
                     android:lines="1"
                     android:singleLine="true"
@@ -95,8 +95,8 @@
                 <ImageView
                     android:id="@+id/ivRightAction"
                     style="?attr/smoothActionBarRightActionStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:visibility="gone" />
 
             </FrameLayout>

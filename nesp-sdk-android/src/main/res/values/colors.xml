@@ -45,7 +45,7 @@
     <color name="smooth_dialog_title_text_color">@color/black</color>
     <color name="smooth_dialog_message_text_color">@color/black</color>
     <color name="smooth_dialog_background">@color/smooth_widget_common_background_color</color>
-    <color name="smooth_dialog_divider_line_color">#C5C5C5</color>
+    <color name="smooth_dialog_divider_line_color">#D5E3E3E3</color>
     <color name="smooth_dialog_action_background_color" />
     <color name="smooth_dialog_action_normal_background_color">@color/transparent</color>
     <color name="smooth_dialog_action_click_background_color">@color/smoothSystemWhiteDark</color>
@@ -63,7 +63,7 @@
     <color name="smooth_action_sheet_dialog_title_text_color">@color/smoothSystemGray50</color>
     <color name="smooth_action_sheet_dialog_description_text_color">@color/smoothSystemGray50</color>
     <color name="smooth_action_sheet_dialog_background">@color/smooth_widget_common_background_color</color>
-    <color name="smooth_action_sheet_dialog_divider_line_color">#C5C5C5</color>
+    <color name="smooth_action_sheet_dialog_divider_line_color">#D5E3E3E3</color>
     <color name="smooth_action_sheet_dialog_action_background_color" />
     <color name="smooth_action_sheet_dialog_action_normal_background_color">@color/transparent</color>
     <color name="smooth_action_sheet_dialog_action_click_background_color">@color/smoothSystemWhiteDark</color>
