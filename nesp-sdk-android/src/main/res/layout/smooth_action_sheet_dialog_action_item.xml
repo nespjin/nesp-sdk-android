@@ -10,7 +10,6 @@
     android:lines="1"
     android:maxLines="1"
     android:minLines="1"
-    android:paddingTop="12dp"
-    android:paddingBottom="12dp"
+    android:minHeight="44dp"
     android:singleLine="true"
     android:text="Action" />
