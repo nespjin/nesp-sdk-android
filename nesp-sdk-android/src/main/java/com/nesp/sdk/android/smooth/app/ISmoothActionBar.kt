@@ -69,6 +69,12 @@ interface ISmoothActionBar {
 
     fun showLeftActionContainer()
 
+    fun getLeftActionInnerContainer(): FrameLayout
+
+    fun hideLeftActionInnerContainer()
+
+    fun showLeftActionInnerContainer()
+
     fun setLeftAction(text: CharSequence, onLeftActionClickListener: View.OnClickListener)
 
     fun setLeftAction(
@@ -120,6 +126,12 @@ interface ISmoothActionBar {
     fun hideRightActionContainer()
 
     fun showRightActionContainer()
+
+    fun getRightActionInnerContainer(): FrameLayout
+
+    fun hideRightActionInnerContainer()
+
+    fun showRightActionInnerContainer()
 
     fun setRightAction(text: CharSequence, onRightActionClickListener: View.OnClickListener)
 
@@ -264,4 +276,16 @@ interface ISmoothActionBar {
     fun getInitActionBarHeight(): Float
 
     fun getRealActionBarHeight(): Float
+
+    fun showLeftActionBarActivityIndicator()
+
+    fun hideLeftActionBarActivityIndicator()
+
+    fun showCenterActionBarActivityIndicator()
+
+    fun hideCenterActionBarActivityIndicator()
+
+    fun showRightActionBarActivityIndicator()
+
+    fun hideRightActionBarActivityIndicator()
 }

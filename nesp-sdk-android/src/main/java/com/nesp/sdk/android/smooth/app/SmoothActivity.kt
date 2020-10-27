@@ -173,6 +173,18 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
         smoothActionBar.showLeftActionContainer()
     }
 
+    override fun getLeftActionInnerContainer(): FrameLayout {
+        return smoothActionBar.getLeftActionInnerContainer()
+    }
+
+    override fun hideLeftActionInnerContainer() {
+        smoothActionBar.hideLeftActionInnerContainer()
+    }
+
+    override fun showLeftActionInnerContainer() {
+        smoothActionBar.showLeftActionInnerContainer()
+    }
+
     override fun setLeftAction(
         text: CharSequence,
         onLeftActionClickListener: View.OnClickListener
@@ -272,6 +284,18 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
 
     override fun showRightActionContainer() {
         smoothActionBar.showRightActionContainer()
+    }
+
+    override fun getRightActionInnerContainer(): FrameLayout {
+        return smoothActionBar.getRightActionInnerContainer()
+    }
+
+    override fun hideRightActionInnerContainer() {
+        smoothActionBar.hideRightActionInnerContainer()
+    }
+
+    override fun showRightActionInnerContainer() {
+        smoothActionBar.showRightActionInnerContainer()
     }
 
     override fun setRightAction(
@@ -557,6 +581,30 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
 
     override fun getRealActionBarHeight(): Float {
         return smoothActionBar.getRealActionBarHeight()
+    }
+
+    override fun showLeftActionBarActivityIndicator() {
+        smoothActionBar.showLeftActionBarActivityIndicator()
+    }
+
+    override fun hideLeftActionBarActivityIndicator() {
+        smoothActionBar.hideLeftActionBarActivityIndicator()
+    }
+
+    override fun showCenterActionBarActivityIndicator() {
+        smoothActionBar.showCenterActionBarActivityIndicator()
+    }
+
+    override fun hideCenterActionBarActivityIndicator() {
+        smoothActionBar.hideCenterActionBarActivityIndicator()
+    }
+
+    override fun showRightActionBarActivityIndicator() {
+        smoothActionBar.showRightActionBarActivityIndicator()
+    }
+
+    override fun hideRightActionBarActivityIndicator() {
+        smoothActionBar.hideRightActionBarActivityIndicator()
     }
 
     fun adaptView(viewGroup: View, paddingTop: Int = 0) {

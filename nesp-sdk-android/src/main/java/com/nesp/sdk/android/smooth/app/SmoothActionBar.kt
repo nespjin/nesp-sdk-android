@@ -22,6 +22,7 @@ import com.nesp.sdk.android.core.ktx.content.getDrawableCompat
 import com.nesp.sdk.android.core.ktx.widget.gone
 import com.nesp.sdk.android.core.ktx.widget.visible
 import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
+import com.nesp.sdk.android.smooth.widget.SmoothActivityIndicator
 import com.nesp.sdk.android.util.AttrUtil
 import com.nesp.sdk.android.util.WindowUtil
 
@@ -42,14 +43,26 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
     private val tvLeftAction: TextView by lazy { findViewById(R.id.tvLeftAction) }
     private val ivLeftAction: ImageView by lazy { findViewById(R.id.ivLeftAction) }
     private val llLeftActionContainer: LinearLayout by lazy { findViewById(R.id.llLeftActionContainer) }
+    private val flLeftActionContainer: FrameLayout by lazy { findViewById(R.id.flLeftActionContainer) }
     private val tvRightAction: TextView by lazy { findViewById(R.id.tvRightAction) }
     private val ivRightAction: ImageView by lazy { findViewById(R.id.ivRightAction) }
     private val smoothActionMenuView: SmoothActionMenuView by lazy { findViewById(R.id.smoothActionMenuView) }
     private val llRightActionContainer: LinearLayout by lazy { findViewById(R.id.llRightActionContainer) }
+    private val flRightActionContainer: FrameLayout by lazy { findViewById(R.id.flRightActionContainer) }
     private val flCustomViewContainer: FrameLayout by lazy { findViewById(R.id.flCustomViewContainer) }
     private val llCenterTitleContainer: LinearLayout by lazy { findViewById(R.id.llCenterTitleContainer) }
     private val tvTitle: TextView by lazy { findViewById(R.id.tvTitle) }
     private val tvSubtitle: TextView by lazy { findViewById(R.id.tvSubtitle) }
+
+    private val smoothActivityIndicatorLeft: SmoothActivityIndicator by lazy {
+        findViewById(R.id.smoothActivityIndicatorLeft)
+    }
+    private val smoothActivityIndicatorRight: SmoothActivityIndicator by lazy {
+        findViewById(R.id.smoothActivityIndicatorRight)
+    }
+    private val smoothActivityIndicatorCenter: SmoothActivityIndicator by lazy {
+        findViewById(R.id.smoothActivityIndicatorCenter)
+    }
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
@@ -155,6 +168,18 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
 
     override fun showLeftActionContainer() {
         showView(llLeftActionContainer)
+    }
+
+    override fun getLeftActionInnerContainer(): FrameLayout {
+        return flLeftActionContainer
+    }
+
+    override fun hideLeftActionInnerContainer() {
+        hideView(flLeftActionContainer)
+    }
+
+    override fun showLeftActionInnerContainer() {
+        showView(flLeftActionContainer)
     }
 
     override fun setLeftAction(text: CharSequence, onLeftActionClickListener: OnClickListener) {
@@ -314,6 +339,18 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
 
     override fun showRightActionContainer() {
         showView(llRightActionContainer)
+    }
+
+    override fun getRightActionInnerContainer(): FrameLayout {
+        return flRightActionContainer
+    }
+
+    override fun hideRightActionInnerContainer() {
+        hideView(flRightActionContainer)
+    }
+
+    override fun showRightActionInnerContainer() {
+        showView(flRightActionContainer)
     }
 
     override fun setRightAction(text: CharSequence, onRightActionClickListener: OnClickListener) {
@@ -686,6 +723,37 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
         return getInitActionBarHeight() + WindowUtil.getStatusBarHeight(context)
     }
 
+    override fun showLeftActionBarActivityIndicator() {
+        smoothActivityIndicatorCenter.gone()
+        smoothActivityIndicatorRight.gone()
+        showView(smoothActivityIndicatorLeft)
+    }
+
+    override fun hideLeftActionBarActivityIndicator() {
+        hideView(smoothActivityIndicatorLeft)
+    }
+
+    override fun showCenterActionBarActivityIndicator() {
+        smoothActivityIndicatorLeft.gone()
+        smoothActivityIndicatorRight.gone()
+        showView(smoothActivityIndicatorCenter)
+    }
+
+    override fun hideCenterActionBarActivityIndicator() {
+        hideView(smoothActivityIndicatorCenter)
+    }
+
+    override fun showRightActionBarActivityIndicator() {
+        smoothActivityIndicatorLeft.gone()
+        smoothActivityIndicatorCenter.gone()
+        hideRightActionInnerContainer()
+        showView(smoothActivityIndicatorRight)
+    }
+
+    override fun hideRightActionBarActivityIndicator() {
+        hideView(smoothActivityIndicatorRight)
+        showRightActionInnerContainer()
+    }
 
     private fun showView(view: View) {
         if (view.isVisible) return
