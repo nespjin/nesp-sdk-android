@@ -45,6 +45,7 @@ abstract class SmoothBottomNavigationActivity : SmoothBaseActivity(),
 
         viewPager.addOnPageChangeListener(this)
         viewPager.adapter = getFragmentPagerAdapter()
+        viewPager.offscreenPageLimit = getFragments().size
         viewPager.setScrollEnable(getIsScrollEnable())
         viewPager.overScrollMode = getOverScrollMode()
 

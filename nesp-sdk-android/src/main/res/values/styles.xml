@@ -249,4 +249,18 @@
 
     <style name="SmoothAppTheme.DayNight.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 
+    <style name="SmoothAppTheme.Light.SmoothBottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowAnimationStyle">@style/SmoothAppTheme.Light.SmoothBottomSheetAnimation</item>
+        <item name="bottomSheetStyle">@style/SmoothAppTheme.Light.SmoothBottomSheetStyle</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothBottomSheetStyle" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothBottomSheetAnimation" parent="Animation.Design.BottomSheetDialog">
+        <item name="android:windowEnterAnimation">@anim/smooth_bottom_sheet_slide_in</item>
+        <item name="android:windowExitAnimation">@anim/smooth_bottom_sheet_slide_out</item>
+    </style>
+
 </resources>
