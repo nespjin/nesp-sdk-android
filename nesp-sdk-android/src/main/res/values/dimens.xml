@@ -19,6 +19,7 @@
     <dimen name="smooth_bottom_view_item_text_size">12dp</dimen>
 
     <dimen name="smooth_real_time_blur_radius">20dp</dimen>
+    <dimen name="smooth_bottom_real_time_blur_radius">20dp</dimen>
     <dimen name="smooth_widget_real_time_blur_radius">20dp</dimen>
 
     <dimen name="smooth_dialog_title_text_size">17sp</dimen>

@@ -23,21 +23,30 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:visibility="visible"
-            app:realtimeBlurRadius="?attr/smoothRealtimeBlurRadius"
+            app:realtimeBlurRadius="?attr/smoothBottomRealtimeBlurRadius"
             app:realtimeOverlayColor="?attr/smoothBottomNavigationBackgroundColor" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navigationView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/transparent"
-            app:elevation="0dp"
-            app:itemIconSize="?smoothBottomNavigationItemIconSize"
-            app:itemRippleColor="@null"
-            app:itemTextAppearanceActive="?smoothBottomNavigationItemTextAppearanceActive"
-            app:itemTextAppearanceInactive="?smoothBottomNavigationItemTextAppearanceInactive"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/smooth_bottom_navigation_menu" />
+            android:orientation="vertical">
+
+            <include layout="@layout/horizontal_divider_line" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/navigationView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                app:elevation="0dp"
+                app:itemIconSize="?smoothBottomNavigationItemIconSize"
+                app:itemRippleColor="@null"
+                app:itemTextAppearanceActive="?smoothBottomNavigationItemTextAppearanceActive"
+                app:itemTextAppearanceInactive="?smoothBottomNavigationItemTextAppearanceInactive"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/smooth_bottom_navigation_menu" />
+        </LinearLayout>
 
     </RelativeLayout>
 

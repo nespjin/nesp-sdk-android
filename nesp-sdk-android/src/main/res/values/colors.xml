@@ -23,6 +23,9 @@
     <color name="smoothSystemPurple">#A648D9</color>
     <color name="smoothSystemOrange">#FF8A04</color>
 
+    <color name="smooth_bottom_navigation_background_color">#CCF7F7F7</color>
+    <color name="smooth_bottom_navigation_blur_color">@color/window_background</color>
+
     <color name="smooth_action_bar_left_action_text_color">@color/smoothSystemBlue</color>
     <color name="smooth_action_bar_right_action_text_color">@color/smoothSystemBlue</color>
     <color name="smooth_action_bar_back_indicator_color">@color/smoothSystemBlue</color>
@@ -70,8 +73,11 @@
     <color name="smooth_action_sheet_dialog_action_click_background_color">@color/smoothSystemWhiteDark</color>
     q
     <color name="smooth_activity_indicator_color">@color/smoothSystemGray50</color>
-    <color name="list_divider_color">@color/smoothSystemGray10</color>
+    <color name="list_divider_color">@color/smoothSystemGray50</color>
     <!--    <color name="window_background">#EFEFF4</color>-->
-    <color name="window_background">#F6F6F6</color>
+    <color name="window_background">#F7F7F7</color>
+    <color name="search_background">#E7E7E7</color>
+    <color name="search_hint_color">#8E8E93</color>
+    <color name="search_text_color">@color/black</color>
 
 </resources>

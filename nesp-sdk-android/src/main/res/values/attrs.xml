@@ -2,6 +2,7 @@
 <resources>
     <attr name="smoothBottomNavigationHeight" format="dimension" />
     <attr name="smoothBottomNavigationBackgroundColor" format="color" />
+    <attr name="smoothBottomNavigationBlurColor" format="color" />
     <attr name="smoothBottomNavigationItemTextAppearanceActive" format="reference" />
     <attr name="smoothBottomNavigationItemTextAppearanceInactive" format="reference" />
     <attr name="smoothBottomNavigationItemIconSize" format="dimension" />
@@ -40,6 +41,7 @@
     <attr name="smoothCommonItemClickBackgroundColor" format="color" />
 
     <attr name="smoothRealtimeBlurRadius" format="dimension" />
+    <attr name="smoothBottomRealtimeBlurRadius" format="dimension" />
     <attr name="smoothWidgetRealtimeBlurRadius" format="dimension" />
     <attr name="smoothElevationColor" format="color" />
 
