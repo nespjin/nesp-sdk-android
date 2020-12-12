@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="smoothBottomNavigationDividerColor" format="color" />
+    <attr name="smoothBottomNavigationDividerWidth" format="dimension" />
     <attr name="smoothBottomNavigationHeight" format="dimension" />
     <attr name="smoothBottomNavigationBackgroundColor" format="color" />
     <attr name="smoothBottomNavigationBlurColor" format="color" />

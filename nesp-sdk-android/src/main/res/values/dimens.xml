@@ -14,6 +14,7 @@
     <dimen name="smooth_action_bar_right_action_text_size">16sp</dimen>
     <dimen name="smooth_action_bar_title_spacing">3dp</dimen>
 
+    <dimen name="smooth_bottom_divider_width">0.5dp</dimen>
     <dimen name="smooth_bottom_view_height">55dp</dimen>
     <dimen name="smooth_bottom_view_item_icon_size">20dp</dimen>
     <dimen name="smooth_bottom_view_item_text_size">12dp</dimen>

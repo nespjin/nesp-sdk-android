@@ -32,7 +32,7 @@
             android:background="@color/transparent"
             android:orientation="vertical">
 
-            <include layout="@layout/horizontal_divider_line" />
+            <include layout="@layout/smooth_bottom_navigation_horizontal_divider_line" />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/navigationView"

@@ -9,6 +9,8 @@
         <!--        <item name="android:windowTranslucentNavigation">true</item>-->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!--<item name="android:navigationBarColor">@color/colorPrimaryDark</item>-->
+        <item name="smoothBottomNavigationDividerColor">@color/smooth_bottom_navigation_divider_color</item>
+        <item name="smoothBottomNavigationDividerWidth">@dimen/smooth_bottom_divider_width</item>
         <item name="smoothBottomNavigationHeight">@dimen/smooth_bottom_view_height</item>
         <item name="smoothBottomNavigationItemIconSize">@dimen/smooth_bottom_view_item_icon_size</item>
         <item name="smoothBottomNavigationBackgroundColor">@color/smooth_bottom_navigation_background_color</item>
