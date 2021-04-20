@@ -19,10 +19,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nesp.sdk.android.R
+import com.nesp.sdk.android.databinding.ActivitySmoothBottomNavigationBinding
 import com.nesp.sdk.android.smooth.widget.SmoothViewPager
 import com.nesp.sdk.android.util.AttrUtil
-import com.nesp.sdk.android.util.DisplayUtil
-import kotlinx.android.synthetic.main.activity_smooth_bottom_navigation.*
 import java.lang.reflect.Field
 
 /**
@@ -33,26 +32,27 @@ import java.lang.reflect.Field
  * Time: Created 2020/10/10 20:41
  * Project: NespAndroidSdk
  **/
-abstract class SmoothBottomNavigationActivity : SmoothBaseActivity(),
+abstract class SmoothBottomNavigationActivity : SmoothSwipeBackActivity(),
     BottomNavigationView.OnNavigationItemSelectedListener,
     ViewPager.OnPageChangeListener {
 
+    private lateinit var viewBinding: ActivitySmoothBottomNavigationBinding
     private lateinit var menuItem: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_smooth_bottom_navigation)
+        viewBinding = ActivitySmoothBottomNavigationBinding.inflate(layoutInflater)
 
-        viewPager.addOnPageChangeListener(this)
-        viewPager.adapter = getFragmentPagerAdapter()
-        viewPager.setScrollEnable(getIsScrollEnable())
-        viewPager.overScrollMode = getOverScrollMode()
+        viewBinding.viewPager.addOnPageChangeListener(this)
+        viewBinding.viewPager.adapter = getFragmentPagerAdapter()
+        viewBinding.viewPager.setScrollEnable(getIsScrollEnable())
+        viewBinding.viewPager.overScrollMode = getOverScrollMode()
 
 //        inflateBottomNavigationMenu(getBottomNavigationMenuResId())
 
-        navigationView.selectedItemId = getDefaultSelectedItemId()
-        navigationView.setOnNavigationItemSelectedListener(this)
-        closeAnimation(navigationView)
+        viewBinding.navigationView.selectedItemId = getDefaultSelectedItemId()
+        viewBinding.navigationView.setOnNavigationItemSelectedListener(this)
+        closeAnimation(viewBinding.navigationView)
     }
 
     override fun swipeBackEnable(): Boolean {
@@ -64,23 +64,23 @@ abstract class SmoothBottomNavigationActivity : SmoothBaseActivity(),
     }
 
     protected fun setScrollEnable(isScrollEnable: Boolean) {
-        viewPager.setScrollEnable(isScrollEnable)
+        viewBinding.viewPager.setScrollEnable(isScrollEnable)
     }
 
     protected open fun getDefaultSelectedItemId(): Int {
-        return if (navigationView.menu.size() > 0) {
-            navigationView.menu.getItem(0).itemId
+        return if (viewBinding.navigationView.menu.size() > 0) {
+            viewBinding.navigationView.menu.getItem(0).itemId
         } else {
             -1
         }
     }
 
     private fun inflateBottomNavigationMenu(@MenuRes menuRes: Int) {
-//        menuInflater.inflate(menuRes, navigationView.menu)
+        menuInflater.inflate(menuRes, viewBinding.navigationView.menu)
     }
 
     protected fun getBottomNavigationView(): BottomNavigationView {
-        return navigationView
+        return viewBinding.navigationView
     }
 
     protected open fun getFragmentPagerAdapter(): FragmentPagerAdapter {
@@ -90,11 +90,11 @@ abstract class SmoothBottomNavigationActivity : SmoothBaseActivity(),
     protected abstract fun getFragments(): List<Fragment>
 
     protected fun getViewPager(): SmoothViewPager {
-        return viewPager
+        return viewBinding.viewPager
     }
 
     protected fun setOverScrollMode(overScrollMode: Int) {
-        viewPager.overScrollMode = overScrollMode
+        viewBinding.viewPager.overScrollMode = overScrollMode
     }
 
     protected open fun getOverScrollMode(): Int {
@@ -119,10 +119,10 @@ abstract class SmoothBottomNavigationActivity : SmoothBaseActivity(),
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        for (currentMenuItem in navigationView.menu.children) {
+        for (currentMenuItem in viewBinding.navigationView.menu.children) {
             if (currentMenuItem.itemId == item.itemId) {
-                val index = navigationView.menu.children.indexOf(currentMenuItem)
-                viewPager.setCurrentItem(index, false)
+                val index = viewBinding.navigationView.menu.children.indexOf(currentMenuItem)
+                viewBinding.viewPager.setCurrentItem(index, false)
                 return true
             }
         }
@@ -133,8 +133,8 @@ abstract class SmoothBottomNavigationActivity : SmoothBaseActivity(),
     }
 
     override fun onPageSelected(position: Int) {
-        if (position >= navigationView.menu.size) return
-        menuItem = navigationView.menu.getItem(position)
+        if (position >= viewBinding.navigationView.menu.size) return
+        menuItem = viewBinding.navigationView.menu.getItem(position)
         menuItem.isChecked = true
     }
 

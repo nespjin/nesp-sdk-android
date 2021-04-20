@@ -13,7 +13,7 @@ import per.goweii.swipeback.SwipeBackHelper
  * Time: Created 2020/10/11 8:38
  * Project: NespAndroidSdk
  **/
-open class SmoothSwipeBackActivity : AppCompatActivity() {
+open class SmoothSwipeBackActivity : SmoothBaseActivity() {
 
     protected var mSwipeBackHelper: SwipeBackHelper? = null
 

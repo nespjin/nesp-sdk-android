@@ -8,7 +8,6 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
-import com.google.android.material.slider.Slider
 import com.nesp.sdk.android.R
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
 import com.nesp.sdk.android.util.AttrUtil

@@ -11,11 +11,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 import com.github.mmin18.widget.RealtimeBlurView
 import com.nesp.sdk.android.R
+import com.nesp.sdk.android.databinding.ActivitySmoothBinding
 import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
 import com.nesp.sdk.android.util.AttrUtil
-import kotlinx.android.synthetic.main.activity_smooth.*
 
 /**
  *
@@ -25,11 +26,19 @@ import kotlinx.android.synthetic.main.activity_smooth.*
  * Time: Created 2020/10/10 20:39
  * Project: NespAndroidSdk
  **/
-open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListener,
+open class SmoothActivity : SmoothSwipeBackActivity(), MenuItem.OnMenuItemClickListener,
     ISmoothActionBar {
+
+    protected lateinit var viewBindingRoot: ActivitySmoothBinding
+    private lateinit var smoothActionBar: SmoothActionBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    /** If use ViewBinding to inflate the layout, must to call this method*/
+    private fun initializeViewBinding(viewBinding: ViewBinding) {
+        setContentView(viewBinding.root)
     }
 
     override fun setContentView(view: View?) {
@@ -52,9 +61,9 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
         super.setContentView(smoothActivityContentView, params)
     }
 
-    protected fun setSmoothActivityContentView(view: View?): View? {
+    protected fun setSmoothActivityContentView(view: View?): View {
         val smoothActivityRootView = getSmoothActivityRootView()
-        val contentContainer = smoothActivityRootView.findViewById<FrameLayout>(R.id.flContainer)
+        val contentContainer = viewBindingRoot.flContainer
         contentContainer.addView(view)
         return smoothActivityRootView
     }
@@ -65,16 +74,15 @@ open class SmoothActivity : SmoothBaseActivity(), MenuItem.OnMenuItemClickListen
     }
 
     private fun initSmoothActionBar() {
-        val smoothActionBar = findViewById<SmoothActionBar>(R.id.smoothActionBar)
-        if (smoothActionBar != null) {
-            smoothActionBar.resolveActionBarHeight()
-            smoothActionBar.setOnRightMenuItemClickListener(this)
-            smoothActionBar.setOnBackIndicatorClickListener { onBackPressed() }
-        }
+        smoothActionBar = viewBindingRoot.smoothActionBar
+        smoothActionBar.resolveActionBarHeight()
+        smoothActionBar.setOnRightMenuItemClickListener(this)
+        smoothActionBar.setOnBackIndicatorClickListener { onBackPressed() }
     }
 
     private fun getSmoothActivityRootView(): View {
-        return layoutInflater.inflate(R.layout.activity_smooth, null, false)
+        viewBindingRoot = ActivitySmoothBinding.inflate(layoutInflater, null, false)
+        return viewBindingRoot.root
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {

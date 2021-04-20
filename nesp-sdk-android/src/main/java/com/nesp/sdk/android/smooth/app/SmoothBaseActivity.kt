@@ -3,11 +3,10 @@ package com.nesp.sdk.android.smooth.app
 import android.content.BroadcastReceiver
 import android.content.Intent
 import android.content.IntentFilter
-import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.nesp.sdk.android.util.WindowUtil
 import com.nesp.sdk.android.widget.Toast
-import per.goweii.swipeback.SwipeBackActivity
 
 /**
  *
@@ -17,11 +16,7 @@ import per.goweii.swipeback.SwipeBackActivity
  * Time: Created 2020/10/10 20:35
  * Project: NespAndroidSdk
  **/
-open class SmoothBaseActivity : SmoothSwipeBackActivity() {
-
-    override fun swipeBackEnable(): Boolean {
-        return true
-    }
+open class SmoothBaseActivity : AppCompatActivity() {
 
     protected fun showShortToast(msg: String?) {
         Toast.showShort(this, msg)
