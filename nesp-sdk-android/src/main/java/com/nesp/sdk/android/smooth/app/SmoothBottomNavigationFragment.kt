@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.nesp.sdk.android.databinding.FragmentSmoothBottomNavigationBinding
 
 /**
  *
@@ -15,11 +16,19 @@ import android.view.ViewGroup
  **/
 abstract class SmoothBottomNavigationFragment : SmoothBaseFragment() {
 
+    private var viewBinding: FragmentSmoothBottomNavigationBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        viewBinding = FragmentSmoothBottomNavigationBinding.inflate(inflater, container, false)
+        return viewBinding!!.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewBinding = null
     }
 }

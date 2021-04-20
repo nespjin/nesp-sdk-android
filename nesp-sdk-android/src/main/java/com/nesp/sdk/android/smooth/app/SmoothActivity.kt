@@ -29,7 +29,9 @@ import com.nesp.sdk.android.util.AttrUtil
 open class SmoothActivity : SmoothSwipeBackActivity(), MenuItem.OnMenuItemClickListener,
     ISmoothActionBar {
 
-    protected lateinit var viewBindingRoot: ActivitySmoothBinding
+    protected val viewBindingRoot: ActivitySmoothBinding by lazy {
+        ActivitySmoothBinding.inflate(layoutInflater, null, false)
+    }
     private lateinit var smoothActionBar: SmoothActionBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,7 +83,6 @@ open class SmoothActivity : SmoothSwipeBackActivity(), MenuItem.OnMenuItemClickL
     }
 
     private fun getSmoothActivityRootView(): View {
-        viewBindingRoot = ActivitySmoothBinding.inflate(layoutInflater, null, false)
         return viewBindingRoot.root
     }
 

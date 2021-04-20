@@ -36,12 +36,13 @@ abstract class SmoothBottomNavigationActivity : SmoothSwipeBackActivity(),
     BottomNavigationView.OnNavigationItemSelectedListener,
     ViewPager.OnPageChangeListener {
 
-    private lateinit var viewBinding: ActivitySmoothBottomNavigationBinding
+    private val viewBinding: ActivitySmoothBottomNavigationBinding by lazy {
+        ActivitySmoothBottomNavigationBinding.inflate(layoutInflater)
+    }
     private lateinit var menuItem: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = ActivitySmoothBottomNavigationBinding.inflate(layoutInflater)
 
         viewBinding.viewPager.addOnPageChangeListener(this)
         viewBinding.viewPager.adapter = getFragmentPagerAdapter()
