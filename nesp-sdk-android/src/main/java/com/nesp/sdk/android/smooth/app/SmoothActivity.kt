@@ -11,7 +11,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
 import com.github.mmin18.widget.RealtimeBlurView
 import com.nesp.sdk.android.R
 import com.nesp.sdk.android.databinding.ActivitySmoothBinding
@@ -32,15 +31,11 @@ open class SmoothActivity : SmoothSwipeBackActivity(), MenuItem.OnMenuItemClickL
     protected val viewBindingRoot: ActivitySmoothBinding by lazy {
         ActivitySmoothBinding.inflate(layoutInflater, null, false)
     }
-    private lateinit var smoothActionBar: SmoothActionBar
+
+    private val _smoothActionBar: SmoothActionBar by lazy { viewBindingRoot.smoothActionBar }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }
-
-    /** If use ViewBinding to inflate the layout, must to call this method*/
-    private fun initializeViewBinding(viewBinding: ViewBinding) {
-        setContentView(viewBinding.root)
     }
 
     override fun setContentView(view: View?) {
@@ -76,10 +71,9 @@ open class SmoothActivity : SmoothSwipeBackActivity(), MenuItem.OnMenuItemClickL
     }
 
     private fun initSmoothActionBar() {
-        smoothActionBar = viewBindingRoot.smoothActionBar
-        smoothActionBar.resolveActionBarHeight()
-        smoothActionBar.setOnRightMenuItemClickListener(this)
-        smoothActionBar.setOnBackIndicatorClickListener { onBackPressed() }
+        _smoothActionBar.resolveActionBarHeight()
+        _smoothActionBar.setOnRightMenuItemClickListener(this)
+        _smoothActionBar.setOnBackIndicatorClickListener { onBackPressed() }
     }
 
     private fun getSmoothActivityRootView(): View {
@@ -91,529 +85,529 @@ open class SmoothActivity : SmoothSwipeBackActivity(), MenuItem.OnMenuItemClickL
     }
 
     protected fun getSmoothActionBar(): SmoothActionBar {
-        return smoothActionBar
+        return _smoothActionBar
     }
 
     override fun setBackgroundColor(color: Int) {
-        smoothActionBar.setBackgroundColor(color)
+        _smoothActionBar.setBackgroundColor(color)
     }
 
     override fun setBackgroundColorRes(id: Int) {
-        smoothActionBar.setBackgroundColorRes(id)
+        _smoothActionBar.setBackgroundColorRes(id)
     }
 
     override fun setBackgroundColorStateList(colorStateList: ColorStateList) {
-        smoothActionBar.setBackgroundColorStateList(colorStateList)
+        _smoothActionBar.setBackgroundColorStateList(colorStateList)
     }
 
     override fun setBackgroundColorStateList(id: Int) {
-        smoothActionBar.setBackgroundColorStateList(id)
+        _smoothActionBar.setBackgroundColorStateList(id)
     }
 
     override fun disableRealtimeBlur() {
-        smoothActionBar.disableRealtimeBlur()
+        _smoothActionBar.disableRealtimeBlur()
     }
 
     override fun getRealtimeBlurView(): RealtimeBlurView {
-        return smoothActionBar.getRealtimeBlurView()
+        return _smoothActionBar.getRealtimeBlurView()
     }
 
     override fun setBackIndicatorDrawable(drawable: Drawable) {
-        smoothActionBar.setBackIndicatorDrawable(drawable)
+        _smoothActionBar.setBackIndicatorDrawable(drawable)
     }
 
     override fun setBackIndicatorDrawable(id: Int) {
-        smoothActionBar.setBackIndicatorDrawable(id)
+        _smoothActionBar.setBackIndicatorDrawable(id)
     }
 
     override fun setBackIndicatorDrawable(stateListDrawable: StateListDrawable) {
-        smoothActionBar.setBackIndicatorDrawable(stateListDrawable)
+        _smoothActionBar.setBackIndicatorDrawable(stateListDrawable)
     }
 
     override fun setBackIndicatorColor(color: Int) {
-        smoothActionBar.setBackIndicatorColor(color)
+        _smoothActionBar.setBackIndicatorColor(color)
     }
 
     override fun setBackIndicatorColorRes(id: Int) {
-        smoothActionBar.setBackIndicatorColorRes(id)
+        _smoothActionBar.setBackIndicatorColorRes(id)
     }
 
     override fun setBackIndicatorColorStateList(colorStateList: ColorStateList) {
-        smoothActionBar.setBackIndicatorColorStateList(colorStateList)
+        _smoothActionBar.setBackIndicatorColorStateList(colorStateList)
     }
 
     override fun setBackIndicatorColorStateList(id: Int) {
-        smoothActionBar.setBackIndicatorColorStateList(id)
+        _smoothActionBar.setBackIndicatorColorStateList(id)
     }
 
     override fun getBackIndicator(): ImageView {
-        return smoothActionBar.getBackIndicator()
+        return _smoothActionBar.getBackIndicator()
     }
 
     override fun backIndicatorIsHidden(): Boolean {
-        return smoothActionBar.backIndicatorIsHidden()
+        return _smoothActionBar.backIndicatorIsHidden()
     }
 
     override fun hideBackIndicator() {
-        smoothActionBar.hideBackIndicator()
+        _smoothActionBar.hideBackIndicator()
     }
 
     override fun showBackIndicator() {
-        smoothActionBar.showBackIndicator()
+        _smoothActionBar.showBackIndicator()
     }
 
     override fun toggleBackIndicatorHidden() {
-        smoothActionBar.toggleBackIndicatorHidden()
+        _smoothActionBar.toggleBackIndicatorHidden()
     }
 
     override fun setOnBackIndicatorClickListener(onBackIndicatorClickListener: View.OnClickListener) {
-        smoothActionBar.setOnBackIndicatorClickListener(onBackIndicatorClickListener)
+        _smoothActionBar.setOnBackIndicatorClickListener(onBackIndicatorClickListener)
     }
 
     override fun getLeftActionContainer(): LinearLayout {
-        return smoothActionBar.getLeftActionContainer()
+        return _smoothActionBar.getLeftActionContainer()
     }
 
     override fun hideLeftActionContainer() {
-        smoothActionBar.hideLeftActionContainer()
+        _smoothActionBar.hideLeftActionContainer()
     }
 
     override fun showLeftActionContainer() {
-        smoothActionBar.showLeftActionContainer()
+        _smoothActionBar.showLeftActionContainer()
     }
 
     override fun getLeftActionInnerContainer(): FrameLayout {
-        return smoothActionBar.getLeftActionInnerContainer()
+        return _smoothActionBar.getLeftActionInnerContainer()
     }
 
     override fun hideLeftActionInnerContainer() {
-        smoothActionBar.hideLeftActionInnerContainer()
+        _smoothActionBar.hideLeftActionInnerContainer()
     }
 
     override fun showLeftActionInnerContainer() {
-        smoothActionBar.showLeftActionInnerContainer()
+        _smoothActionBar.showLeftActionInnerContainer()
     }
 
     override fun setLeftAction(
         text: CharSequence,
         onLeftActionClickListener: View.OnClickListener
     ) {
-        smoothActionBar.setLeftAction(text, onLeftActionClickListener)
+        _smoothActionBar.setLeftAction(text, onLeftActionClickListener)
     }
 
     override fun setLeftAction(id: Int, onLeftActionClickListener: View.OnClickListener) {
-        smoothActionBar.setLeftAction(id, onLeftActionClickListener)
+        _smoothActionBar.setLeftAction(id, onLeftActionClickListener)
     }
 
     override fun setLeftAction(
         drawable: Drawable,
         onLeftActionClickListener: View.OnClickListener
     ) {
-        smoothActionBar.setLeftAction(drawable, onLeftActionClickListener)
+        _smoothActionBar.setLeftAction(drawable, onLeftActionClickListener)
     }
 
     override fun setLeftAction(
         stateListDrawable: StateListDrawable,
         onLeftActionClickListener: View.OnClickListener
     ) {
-        smoothActionBar.setLeftAction(stateListDrawable, onLeftActionClickListener)
+        _smoothActionBar.setLeftAction(stateListDrawable, onLeftActionClickListener)
     }
 
     override fun setLeftActionText(text: CharSequence) {
-        smoothActionBar.setLeftActionText(text)
+        _smoothActionBar.setLeftActionText(text)
     }
 
     override fun setLeftActionText(id: Int) {
-        smoothActionBar.setLeftActionText(id)
+        _smoothActionBar.setLeftActionText(id)
     }
 
     override fun setLeftActionDrawable(drawable: Drawable) {
-        smoothActionBar.setLeftActionDrawable(drawable)
+        _smoothActionBar.setLeftActionDrawable(drawable)
     }
 
     override fun setLeftActionDrawable(id: Int) {
-        smoothActionBar.setLeftActionDrawable(id)
+        _smoothActionBar.setLeftActionDrawable(id)
     }
 
     override fun setLeftActionDrawable(stateListDrawable: StateListDrawable) {
-        smoothActionBar.setLeftActionDrawable(stateListDrawable)
+        _smoothActionBar.setLeftActionDrawable(stateListDrawable)
     }
 
     override fun setLeftActionTextColor(color: Int) {
-        smoothActionBar.setLeftActionTextColor(color)
+        _smoothActionBar.setLeftActionTextColor(color)
     }
 
     override fun setLeftActionTextColorRes(id: Int) {
-        smoothActionBar.setLeftActionTextColorRes(id)
+        _smoothActionBar.setLeftActionTextColorRes(id)
     }
 
     override fun setLeftActionTextColorStateList(colorStateList: ColorStateList) {
-        smoothActionBar.setLeftActionTextColorStateList(colorStateList)
+        _smoothActionBar.setLeftActionTextColorStateList(colorStateList)
     }
 
     override fun setLeftActionTextColorStateList(id: Int) {
-        smoothActionBar.setLeftActionTextColorStateList(id)
+        _smoothActionBar.setLeftActionTextColorStateList(id)
     }
 
     override fun setOnLeftActionClickListener(onLeftActionClickListener: View.OnClickListener) {
-        smoothActionBar.setOnLeftActionClickListener(onLeftActionClickListener)
+        _smoothActionBar.setOnLeftActionClickListener(onLeftActionClickListener)
     }
 
     override fun getLeftActionTextView(): TextView {
-        return smoothActionBar.getLeftActionTextView()
+        return _smoothActionBar.getLeftActionTextView()
     }
 
     override fun getLeftActionImageView(): ImageView {
-        return smoothActionBar.getLeftActionImageView()
+        return _smoothActionBar.getLeftActionImageView()
     }
 
     override fun hideLeftAction() {
-        smoothActionBar.hideLeftAction()
+        _smoothActionBar.hideLeftAction()
     }
 
     override fun showLeftAction() {
-        smoothActionBar.showLeftAction()
+        _smoothActionBar.showLeftAction()
     }
 
     override fun leftActionIsHidden(): Boolean {
-        return smoothActionBar.leftActionIsHidden()
+        return _smoothActionBar.leftActionIsHidden()
     }
 
     override fun toggleLeftActionHidden() {
-        smoothActionBar.toggleLeftActionHidden()
+        _smoothActionBar.toggleLeftActionHidden()
     }
 
     override fun getRightActionContainer(): LinearLayout {
-        return smoothActionBar.getRightActionContainer()
+        return _smoothActionBar.getRightActionContainer()
     }
 
     override fun hideRightActionContainer() {
-        smoothActionBar.hideRightActionContainer()
+        _smoothActionBar.hideRightActionContainer()
     }
 
     override fun showRightActionContainer() {
-        smoothActionBar.showRightActionContainer()
+        _smoothActionBar.showRightActionContainer()
     }
 
     override fun getRightActionInnerContainer(): FrameLayout {
-        return smoothActionBar.getRightActionInnerContainer()
+        return _smoothActionBar.getRightActionInnerContainer()
     }
 
     override fun hideRightActionInnerContainer() {
-        smoothActionBar.hideRightActionInnerContainer()
+        _smoothActionBar.hideRightActionInnerContainer()
     }
 
     override fun showRightActionInnerContainer() {
-        smoothActionBar.showRightActionInnerContainer()
+        _smoothActionBar.showRightActionInnerContainer()
     }
 
     override fun setRightAction(
         text: CharSequence,
         onRightActionClickListener: View.OnClickListener
     ) {
-        smoothActionBar.setRightAction(text, onRightActionClickListener)
+        _smoothActionBar.setRightAction(text, onRightActionClickListener)
     }
 
     override fun setRightAction(id: Int, onRightActionClickListener: View.OnClickListener) {
-        smoothActionBar.setRightAction(id, onRightActionClickListener)
+        _smoothActionBar.setRightAction(id, onRightActionClickListener)
     }
 
     override fun setRightAction(
         drawable: Drawable,
         onRightActionClickListener: View.OnClickListener
     ) {
-        smoothActionBar.setRightAction(drawable, onRightActionClickListener)
+        _smoothActionBar.setRightAction(drawable, onRightActionClickListener)
     }
 
     override fun setRightAction(
         stateListDrawable: StateListDrawable,
         onRightActionClickListener: View.OnClickListener
     ) {
-        smoothActionBar.setRightAction(stateListDrawable, onRightActionClickListener)
+        _smoothActionBar.setRightAction(stateListDrawable, onRightActionClickListener)
     }
 
     override fun setRightActionText(text: CharSequence) {
-        smoothActionBar.setRightActionText(text)
+        _smoothActionBar.setRightActionText(text)
     }
 
     override fun setRightActionText(id: Int) {
-        smoothActionBar.setRightActionText(id)
+        _smoothActionBar.setRightActionText(id)
     }
 
     override fun setRightActionDrawable(drawable: Drawable) {
-        smoothActionBar.setRightActionDrawable(drawable)
+        _smoothActionBar.setRightActionDrawable(drawable)
     }
 
     override fun setRightActionDrawable(id: Int) {
-        smoothActionBar.setRightActionDrawable(id)
+        _smoothActionBar.setRightActionDrawable(id)
     }
 
     override fun setRightActionDrawable(stateListDrawable: StateListDrawable) {
-        smoothActionBar.setRightActionDrawable(stateListDrawable)
+        _smoothActionBar.setRightActionDrawable(stateListDrawable)
     }
 
     override fun setRightActionTextColor(color: Int) {
-        smoothActionBar.setRightActionTextColor(color)
+        _smoothActionBar.setRightActionTextColor(color)
     }
 
     override fun setRightActionTextColorRes(id: Int) {
-        smoothActionBar.setRightActionTextColorRes(id)
+        _smoothActionBar.setRightActionTextColorRes(id)
     }
 
     override fun setRightActionTextColorStateList(colorStateList: ColorStateList) {
-        smoothActionBar.setRightActionTextColorStateList(colorStateList)
+        _smoothActionBar.setRightActionTextColorStateList(colorStateList)
     }
 
     override fun setRightActionTextColorStateList(id: Int) {
-        smoothActionBar.setRightActionTextColorStateList(id)
+        _smoothActionBar.setRightActionTextColorStateList(id)
     }
 
     override fun setOnRightActionClickListener(onRightActionClickListener: View.OnClickListener) {
-        smoothActionBar.setOnRightActionClickListener(onRightActionClickListener)
+        _smoothActionBar.setOnRightActionClickListener(onRightActionClickListener)
     }
 
     override fun getRightActionTextView(): TextView {
-        return smoothActionBar.getRightActionTextView()
+        return _smoothActionBar.getRightActionTextView()
     }
 
     override fun getRightActionImageView(): ImageView {
-        return smoothActionBar.getRightActionImageView()
+        return _smoothActionBar.getRightActionImageView()
     }
 
     override fun hideRightAction() {
-        smoothActionBar.hideRightAction()
+        _smoothActionBar.hideRightAction()
     }
 
     override fun showRightAction() {
-        smoothActionBar.showRightAction()
+        _smoothActionBar.showRightAction()
     }
 
     override fun rightActionIsHidden(): Boolean {
-        return smoothActionBar.rightActionIsHidden()
+        return _smoothActionBar.rightActionIsHidden()
     }
 
     override fun toggleRightActionHidden() {
-        smoothActionBar.toggleRightActionHidden()
+        _smoothActionBar.toggleRightActionHidden()
     }
 
     override fun setCustomActionBarView(view: View) {
-        smoothActionBar.setCustomActionBarView(view)
+        _smoothActionBar.setCustomActionBarView(view)
     }
 
     override fun setCustomActionBarView(id: Int) {
-        smoothActionBar.setCustomActionBarView(id)
+        _smoothActionBar.setCustomActionBarView(id)
     }
 
     override fun getCustomViewContainer(): FrameLayout {
-        return smoothActionBar.getCustomViewContainer()
+        return _smoothActionBar.getCustomViewContainer()
     }
 
     override fun hideCustomViewContainer() {
-        smoothActionBar.hideCustomViewContainer()
+        _smoothActionBar.hideCustomViewContainer()
     }
 
     override fun showCustomViewContainer() {
-        smoothActionBar.showCustomViewContainer()
+        _smoothActionBar.showCustomViewContainer()
     }
 
     override fun getCenterTitleContainer(): LinearLayout {
-        return smoothActionBar.getCenterTitleContainer()
+        return _smoothActionBar.getCenterTitleContainer()
     }
 
     override fun hideCenterTitleContainer() {
-        smoothActionBar.hideCenterTitleContainer()
+        _smoothActionBar.hideCenterTitleContainer()
     }
 
     override fun showCenterTitleContainer() {
-        smoothActionBar.showCenterTitleContainer()
+        _smoothActionBar.showCenterTitleContainer()
     }
 
     override fun setTitle(text: CharSequence) {
-        smoothActionBar.setTitle(text)
+        _smoothActionBar.setTitle(text)
     }
 
     override fun setTitle(id: Int) {
-        smoothActionBar.setTitle(id)
+        _smoothActionBar.setTitle(id)
     }
 
     override fun setTitleTextColor(color: Int) {
-        smoothActionBar.setTitleTextColor(color)
+        _smoothActionBar.setTitleTextColor(color)
     }
 
     override fun setTitleTextColorRes(id: Int) {
-        smoothActionBar.setTitleTextColorRes(id)
+        _smoothActionBar.setTitleTextColorRes(id)
     }
 
     override fun setTitleTextColorStateList(colorStateList: ColorStateList) {
-        smoothActionBar.setTitleTextColorStateList(colorStateList)
+        _smoothActionBar.setTitleTextColorStateList(colorStateList)
     }
 
     override fun setTitleTextColorStateList(id: Int) {
-        smoothActionBar.setTitleTextColorStateList(id)
+        _smoothActionBar.setTitleTextColorStateList(id)
     }
 
     override fun getTitleView(): TextView {
-        return smoothActionBar.getTitleView()
+        return _smoothActionBar.getTitleView()
     }
 
     override fun hideTitle() {
-        smoothActionBar.hideTitle()
+        _smoothActionBar.hideTitle()
     }
 
     override fun showTitle() {
-        smoothActionBar.showTitle()
+        _smoothActionBar.showTitle()
     }
 
     override fun titleIsHidden(): Boolean {
-        return smoothActionBar.titleIsHidden()
+        return _smoothActionBar.titleIsHidden()
     }
 
     override fun toggleTitleHidden() {
-        smoothActionBar.toggleTitleHidden()
+        _smoothActionBar.toggleTitleHidden()
     }
 
     override fun setSubtitle(text: CharSequence) {
-        smoothActionBar.setSubtitle(text)
+        _smoothActionBar.setSubtitle(text)
     }
 
     override fun setSubtitle(id: Int) {
-        smoothActionBar.setSubtitle(id)
+        _smoothActionBar.setSubtitle(id)
     }
 
     override fun setSubtitleTextColor(color: Int) {
-        smoothActionBar.setSubtitleTextColor(color)
+        _smoothActionBar.setSubtitleTextColor(color)
     }
 
     override fun setSubtitleTextColorRes(id: Int) {
-        smoothActionBar.setSubtitleTextColorRes(id)
+        _smoothActionBar.setSubtitleTextColorRes(id)
     }
 
     override fun setSubtitleTextColorStateList(colorStateList: ColorStateList) {
-        smoothActionBar.setSubtitleTextColorStateList(colorStateList)
+        _smoothActionBar.setSubtitleTextColorStateList(colorStateList)
     }
 
     override fun setSubtitleTextColorStateList(id: Int) {
-        smoothActionBar.setSubtitleTextColorStateList(id)
+        _smoothActionBar.setSubtitleTextColorStateList(id)
     }
 
     override fun getSubtitleView(): TextView {
-        return smoothActionBar.getSubtitleView()
+        return _smoothActionBar.getSubtitleView()
     }
 
     override fun hideSubtitle() {
-        smoothActionBar.hideSubtitle()
+        _smoothActionBar.hideSubtitle()
     }
 
     override fun showSubtitle() {
-        smoothActionBar.showSubtitle()
+        _smoothActionBar.showSubtitle()
     }
 
     override fun subtitleViewIsHidden(): Boolean {
-        return smoothActionBar.subtitleViewIsHidden()
+        return _smoothActionBar.subtitleViewIsHidden()
     }
 
     override fun toggleSubtitleHidden() {
-        smoothActionBar.toggleSubtitleHidden()
+        _smoothActionBar.toggleSubtitleHidden()
     }
 
     override fun hideAllTitle() {
-        smoothActionBar.hideAllTitle()
+        _smoothActionBar.hideAllTitle()
     }
 
     override fun showAllTitle() {
-        smoothActionBar.showAllTitle()
+        _smoothActionBar.showAllTitle()
     }
 
     override fun createRightMenu(id: Int, menuInflater: MenuInflater) {
-        smoothActionBar.createRightMenu(id, menuInflater)
+        _smoothActionBar.createRightMenu(id, menuInflater)
     }
 
     override fun setMenu(menu: Menu) {
-        smoothActionBar.setMenu(menu)
+        _smoothActionBar.setMenu(menu)
     }
 
     override fun getMenuView(): SmoothActionMenuView {
-        return smoothActionBar.getMenuView()
+        return _smoothActionBar.getMenuView()
     }
 
     override fun hideMenu() {
-        smoothActionBar.hideMenu()
+        _smoothActionBar.hideMenu()
     }
 
     override fun showMenu() {
-        smoothActionBar.showMenu()
+        _smoothActionBar.showMenu()
     }
 
     override fun menuIsHidden(): Boolean {
-        return smoothActionBar.menuIsHidden()
+        return _smoothActionBar.menuIsHidden()
     }
 
     override fun toggleMenuHidden() {
-        smoothActionBar.toggleMenuHidden()
+        _smoothActionBar.toggleMenuHidden()
     }
 
     override fun setOnRightMenuItemClickListener(onMenuItemClickListener: MenuItem.OnMenuItemClickListener) {
-        smoothActionBar.setOnRightMenuItemClickListener(onMenuItemClickListener)
+        _smoothActionBar.setOnRightMenuItemClickListener(onMenuItemClickListener)
     }
 
     override fun setMenuIndicatorDrawable(drawable: Drawable) {
-        smoothActionBar.setMenuIndicatorDrawable(drawable)
+        _smoothActionBar.setMenuIndicatorDrawable(drawable)
     }
 
     override fun setMenuIndicatorDrawable(id: Int) {
-        smoothActionBar.setMenuIndicatorDrawable(id)
+        _smoothActionBar.setMenuIndicatorDrawable(id)
     }
 
     override fun setMenuIndicatorDrawable(stateListDrawable: StateListDrawable) {
-        smoothActionBar.setMenuIndicatorDrawable(stateListDrawable)
+        _smoothActionBar.setMenuIndicatorDrawable(stateListDrawable)
     }
 
     override fun setMenuIndicatorColor(color: Int) {
-        smoothActionBar.setMenuIndicatorColor(color)
+        _smoothActionBar.setMenuIndicatorColor(color)
     }
 
     override fun setMenuIndicatorColorRes(id: Int) {
-        smoothActionBar.setMenuIndicatorColorRes(id)
+        _smoothActionBar.setMenuIndicatorColorRes(id)
     }
 
     override fun setMenuIndicatorColorStateList(colorStateList: ColorStateList) {
-        smoothActionBar.setMenuIndicatorColorStateList(colorStateList)
+        _smoothActionBar.setMenuIndicatorColorStateList(colorStateList)
     }
 
     override fun setMenuIndicatorColorStateList(id: Int) {
-        smoothActionBar.setMenuIndicatorColorStateList(id)
+        _smoothActionBar.setMenuIndicatorColorStateList(id)
     }
 
     override fun getInitActionBarHeight(): Float {
-        return smoothActionBar.getInitActionBarHeight()
+        return _smoothActionBar.getInitActionBarHeight()
     }
 
     override fun getRealActionBarHeight(): Float {
-        return smoothActionBar.getRealActionBarHeight()
+        return _smoothActionBar.getRealActionBarHeight()
     }
 
     override fun showLeftActionBarActivityIndicator() {
-        smoothActionBar.showLeftActionBarActivityIndicator()
+        _smoothActionBar.showLeftActionBarActivityIndicator()
     }
 
     override fun hideLeftActionBarActivityIndicator() {
-        smoothActionBar.hideLeftActionBarActivityIndicator()
+        _smoothActionBar.hideLeftActionBarActivityIndicator()
     }
 
     override fun showCenterActionBarActivityIndicator() {
-        smoothActionBar.showCenterActionBarActivityIndicator()
+        _smoothActionBar.showCenterActionBarActivityIndicator()
     }
 
     override fun hideCenterActionBarActivityIndicator() {
-        smoothActionBar.hideCenterActionBarActivityIndicator()
+        _smoothActionBar.hideCenterActionBarActivityIndicator()
     }
 
     override fun showRightActionBarActivityIndicator() {
-        smoothActionBar.showRightActionBarActivityIndicator()
+        _smoothActionBar.showRightActionBarActivityIndicator()
     }
 
     override fun hideRightActionBarActivityIndicator() {
-        smoothActionBar.hideRightActionBarActivityIndicator()
+        _smoothActionBar.hideRightActionBarActivityIndicator()
     }
 
     fun adaptView(viewGroup: View, paddingTop: Int = 0) {

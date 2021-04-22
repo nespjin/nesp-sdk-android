@@ -7,10 +7,7 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.StateListDrawable
 import android.util.AttributeSet
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.*
 import androidx.annotation.MenuRes
 import androidx.core.view.isVisible
@@ -21,8 +18,8 @@ import com.nesp.sdk.android.core.ktx.content.getColorStateListCompat
 import com.nesp.sdk.android.core.ktx.content.getDrawableCompat
 import com.nesp.sdk.android.core.ktx.widget.gone
 import com.nesp.sdk.android.core.ktx.widget.visible
+import com.nesp.sdk.android.databinding.SmoothActionBarBinding
 import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
-import com.nesp.sdk.android.smooth.widget.SmoothActivityIndicator
 import com.nesp.sdk.android.util.AttrUtil
 import com.nesp.sdk.android.util.WindowUtil
 
@@ -36,110 +33,88 @@ import com.nesp.sdk.android.util.WindowUtil
  **/
 class SmoothActionBar : RelativeLayout, ISmoothActionBar {
 
-    private val rlSmoothActionBarContainer: RelativeLayout by lazy { findViewById(R.id.rlSmoothActionBarContainer) }
-    private val rlContentRoot: RelativeLayout by lazy { findViewById(R.id.rlContentRoot) }
-    private val mRealtimeBlurView: RealtimeBlurView by lazy { findViewById(R.id.realtimeBlurView) }
-    private val ivBackIndicator: ImageView by lazy { findViewById(R.id.ivBackIndicator) }
-    private val tvLeftAction: TextView by lazy { findViewById(R.id.tvLeftAction) }
-    private val ivLeftAction: ImageView by lazy { findViewById(R.id.ivLeftAction) }
-    private val llLeftActionContainer: LinearLayout by lazy { findViewById(R.id.llLeftActionContainer) }
-    private val flLeftActionContainer: FrameLayout by lazy { findViewById(R.id.flLeftActionContainer) }
-    private val tvRightAction: TextView by lazy { findViewById(R.id.tvRightAction) }
-    private val ivRightAction: ImageView by lazy { findViewById(R.id.ivRightAction) }
-    private val smoothActionMenuView: SmoothActionMenuView by lazy { findViewById(R.id.smoothActionMenuView) }
-    private val llRightActionContainer: LinearLayout by lazy { findViewById(R.id.llRightActionContainer) }
-    private val flRightActionContainer: FrameLayout by lazy { findViewById(R.id.flRightActionContainer) }
-    private val flCustomViewContainer: FrameLayout by lazy { findViewById(R.id.flCustomViewContainer) }
-    private val llCenterTitleContainer: LinearLayout by lazy { findViewById(R.id.llCenterTitleContainer) }
-    private val tvTitle: TextView by lazy { findViewById(R.id.tvTitle) }
-    private val tvSubtitle: TextView by lazy { findViewById(R.id.tvSubtitle) }
-
-    private val smoothActivityIndicatorLeft: SmoothActivityIndicator by lazy {
-        findViewById(R.id.smoothActivityIndicatorLeft)
-    }
-    private val smoothActivityIndicatorRight: SmoothActivityIndicator by lazy {
-        findViewById(R.id.smoothActivityIndicatorRight)
-    }
-    private val smoothActivityIndicatorCenter: SmoothActivityIndicator by lazy {
-        findViewById(R.id.smoothActivityIndicatorCenter)
-    }
+    private var viewBinding: SmoothActionBarBinding =
+        SmoothActionBarBinding.inflate(LayoutInflater.from(context), this, true)
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
         context, attrs, defStyleAttr
-    ) {
-        inflate(context, R.layout.smooth_action_bar, this)
-    }
+    )
 
     override fun setBackgroundColor(color: Int) {
-        this.rlSmoothActionBarContainer.setBackgroundColor(color)
+        this.viewBinding.rlSmoothActionBarContainer.setBackgroundColor(color)
     }
 
     override fun setBackgroundColorRes(id: Int) {
-        this.rlSmoothActionBarContainer.setBackgroundColor(context.getColorCompat(id))
+        this.viewBinding.rlSmoothActionBarContainer.setBackgroundColor(context.getColorCompat(id))
     }
 
     override fun setBackgroundColorStateList(colorStateList: ColorStateList) {
-        this.rlSmoothActionBarContainer.backgroundTintList = colorStateList
+        this.viewBinding.rlSmoothActionBarContainer.backgroundTintList = colorStateList
     }
 
     override fun setBackgroundColorStateList(id: Int) {
-        this.rlSmoothActionBarContainer.backgroundTintList = context.getColorStateListCompat(id)
+        this.viewBinding.rlSmoothActionBarContainer.backgroundTintList =
+            context.getColorStateListCompat(id)
     }
 
     override fun disableRealtimeBlur() {
-        this.mRealtimeBlurView.setBlurRadius(0F)
-        this.mRealtimeBlurView.gone()
-        this.rlSmoothActionBarContainer.removeView(this.mRealtimeBlurView)
-        this.rlSmoothActionBarContainer.setBackgroundColor(
-            context.getColorCompat(AttrUtil.getAttrOutTypeValue(context,
-                R.attr.smoothActionBarBackground).resourceId)
+        this.viewBinding.realtimeBlurView.setBlurRadius(0F)
+        this.viewBinding.realtimeBlurView.gone()
+        this.viewBinding.rlSmoothActionBarContainer.removeView(this.viewBinding.realtimeBlurView)
+        this.viewBinding.rlSmoothActionBarContainer.setBackgroundColor(
+            context.getColorCompat(
+                AttrUtil.getAttrOutTypeValue(
+                    context,
+                    R.attr.smoothActionBarBackground
+                ).resourceId
+            )
         )
     }
 
     override fun getRealtimeBlurView(): RealtimeBlurView {
-        return this.mRealtimeBlurView
+        return this.viewBinding.realtimeBlurView
     }
 
     override fun setBackIndicatorDrawable(drawable: Drawable) {
-        ivBackIndicator.setImageDrawable(drawable)
+        viewBinding.ivBackIndicator.setImageDrawable(drawable)
     }
 
     override fun setBackIndicatorDrawable(id: Int) {
-        ivBackIndicator.setImageResource(id)
+        viewBinding.ivBackIndicator.setImageResource(id)
     }
 
     override fun setBackIndicatorDrawable(stateListDrawable: StateListDrawable) {
-        ivBackIndicator.setImageState(stateListDrawable.state, false)
+        viewBinding.ivBackIndicator.setImageState(stateListDrawable.state, false)
     }
 
     override fun setBackIndicatorColor(color: Int) {
-        ivBackIndicator.imageTintList = ColorStateList.valueOf(color)
+        viewBinding.ivBackIndicator.imageTintList = ColorStateList.valueOf(color)
     }
 
     override fun setBackIndicatorColorStateList(colorStateList: ColorStateList) {
-        ivBackIndicator.imageTintList = colorStateList
+        viewBinding.ivBackIndicator.imageTintList = colorStateList
     }
 
     override fun setBackIndicatorColorStateList(id: Int) {
-        ivBackIndicator.imageTintList = context.getColorStateListCompat(id)
+        viewBinding.ivBackIndicator.imageTintList = context.getColorStateListCompat(id)
     }
 
     override fun getBackIndicator(): ImageView {
-        return ivBackIndicator
+        return viewBinding.ivBackIndicator
     }
 
     override fun backIndicatorIsHidden(): Boolean {
-        return !ivBackIndicator.isVisible
+        return !viewBinding.ivBackIndicator.isVisible
     }
 
     override fun hideBackIndicator() {
-        hideView(ivBackIndicator)
+        hideView(viewBinding.ivBackIndicator)
     }
 
     override fun showBackIndicator() {
-        showView(ivBackIndicator)
+        showView(viewBinding.ivBackIndicator)
     }
 
     override fun toggleBackIndicatorHidden() {
@@ -155,170 +130,170 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
     }
 
     override fun setOnBackIndicatorClickListener(onBackIndicatorClickListener: OnClickListener) {
-        ivBackIndicator.setOnClickListener(onBackIndicatorClickListener)
+        viewBinding.ivBackIndicator.setOnClickListener(onBackIndicatorClickListener)
     }
 
     override fun getLeftActionContainer(): LinearLayout {
-        return llLeftActionContainer
+        return viewBinding.llLeftActionContainer
     }
 
     override fun hideLeftActionContainer() {
-        hideView(llLeftActionContainer)
+        hideView(viewBinding.llLeftActionContainer)
     }
 
     override fun showLeftActionContainer() {
-        showView(llLeftActionContainer)
+        showView(viewBinding.llLeftActionContainer)
     }
 
     override fun getLeftActionInnerContainer(): FrameLayout {
-        return flLeftActionContainer
+        return viewBinding.flLeftActionContainer
     }
 
     override fun hideLeftActionInnerContainer() {
-        hideView(flLeftActionContainer)
+        hideView(viewBinding.flLeftActionContainer)
     }
 
     override fun showLeftActionInnerContainer() {
-        showView(flLeftActionContainer)
+        showView(viewBinding.flLeftActionContainer)
     }
 
     override fun setLeftAction(text: CharSequence, onLeftActionClickListener: OnClickListener) {
-        tvLeftAction.visible()
-        ivLeftAction.gone()
-        tvLeftAction.text = text
-        tvLeftAction.setOnClickListener(onLeftActionClickListener)
+        viewBinding.tvLeftAction.visible()
+        viewBinding.ivLeftAction.gone()
+        viewBinding.tvLeftAction.text = text
+        viewBinding.tvLeftAction.setOnClickListener(onLeftActionClickListener)
     }
 
     override fun setLeftAction(id: Int, onLeftActionClickListener: OnClickListener) {
         try {
             val drawableCompat = context.getDrawableCompat(id)
             if (drawableCompat != null) {
-                tvLeftAction.gone()
-                ivLeftAction.visible()
-                ivLeftAction.setImageDrawable(drawableCompat)
-                ivLeftAction.setOnClickListener(onLeftActionClickListener)
+                viewBinding.tvLeftAction.gone()
+                viewBinding.ivLeftAction.visible()
+                viewBinding.ivLeftAction.setImageDrawable(drawableCompat)
+                viewBinding.ivLeftAction.setOnClickListener(onLeftActionClickListener)
             } else {
-                tvLeftAction.visible()
-                ivLeftAction.gone()
-                tvLeftAction.text = context.getString(id)
-                tvLeftAction.setOnClickListener(onLeftActionClickListener)
+                viewBinding.tvLeftAction.visible()
+                viewBinding.ivLeftAction.gone()
+                viewBinding.tvLeftAction.text = context.getString(id)
+                viewBinding.tvLeftAction.setOnClickListener(onLeftActionClickListener)
             }
         } catch (e: Exception) {
-            tvLeftAction.visible()
-            ivLeftAction.gone()
-            tvLeftAction.text = context.getString(id)
-            tvLeftAction.setOnClickListener(onLeftActionClickListener)
+            viewBinding.tvLeftAction.visible()
+            viewBinding.ivLeftAction.gone()
+            viewBinding.tvLeftAction.text = context.getString(id)
+            viewBinding.tvLeftAction.setOnClickListener(onLeftActionClickListener)
         }
     }
 
     override fun setLeftAction(drawable: Drawable, onLeftActionClickListener: OnClickListener) {
-        tvLeftAction.gone()
-        ivLeftAction.visible()
-        ivLeftAction.setImageDrawable(drawable)
-        ivLeftAction.setOnClickListener(onLeftActionClickListener)
+        viewBinding.tvLeftAction.gone()
+        viewBinding.ivLeftAction.visible()
+        viewBinding.ivLeftAction.setImageDrawable(drawable)
+        viewBinding.ivLeftAction.setOnClickListener(onLeftActionClickListener)
     }
 
     override fun setLeftAction(
         stateListDrawable: StateListDrawable,
         onLeftActionClickListener: OnClickListener
     ) {
-        tvLeftAction.gone()
-        ivLeftAction.visible()
-        ivLeftAction.setImageState(stateListDrawable.state, false)
-        ivLeftAction.setOnClickListener(onLeftActionClickListener)
+        viewBinding.tvLeftAction.gone()
+        viewBinding.ivLeftAction.visible()
+        viewBinding.ivLeftAction.setImageState(stateListDrawable.state, false)
+        viewBinding.ivLeftAction.setOnClickListener(onLeftActionClickListener)
     }
 
     override fun setLeftActionText(text: CharSequence) {
-        tvLeftAction.visible()
-        ivLeftAction.gone()
-        tvLeftAction.text = text
+        viewBinding.tvLeftAction.visible()
+        viewBinding.ivLeftAction.gone()
+        viewBinding.tvLeftAction.text = text
     }
 
     override fun setLeftActionText(id: Int) {
-        tvLeftAction.visible()
-        ivLeftAction.gone()
-        tvLeftAction.text = context.getString(id)
+        viewBinding.tvLeftAction.visible()
+        viewBinding.ivLeftAction.gone()
+        viewBinding.tvLeftAction.text = context.getString(id)
     }
 
     override fun setLeftActionDrawable(drawable: Drawable) {
-        tvLeftAction.gone()
-        ivLeftAction.visible()
-        ivLeftAction.setImageDrawable(drawable)
+        viewBinding.tvLeftAction.gone()
+        viewBinding.ivLeftAction.visible()
+        viewBinding.ivLeftAction.setImageDrawable(drawable)
     }
 
     override fun setLeftActionDrawable(id: Int) {
-        tvLeftAction.gone()
-        ivLeftAction.visible()
-        ivLeftAction.setImageDrawable(context.getDrawableCompat(id))
+        viewBinding.tvLeftAction.gone()
+        viewBinding.ivLeftAction.visible()
+        viewBinding.ivLeftAction.setImageDrawable(context.getDrawableCompat(id))
     }
 
     override fun setLeftActionDrawable(stateListDrawable: StateListDrawable) {
-        tvLeftAction.gone()
-        ivLeftAction.visible()
-        ivLeftAction.setImageState(stateListDrawable.state, false)
+        viewBinding.tvLeftAction.gone()
+        viewBinding.ivLeftAction.visible()
+        viewBinding.ivLeftAction.setImageState(stateListDrawable.state, false)
     }
 
     override fun setLeftActionTextColor(color: Int) {
-        tvLeftAction.visible()
-        ivLeftAction.gone()
-        tvLeftAction.setTextColor(color)
+        viewBinding.tvLeftAction.visible()
+        viewBinding.ivLeftAction.gone()
+        viewBinding.tvLeftAction.setTextColor(color)
     }
 
     override fun setLeftActionTextColorRes(id: Int) {
-        tvLeftAction.visible()
-        ivLeftAction.gone()
-        tvLeftAction.setTextColor(context.getColorCompat(id))
+        viewBinding.tvLeftAction.visible()
+        viewBinding.ivLeftAction.gone()
+        viewBinding.tvLeftAction.setTextColor(context.getColorCompat(id))
     }
 
     override fun setLeftActionTextColorStateList(colorStateList: ColorStateList) {
-        tvLeftAction.visible()
-        ivLeftAction.gone()
-        tvLeftAction.setTextColor(colorStateList)
+        viewBinding.tvLeftAction.visible()
+        viewBinding.ivLeftAction.gone()
+        viewBinding.tvLeftAction.setTextColor(colorStateList)
     }
 
     override fun setLeftActionTextColorStateList(id: Int) {
-        tvLeftAction.visible()
-        ivLeftAction.gone()
-        tvLeftAction.setTextColor(context.getColorStateListCompat(id))
+        viewBinding.tvLeftAction.visible()
+        viewBinding.ivLeftAction.gone()
+        viewBinding.tvLeftAction.setTextColor(context.getColorStateListCompat(id))
     }
 
     override fun setOnLeftActionClickListener(onLeftActionClickListener: OnClickListener) {
-        tvLeftAction.setOnClickListener(onLeftActionClickListener)
-        ivLeftAction.setOnClickListener(onLeftActionClickListener)
-        if (tvLeftAction.text.isEmpty()) {
-            tvLeftAction.gone()
-            ivLeftAction.visible()
+        viewBinding.tvLeftAction.setOnClickListener(onLeftActionClickListener)
+        viewBinding.ivLeftAction.setOnClickListener(onLeftActionClickListener)
+        if (viewBinding.tvLeftAction.text.isEmpty()) {
+            viewBinding.tvLeftAction.gone()
+            viewBinding.ivLeftAction.visible()
         } else {
-            tvLeftAction.visible()
-            ivLeftAction.gone()
+            viewBinding.tvLeftAction.visible()
+            viewBinding.ivLeftAction.gone()
         }
     }
 
     override fun getLeftActionTextView(): TextView {
-        return tvLeftAction
+        return viewBinding.tvLeftAction
     }
 
     override fun getLeftActionImageView(): ImageView {
-        return ivLeftAction
+        return viewBinding.ivLeftAction
     }
 
     override fun hideLeftAction() {
-        hideView(tvLeftAction)
-        hideView(ivLeftAction)
+        hideView(viewBinding.tvLeftAction)
+        hideView(viewBinding.ivLeftAction)
     }
 
     override fun showLeftAction() {
-        if (tvLeftAction.text.isEmpty()) {
-            tvLeftAction.gone()
-            showView(ivLeftAction)
+        if (viewBinding.tvLeftAction.text.isEmpty()) {
+            viewBinding.tvLeftAction.gone()
+            showView(viewBinding.ivLeftAction)
         } else {
-            ivLeftAction.gone()
-            showView(tvLeftAction)
+            viewBinding.ivLeftAction.gone()
+            showView(viewBinding.tvLeftAction)
         }
     }
 
     override fun leftActionIsHidden(): Boolean {
-        return !tvLeftAction.isVisible && !ivLeftAction.isVisible
+        return !viewBinding.tvLeftAction.isVisible && !viewBinding.ivLeftAction.isVisible
     }
 
     override fun toggleLeftActionHidden() {
@@ -330,166 +305,166 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
     }
 
     override fun getRightActionContainer(): LinearLayout {
-        return llRightActionContainer
+        return viewBinding.llRightActionContainer
     }
 
     override fun hideRightActionContainer() {
-        hideView(llRightActionContainer)
+        hideView(viewBinding.llRightActionContainer)
     }
 
     override fun showRightActionContainer() {
-        showView(llRightActionContainer)
+        showView(viewBinding.llRightActionContainer)
     }
 
     override fun getRightActionInnerContainer(): FrameLayout {
-        return flRightActionContainer
+        return viewBinding.flRightActionContainer
     }
 
     override fun hideRightActionInnerContainer() {
-        hideView(flRightActionContainer)
+        hideView(viewBinding.flRightActionContainer)
     }
 
     override fun showRightActionInnerContainer() {
-        showView(flRightActionContainer)
+        showView(viewBinding.flRightActionContainer)
     }
 
     override fun setRightAction(text: CharSequence, onRightActionClickListener: OnClickListener) {
-        tvRightAction.visible()
-        ivRightAction.gone()
-        tvRightAction.text = text
-        tvRightAction.setOnClickListener(onRightActionClickListener)
+        viewBinding.tvRightAction.visible()
+        viewBinding.ivRightAction.gone()
+        viewBinding.tvRightAction.text = text
+        viewBinding.tvRightAction.setOnClickListener(onRightActionClickListener)
     }
 
     override fun setRightAction(id: Int, onRightActionClickListener: OnClickListener) {
         try {
             val drawableCompat = context.getDrawableCompat(id)
             if (drawableCompat != null) {
-                tvRightAction.gone()
-                ivRightAction.visible()
-                ivRightAction.setImageDrawable(drawableCompat)
-                ivRightAction.setOnClickListener(onRightActionClickListener)
+                viewBinding.tvRightAction.gone()
+                viewBinding.ivRightAction.visible()
+                viewBinding.ivRightAction.setImageDrawable(drawableCompat)
+                viewBinding.ivRightAction.setOnClickListener(onRightActionClickListener)
             } else {
-                tvRightAction.visible()
-                ivRightAction.gone()
-                tvRightAction.text = context.getString(id)
-                tvRightAction.setOnClickListener(onRightActionClickListener)
+                viewBinding.tvRightAction.visible()
+                viewBinding.ivRightAction.gone()
+                viewBinding.tvRightAction.text = context.getString(id)
+                viewBinding.tvRightAction.setOnClickListener(onRightActionClickListener)
             }
         } catch (e: Exception) {
-            tvRightAction.visible()
-            ivRightAction.gone()
-            tvRightAction.text = context.getString(id)
-            tvRightAction.setOnClickListener(onRightActionClickListener)
+            viewBinding.tvRightAction.visible()
+            viewBinding.ivRightAction.gone()
+            viewBinding.tvRightAction.text = context.getString(id)
+            viewBinding.tvRightAction.setOnClickListener(onRightActionClickListener)
         }
     }
 
     override fun setRightAction(drawable: Drawable, onRightActionClickListener: OnClickListener) {
-        tvRightAction.gone()
-        ivRightAction.visible()
-        ivRightAction.setImageDrawable(drawable)
-        ivRightAction.setOnClickListener(onRightActionClickListener)
+        viewBinding.tvRightAction.gone()
+        viewBinding.ivRightAction.visible()
+        viewBinding.ivRightAction.setImageDrawable(drawable)
+        viewBinding.ivRightAction.setOnClickListener(onRightActionClickListener)
     }
 
     override fun setRightAction(
         stateListDrawable: StateListDrawable,
         onRightActionClickListener: OnClickListener
     ) {
-        tvRightAction.gone()
-        ivRightAction.visible()
-        ivRightAction.setImageState(stateListDrawable.state, false)
-        ivRightAction.setOnClickListener(onRightActionClickListener)
+        viewBinding.tvRightAction.gone()
+        viewBinding.ivRightAction.visible()
+        viewBinding.ivRightAction.setImageState(stateListDrawable.state, false)
+        viewBinding.ivRightAction.setOnClickListener(onRightActionClickListener)
     }
 
     override fun setRightActionText(text: CharSequence) {
-        tvRightAction.visible()
-        ivRightAction.gone()
-        tvRightAction.text = text
+        viewBinding.tvRightAction.visible()
+        viewBinding.ivRightAction.gone()
+        viewBinding.tvRightAction.text = text
     }
 
     override fun setRightActionText(id: Int) {
-        tvRightAction.visible()
-        ivRightAction.gone()
-        tvRightAction.text = context.getString(id)
+        viewBinding.tvRightAction.visible()
+        viewBinding.ivRightAction.gone()
+        viewBinding.tvRightAction.text = context.getString(id)
     }
 
     override fun setRightActionDrawable(drawable: Drawable) {
-        tvRightAction.gone()
-        ivRightAction.visible()
-        ivRightAction.setImageDrawable(drawable)
+        viewBinding.tvRightAction.gone()
+        viewBinding.ivRightAction.visible()
+        viewBinding.ivRightAction.setImageDrawable(drawable)
     }
 
     override fun setRightActionDrawable(id: Int) {
-        tvRightAction.gone()
-        ivRightAction.visible()
-        ivRightAction.setImageDrawable(context.getDrawableCompat(id))
+        viewBinding.tvRightAction.gone()
+        viewBinding.ivRightAction.visible()
+        viewBinding.ivRightAction.setImageDrawable(context.getDrawableCompat(id))
     }
 
     override fun setRightActionDrawable(stateListDrawable: StateListDrawable) {
-        tvRightAction.gone()
-        ivRightAction.visible()
-        ivRightAction.setImageState(stateListDrawable.state, false)
+        viewBinding.tvRightAction.gone()
+        viewBinding.ivRightAction.visible()
+        viewBinding.ivRightAction.setImageState(stateListDrawable.state, false)
     }
 
     override fun setRightActionTextColor(color: Int) {
-        tvRightAction.visible()
-        ivRightAction.gone()
-        tvRightAction.setTextColor(color)
+        viewBinding.tvRightAction.visible()
+        viewBinding.ivRightAction.gone()
+        viewBinding.tvRightAction.setTextColor(color)
     }
 
     override fun setRightActionTextColorRes(id: Int) {
-        tvRightAction.visible()
-        ivRightAction.gone()
-        tvRightAction.setTextColor(context.getColorCompat(id))
+        viewBinding.tvRightAction.visible()
+        viewBinding.ivRightAction.gone()
+        viewBinding.tvRightAction.setTextColor(context.getColorCompat(id))
     }
 
     override fun setRightActionTextColorStateList(colorStateList: ColorStateList) {
-        tvRightAction.visible()
-        ivRightAction.gone()
-        tvRightAction.setTextColor(colorStateList)
+        viewBinding.tvRightAction.visible()
+        viewBinding.ivRightAction.gone()
+        viewBinding.tvRightAction.setTextColor(colorStateList)
     }
 
     override fun setRightActionTextColorStateList(id: Int) {
-        tvRightAction.visible()
-        ivRightAction.gone()
-        tvRightAction.setTextColor(context.getColorStateListCompat(id))
+        viewBinding.tvRightAction.visible()
+        viewBinding.ivRightAction.gone()
+        viewBinding.tvRightAction.setTextColor(context.getColorStateListCompat(id))
     }
 
     override fun setOnRightActionClickListener(onRightActionClickListener: OnClickListener) {
-        tvRightAction.setOnClickListener(onRightActionClickListener)
-        ivRightAction.setOnClickListener(onRightActionClickListener)
-        if (tvRightAction.text.isEmpty()) {
-            tvRightAction.gone()
-            ivRightAction.visible()
+        viewBinding.tvRightAction.setOnClickListener(onRightActionClickListener)
+        viewBinding.ivRightAction.setOnClickListener(onRightActionClickListener)
+        if (viewBinding.tvRightAction.text.isEmpty()) {
+            viewBinding.tvRightAction.gone()
+            viewBinding.ivRightAction.visible()
         } else {
-            tvRightAction.visible()
-            ivRightAction.gone()
+            viewBinding.tvRightAction.visible()
+            viewBinding.ivRightAction.gone()
         }
     }
 
     override fun getRightActionTextView(): TextView {
-        return tvRightAction
+        return viewBinding.tvRightAction
     }
 
     override fun getRightActionImageView(): ImageView {
-        return ivRightAction
+        return viewBinding.ivRightAction
     }
 
     override fun hideRightAction() {
-        hideView(tvRightAction)
-        hideView(ivRightAction)
+        hideView(viewBinding.tvRightAction)
+        hideView(viewBinding.ivRightAction)
     }
 
     override fun showRightAction() {
-        if (tvRightAction.text.isEmpty()) {
-            tvRightAction.gone()
-            showView(ivRightAction)
+        if (viewBinding.tvRightAction.text.isEmpty()) {
+            viewBinding.tvRightAction.gone()
+            showView(viewBinding.ivRightAction)
         } else {
-            ivRightAction.gone()
-            showView(tvRightAction)
+            viewBinding.ivRightAction.gone()
+            showView(viewBinding.tvRightAction)
         }
     }
 
     override fun rightActionIsHidden(): Boolean {
-        return !tvRightAction.isVisible && !ivRightAction.isVisible
+        return !viewBinding.tvRightAction.isVisible && !viewBinding.ivRightAction.isVisible
     }
 
     override fun toggleRightActionHidden() {
@@ -501,75 +476,75 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
     }
 
     override fun setCustomActionBarView(view: View) {
-        flCustomViewContainer.removeAllViews()
-        flCustomViewContainer.visible()
-        flCustomViewContainer.addView(view)
+        viewBinding.flCustomViewContainer.removeAllViews()
+        viewBinding.flCustomViewContainer.visible()
+        viewBinding.flCustomViewContainer.addView(view)
     }
 
     override fun setCustomActionBarView(id: Int) {
-        flCustomViewContainer.removeAllViews()
-        flCustomViewContainer.visible()
-        inflate(context, id, flCustomViewContainer)
+        viewBinding.flCustomViewContainer.removeAllViews()
+        viewBinding.flCustomViewContainer.visible()
+        inflate(context, id, viewBinding.flCustomViewContainer)
     }
 
     override fun getCustomViewContainer(): FrameLayout {
-        return flCustomViewContainer
+        return viewBinding.flCustomViewContainer
     }
 
     override fun hideCustomViewContainer() {
-        hideView(flCustomViewContainer)
+        hideView(viewBinding.flCustomViewContainer)
     }
 
     override fun showCustomViewContainer() {
-        showView(flCustomViewContainer)
+        showView(viewBinding.flCustomViewContainer)
     }
 
     override fun getCenterTitleContainer(): LinearLayout {
-        return llCenterTitleContainer
+        return viewBinding.llCenterTitleContainer
     }
 
     override fun hideCenterTitleContainer() {
-        hideView(llCenterTitleContainer)
+        hideView(viewBinding.llCenterTitleContainer)
     }
 
     override fun showCenterTitleContainer() {
-        showView(llCenterTitleContainer)
+        showView(viewBinding.llCenterTitleContainer)
     }
 
     override fun setTitle(text: CharSequence) {
-        tvTitle.text = text
+        viewBinding.tvTitle.text = text
     }
 
     override fun setTitle(id: Int) {
-        tvTitle.text = context.getString(id)
+        viewBinding.tvTitle.text = context.getString(id)
     }
 
     override fun setTitleTextColor(color: Int) {
-        tvTitle.setTextColor(color)
+        viewBinding.tvTitle.setTextColor(color)
     }
 
     override fun setTitleTextColorStateList(colorStateList: ColorStateList) {
-        tvTitle.setTextColor(colorStateList)
+        viewBinding.tvTitle.setTextColor(colorStateList)
     }
 
     override fun setTitleTextColorStateList(id: Int) {
-        tvTitle.setTextColor(context.getColorStateListCompat(id))
+        viewBinding.tvTitle.setTextColor(context.getColorStateListCompat(id))
     }
 
     override fun getTitleView(): TextView {
-        return tvTitle
+        return viewBinding.tvTitle
     }
 
     override fun hideTitle() {
-        hideView(tvTitle)
+        hideView(viewBinding.tvTitle)
     }
 
     override fun showTitle() {
-        showView(tvTitle)
+        showView(viewBinding.tvTitle)
     }
 
     override fun titleIsHidden(): Boolean {
-        return !tvTitle.isVisible
+        return !viewBinding.tvTitle.isVisible
     }
 
     override fun toggleTitleHidden() {
@@ -581,43 +556,46 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
     }
 
     override fun setTitleTextColorRes(id: Int) {
-        tvTitle.setTextColor(context.getColorCompat(id))
+        viewBinding.tvTitle.setTextColor(context.getColorCompat(id))
     }
 
     override fun setSubtitle(text: CharSequence) {
-        tvSubtitle.text = text
+        viewBinding.tvSubtitle.text = text
+        if (text.isNotEmpty()) {
+            viewBinding.tvSubtitle.visible()
+        }
     }
 
     override fun setSubtitle(id: Int) {
-        tvSubtitle.text = context.getString(id)
+        setSubtitle(context.getString(id))
     }
 
     override fun setSubtitleTextColor(color: Int) {
-        tvSubtitle.setTextColor(color)
+        viewBinding.tvSubtitle.setTextColor(color)
     }
 
     override fun setSubtitleTextColorStateList(colorStateList: ColorStateList) {
-        tvSubtitle.setTextColor(colorStateList)
+        viewBinding.tvSubtitle.setTextColor(colorStateList)
     }
 
     override fun setSubtitleTextColorStateList(id: Int) {
-        tvSubtitle.setTextColor(context.getColorStateListCompat(id))
+        viewBinding.tvSubtitle.setTextColor(context.getColorStateListCompat(id))
     }
 
     override fun getSubtitleView(): TextView {
-        return tvSubtitle
+        return viewBinding.tvSubtitle
     }
 
     override fun hideSubtitle() {
-        hideView(tvSubtitle)
+        hideView(viewBinding.tvSubtitle)
     }
 
     override fun showSubtitle() {
-        showView(tvSubtitle)
+        showView(viewBinding.tvSubtitle)
     }
 
     override fun subtitleViewIsHidden(): Boolean {
-        return !tvSubtitle.isVisible
+        return !viewBinding.tvSubtitle.isVisible
     }
 
     override fun toggleSubtitleHidden() {
@@ -629,44 +607,44 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
     }
 
     override fun hideAllTitle() {
-        hideView(tvTitle)
-        hideView(tvSubtitle)
+        hideView(viewBinding.tvTitle)
+        hideView(viewBinding.tvSubtitle)
     }
 
     override fun showAllTitle() {
-        showView(tvTitle)
-        showView(tvSubtitle)
+        showView(viewBinding.tvTitle)
+        showView(viewBinding.tvSubtitle)
     }
 
     override fun setSubtitleTextColorRes(id: Int) {
-        tvSubtitle.setTextColor(context.getColorCompat(id))
+        viewBinding.tvSubtitle.setTextColor(context.getColorCompat(id))
     }
 
     override fun createRightMenu(@MenuRes id: Int, menuInflater: MenuInflater) {
-        val popupMenu = PopupMenu(context, ivBackIndicator)
+        val popupMenu = PopupMenu(context, viewBinding.ivBackIndicator)
         menuInflater.inflate(id, popupMenu.menu)
         setMenu(popupMenu.menu)
     }
 
     override fun setMenu(menu: Menu) {
-        smoothActionMenuView.visible()
-        smoothActionMenuView.setMenu(menu)
+        viewBinding.smoothActionMenuView.visible()
+        viewBinding.smoothActionMenuView.setMenu(menu)
     }
 
     override fun getMenuView(): SmoothActionMenuView {
-        return smoothActionMenuView
+        return viewBinding.smoothActionMenuView
     }
 
     override fun hideMenu() {
-        hideView(smoothActionMenuView)
+        hideView(viewBinding.smoothActionMenuView)
     }
 
     override fun showMenu() {
-        showView(smoothActionMenuView)
+        showView(viewBinding.smoothActionMenuView)
     }
 
     override fun menuIsHidden(): Boolean {
-        return !smoothActionMenuView.isVisible
+        return !viewBinding.smoothActionMenuView.isVisible
     }
 
     override fun toggleMenuHidden() {
@@ -678,39 +656,39 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
     }
 
     override fun setOnRightMenuItemClickListener(onMenuItemClickListener: MenuItem.OnMenuItemClickListener) {
-        smoothActionMenuView.setOnMenuItemClickListener(onMenuItemClickListener)
+        viewBinding.smoothActionMenuView.setOnMenuItemClickListener(onMenuItemClickListener)
     }
 
     override fun setMenuIndicatorDrawable(drawable: Drawable) {
-        smoothActionMenuView.setMenuIndicatorDrawable(drawable)
+        viewBinding.smoothActionMenuView.setMenuIndicatorDrawable(drawable)
     }
 
     override fun setMenuIndicatorDrawable(id: Int) {
-        smoothActionMenuView.setMenuIndicatorDrawable(id)
+        viewBinding.smoothActionMenuView.setMenuIndicatorDrawable(id)
     }
 
     override fun setMenuIndicatorDrawable(stateListDrawable: StateListDrawable) {
-        smoothActionMenuView.setMenuIndicatorDrawable(stateListDrawable)
+        viewBinding.smoothActionMenuView.setMenuIndicatorDrawable(stateListDrawable)
     }
 
     override fun setMenuIndicatorColor(color: Int) {
-        smoothActionMenuView.setMenuIndicatorColor(color)
+        viewBinding.smoothActionMenuView.setMenuIndicatorColor(color)
     }
 
     override fun setMenuIndicatorColorRes(id: Int) {
-        smoothActionMenuView.setMenuIndicatorColorRes(id)
+        viewBinding.smoothActionMenuView.setMenuIndicatorColorRes(id)
     }
 
     override fun setMenuIndicatorColorStateList(colorStateList: ColorStateList) {
-        smoothActionMenuView.setMenuIndicatorColorStateList(colorStateList)
+        viewBinding.smoothActionMenuView.setMenuIndicatorColorStateList(colorStateList)
     }
 
     override fun setMenuIndicatorColorStateList(id: Int) {
-        smoothActionMenuView.setMenuIndicatorColorStateList(id)
+        viewBinding.smoothActionMenuView.setMenuIndicatorColorStateList(id)
     }
 
     fun resolveActionBarHeight() {
-        rlSmoothActionBarContainer.layoutParams.apply {
+        viewBinding.rlSmoothActionBarContainer.layoutParams.apply {
             height = getRealActionBarHeight().toInt()
         }
     }
@@ -724,34 +702,34 @@ class SmoothActionBar : RelativeLayout, ISmoothActionBar {
     }
 
     override fun showLeftActionBarActivityIndicator() {
-        smoothActivityIndicatorCenter.gone()
-        smoothActivityIndicatorRight.gone()
-        showView(smoothActivityIndicatorLeft)
+        viewBinding.smoothActivityIndicatorCenter.gone()
+        viewBinding.smoothActivityIndicatorRight.gone()
+        showView(viewBinding.smoothActivityIndicatorLeft)
     }
 
     override fun hideLeftActionBarActivityIndicator() {
-        hideView(smoothActivityIndicatorLeft)
+        hideView(viewBinding.smoothActivityIndicatorLeft)
     }
 
     override fun showCenterActionBarActivityIndicator() {
-        smoothActivityIndicatorLeft.gone()
-        smoothActivityIndicatorRight.gone()
-        showView(smoothActivityIndicatorCenter)
+        viewBinding.smoothActivityIndicatorLeft.gone()
+        viewBinding.smoothActivityIndicatorRight.gone()
+        showView(viewBinding.smoothActivityIndicatorCenter)
     }
 
     override fun hideCenterActionBarActivityIndicator() {
-        hideView(smoothActivityIndicatorCenter)
+        hideView(viewBinding.smoothActivityIndicatorCenter)
     }
 
     override fun showRightActionBarActivityIndicator() {
-        smoothActivityIndicatorLeft.gone()
-        smoothActivityIndicatorCenter.gone()
+        viewBinding.smoothActivityIndicatorLeft.gone()
+        viewBinding.smoothActivityIndicatorCenter.gone()
         hideRightActionInnerContainer()
-        showView(smoothActivityIndicatorRight)
+        showView(viewBinding.smoothActivityIndicatorRight)
     }
 
     override fun hideRightActionBarActivityIndicator() {
-        hideView(smoothActivityIndicatorRight)
+        hideView(viewBinding.smoothActivityIndicatorRight)
         showRightActionInnerContainer()
     }
 

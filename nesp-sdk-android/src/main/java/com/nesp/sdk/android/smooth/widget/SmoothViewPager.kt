@@ -14,14 +14,10 @@ import androidx.viewpager.widget.ViewPager
  **/
 class SmoothViewPager : ViewPager {
 
-    private var isScrollEnable = false
+    var isScrollEnable = false
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
-
-    fun setScrollEnable(isScrollEnable: Boolean) {
-        this.isScrollEnable = isScrollEnable
-    }
 
     override fun onTouchEvent(ev: MotionEvent?): Boolean {
         return isScrollEnable && super.onTouchEvent(ev)

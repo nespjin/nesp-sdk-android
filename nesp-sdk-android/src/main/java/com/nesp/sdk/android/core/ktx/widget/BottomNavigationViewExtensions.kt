@@ -18,7 +18,7 @@ import com.nesp.sdk.android.core.ktx.jvm.reflect.setFieldValue
  * Project: NespAndroidSdkSample
  **/
 @SuppressLint("RestrictedApi")
-private fun BottomNavigationView.closeAnimation() {
+fun BottomNavigationView.closeMenuItemAnimation() {
     val mMenuView = this.getChildAt(0) as BottomNavigationMenuView
     for (i in 0 until mMenuView.childCount) {
         val button = mMenuView.getChildAt(i) as BottomNavigationItemView
