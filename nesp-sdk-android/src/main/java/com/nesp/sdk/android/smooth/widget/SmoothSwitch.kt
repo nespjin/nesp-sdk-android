@@ -3,25 +3,21 @@ package com.nesp.sdk.android.smooth.widget
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Typeface
 import android.text.TextPaint
 import android.util.AttributeSet
-import android.util.Log
 import android.util.Property
 import android.view.*
 import androidx.annotation.ColorInt
-import androidx.appcompat.widget.DrawableUtils
-import androidx.cardview.widget.CardView
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.ViewCompat
 import com.nesp.sdk.android.R
-import com.nesp.sdk.android.core.ktx.TAG
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
 import com.nesp.sdk.android.core.ktx.graphics.getFontHeight
 import com.nesp.sdk.android.core.ktx.graphics.getFontWidth
 import com.nesp.sdk.android.util.AttrUtil
-import com.nesp.sdk.android.util.DisplayUtil
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -41,8 +37,8 @@ class SmoothSwitch : View {
     private var mTrackPaint: Paint? = null
     private var mTrackBackgroundPaint: Paint? = null
 
-    private var mTrackColorActive: Int? = null
-    private var mTrackColorInactive: Int? = null
+    private var mTrackColorActive: Int = -1
+    private var mTrackColorInactive: Int = -1
 
     private var mThumbPaint: Paint? = null
     private var mThumbPadding = 10F
@@ -160,8 +156,7 @@ class SmoothSwitch : View {
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         mVelocityTracker.addMovement(event)
-        val action = event.action
-        when (action) {
+        when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 if (isEnabled && hitThumb(event.x, event.y)) {
                     mTouchMode = TOUCH_MODE_DOWN
@@ -195,12 +190,12 @@ class SmoothSwitch : View {
                         val thumbScrollRange: Int = getThumbScrollRange()
                         val thumbScrollOffset = event.x - mTouchX
                         var dPos: Float
-                        if (thumbScrollRange != 0) {
-                            dPos = thumbScrollOffset / thumbScrollRange
+                        dPos = if (thumbScrollRange != 0) {
+                            thumbScrollOffset / thumbScrollRange
                         } else {
                             // If the thumb scroll range is empty, just use the
                             // movement direction to snap on or off.
-                            dPos = if (thumbScrollOffset > 0) 1F else -1F
+                            if (thumbScrollOffset > 0) 1F else -1F
                         }
                         if (isLayoutRtl()) {
                             dPos = -dPos
@@ -243,17 +238,16 @@ class SmoothSwitch : View {
         // has not been disabled during the drag.
         val commitChange = event.action == MotionEvent.ACTION_UP && isEnabled
         val oldState = isChecked()
-        val newState: Boolean
-        if (commitChange) {
+        val newState: Boolean = if (commitChange) {
             mVelocityTracker.computeCurrentVelocity(1000)
             val xVelocity = mVelocityTracker.xVelocity
             if (abs(xVelocity) > mMinFlingVelocity) {
-                newState = if (isLayoutRtl()) xVelocity < 0 else xVelocity > 0
+                if (isLayoutRtl()) xVelocity < 0 else xVelocity > 0
             } else {
-                newState = getTargetCheckedState()
+                getTargetCheckedState()
             }
         } else {
-            newState = oldState
+            oldState
         }
 
         if (newState != oldState) {
@@ -290,10 +284,6 @@ class SmoothSwitch : View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         mSwitchWidth = measuredWidth.toFloat()
         mSwitchHeight = min(mSwitchWidth / 2F, measuredHeight.toFloat())
-    }
-
-    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
-        super.onLayout(changed, left, top, right, bottom)
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -407,9 +397,11 @@ class SmoothSwitch : View {
     @ColorInt
     private fun getTrackColor(): Int {
         return if (mThumbPosition in 0F..0.5F) {
-            context.getColorCompat(R.color.smoothSystemGray)
+            // Switch is in inactive state
+            mTrackColorInactive
         } else {
-            context.getColorCompat(R.color.smoothSystemGreen)
+            // Switch is in active state
+            mTrackColorActive
         }
     }
 
@@ -437,7 +429,7 @@ class SmoothSwitch : View {
     }
 
     override fun setOnClickListener(onClickListener: OnClickListener?) {
-
+        // Disable setOnClickListener
     }
 
     fun toggle() {

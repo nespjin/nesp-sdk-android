@@ -129,7 +129,7 @@
         <item name="thumbElevation">@dimen/smooth_switch_thumb_elevation</item>
         <item name="thumbPosition">0dp</item>
         <item name="trackColorActive">@null</item>
-        <item name="trackColorInactive">@null</item>
+        <item name="trackColorInactive">@color/smooth_switch_track_inactive_color</item>
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothBottomNavigationViewActiveTextAppearance">
