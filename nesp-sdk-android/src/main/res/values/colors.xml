@@ -57,7 +57,7 @@
     <color name="smooth_switch_track_inactive_color">@color/smoothSystemGray16</color>
 
     <color name="smooth_slider_progress_color">@color/smoothSystemBlue</color>
-    <color name="smooth_progress_background_color">@color/smoothSystemGray</color>
+    <color name="smooth_progress_background_color">@color/smoothSystemGray16</color>
     <color name="smooth_slider_thumb_color">@color/white</color>
 
     <color name="smooth_action_sheet_dialog_action_text_color">@color/smoothSystemBlue</color>
