@@ -42,8 +42,9 @@ interface ISmoothBottomNavigationPage : BottomNavigationView.OnNavigationItemSel
         val viewPager = getViewPager()
         viewPager.addOnPageChangeListener(this)
         viewPager.adapter = getFragmentPagerAdapter()
-        setScrollEnable(false)
-        setOverScrollMode(View.OVER_SCROLL_NEVER)
+        viewPager.offscreenPageLimit = getFragments().size
+        setScrollEnable(getIsScrollEnable())
+        setOverScrollMode(getOverScrollMode())
 
 //        inflateBottomNavigationMenu(getBottomNavigationMenuResId())
 

@@ -9,9 +9,12 @@
         <!--        <item name="android:windowTranslucentNavigation">true</item>-->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!--<item name="android:navigationBarColor">@color/colorPrimaryDark</item>-->
+        <item name="smoothBottomNavigationDividerColor">@color/smooth_bottom_navigation_divider_color</item>
+        <item name="smoothBottomNavigationDividerWidth">@dimen/smooth_bottom_divider_width</item>
         <item name="smoothBottomNavigationHeight">@dimen/smooth_bottom_view_height</item>
         <item name="smoothBottomNavigationItemIconSize">@dimen/smooth_bottom_view_item_icon_size</item>
-        <item name="smoothBottomNavigationBackgroundColor">@color/smoothSystemGray</item>
+        <item name="smoothBottomNavigationBackgroundColor">@color/smooth_bottom_navigation_background_color</item>
+        <item name="smoothBottomNavigationBlurColor">@color/smooth_bottom_navigation_blur_color</item>
         <item name="smoothBottomNavigationItemTextAppearanceActive">@style/SmoothAppTheme.Light.SmoothBottomNavigationViewActiveTextAppearance</item>
         <item name="smoothBottomNavigationItemTextAppearanceInactive">@style/SmoothAppTheme.Light.SmoothBottomNavigationViewInactiveTextAppearance</item>
     </style>
@@ -53,6 +56,7 @@
         <item name="smoothCommonItemNormalBackgroundColor">@color/smooth_common_item_normal_background_color</item>
         <item name="smoothCommonItemClickBackgroundColor">@color/smooth_common_item_click_background_color</item>
         <item name="smoothRealtimeBlurRadius">@dimen/smooth_real_time_blur_radius</item>
+        <item name="smoothBottomRealtimeBlurRadius">@dimen/smooth_bottom_real_time_blur_radius</item>
         <item name="smoothWidgetRealtimeBlurRadius">@dimen/smooth_widget_real_time_blur_radius</item>
         <item name="smoothElevationColor">@color/smooth_elevation_color</item>
 
@@ -248,5 +252,19 @@
     <style name="SmoothAppTheme.DayNight" parent="Theme.MaterialComponents.DayNight" />
 
     <style name="SmoothAppTheme.DayNight.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
+
+    <style name="SmoothAppTheme.Light.SmoothBottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowAnimationStyle">@style/SmoothAppTheme.Light.SmoothBottomSheetAnimation</item>
+        <item name="bottomSheetStyle">@style/SmoothAppTheme.Light.SmoothBottomSheetStyle</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothBottomSheetStyle" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="SmoothAppTheme.Light.SmoothBottomSheetAnimation" parent="Animation.Design.BottomSheetDialog">
+        <item name="android:windowEnterAnimation">@anim/smooth_bottom_sheet_slide_in</item>
+        <item name="android:windowExitAnimation">@anim/smooth_bottom_sheet_slide_out</item>
+    </style>
 
 </resources>
