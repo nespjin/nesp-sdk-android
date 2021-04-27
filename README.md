@@ -3,9 +3,9 @@ Software Development Kit for Android
 
 ## Android Jetpack Encapsulation
 1.ViewDataBinding（RecyclerView etc.）
-2.ViewModel
-3.LiveData
-4.ROOM
+2.ViewModel.
+4.LiveData.
+5.ROOM.
 
 ## QQ Group
 
