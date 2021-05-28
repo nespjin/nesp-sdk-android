@@ -1,6 +1,12 @@
 # nesp-sdk-android
 Software Development Kit for Android
 
+## Android Jetpack Encapsulation
+1.ViewDataBinding（RecyclerView etc.）
+2.ViewModel.
+4.LiveData.
+5.ROOM.
+
 ## QQ Group
 
 <img src="./doc/img/QQGroup.png" />
@@ -13,6 +19,7 @@ https://github.com/nespjin/NespAndroidSdkSample
 1. Nesp Android Ktx.
 2. Nesp Android SDK core.
 3. Nesp Smooth Design.
+4. Nesp DataBinding
 
 ### SmoothDesign
 
@@ -51,3 +58,4 @@ Widgets that have been implemented:
 ## Dependencies
 1. Nesp Java SDK.
 2. Nesp Kotlin SDK.
+3. Android Jetpack
