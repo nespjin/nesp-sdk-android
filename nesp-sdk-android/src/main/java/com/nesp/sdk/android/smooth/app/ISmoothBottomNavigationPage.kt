@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2021 The NESP Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.nesp.sdk.android.smooth.app
 
 import android.content.Context
@@ -23,14 +39,14 @@ import com.nesp.sdk.android.util.AttrUtil
  *
  *
  * Team: NESP Technology
- * @author: <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
- * Time: Created 2021/4/21 1:11
+ * Author: <a href="mailto:1756404649@qq.com">Jinzhaolu Email:1756404649@qq.com</a>
+* Time: Created 2021/4/21 1:11
  * Project: NespAndroidSdkSample
  **/
 interface ISmoothBottomNavigationPage : BottomNavigationView.OnNavigationItemSelectedListener,
     ViewPager.OnPageChangeListener {
 
-    var menuItem: MenuItem?
+    var menuItemSelected: MenuItem?
 
     fun getContext(): Context
 
@@ -123,8 +139,8 @@ interface ISmoothBottomNavigationPage : BottomNavigationView.OnNavigationItemSel
     override fun onPageSelected(position: Int) {
         val navigationView = getBottomNavigationView()
         if (position >= navigationView.menu.size) return
-        menuItem = navigationView.menu.getItem(position)
-        menuItem!!.isChecked = true
+        menuItemSelected = navigationView.menu.getItem(position)
+        menuItemSelected!!.isChecked = true
     }
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
