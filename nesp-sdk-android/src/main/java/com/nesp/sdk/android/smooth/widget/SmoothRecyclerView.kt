@@ -30,11 +30,10 @@ class SmoothRecyclerView : RecyclerView {
     constructor(context: Context) : this(context, null)
 
     constructor(context: Context, attrs: AttributeSet?) :
-            this(context, attrs, 0)
+            this(context, attrs, androidx.recyclerview.R.attr.recyclerViewStyle)
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context, attrs, defStyleAttr
-    ) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int)
+            : super(context, attrs, defStyleAttr) {
 
     }
 

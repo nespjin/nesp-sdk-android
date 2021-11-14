@@ -29,6 +29,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!--<item name="android:navigationBarColor">@color/colorPrimaryDark</item>-->
         <item name="android:fitsSystemWindows">false</item>
+        <item name="recyclerViewStyle">@style/SmoothRecycleView</item>
         <item name="smoothActionBarBackIndicator">@drawable/ic_smooth_back_indicator</item>
         <item name="smoothActionBarBackIndicatorColor">@color/smooth_action_bar_back_indicator_color</item>
         <item name="smoothActionBarBackIndicatorSize">@dimen/smooth_action_bar_back_indicator_size</item>
@@ -97,6 +98,16 @@
 
         <item name="listDividerColor">@color/list_divider_color</item>
         <item name="listDividerWidth">@dimen/list_divider_width</item>
+    </style>
+
+    <style name="SmoothRecycleView">
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarStyle">insideInset</item>
+        <item name="android:scrollbarSize">3dp</item>
+        <item name="android:scrollbarThumbVertical">@drawable/scroll_bar_track_vertical</item>
+        <item name="android:scrollbarTrackVertical">@color/transparent</item>
+        <item name="fastScrollVerticalThumbDrawable">@drawable/scroll_bar_track_vertical</item>
+        <item name="fastScrollVerticalTrackDrawable">@color/transparent</item>
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothActivityIndicator">
