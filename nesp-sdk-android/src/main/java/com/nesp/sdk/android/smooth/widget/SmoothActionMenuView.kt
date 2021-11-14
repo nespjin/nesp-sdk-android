@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2021 The NESP Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.nesp.sdk.android.smooth.widget
 
 import android.content.Context
@@ -26,53 +42,54 @@ import com.nesp.sdk.android.core.ktx.cast
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
 import com.nesp.sdk.android.core.ktx.content.getColorStateListCompat
 import com.nesp.sdk.android.core.ktx.content.getDrawableCompat
+import com.nesp.sdk.android.databinding.SmoothActionMenuViewBinding
 import com.nesp.sdk.android.util.DisplayUtil
 
 /**
  *
  *
  * Team: NESP Technology
- * @author: <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
- * Time: Created 2020/10/11 13:57
+ * Author: <a href="mailto:1756404649@qq.com">Jinzhaolu Email:1756404649@qq.com</a>
+* Time: Created 2020/10/11 13:57
  * Project: NespAndroidSdk
  **/
 class SmoothActionMenuView : LinearLayout {
-
-    private val ivMenuIndicator: ImageView by lazy { findViewById(R.id.ivMenuIndicator) }
+    
     private var popupWindow: PopupWindow? = null
     private var menuItemAdapter: MenuItemAdapter? = null
 
     private var popupWindowIsShown = false
+
+    private val viewBinding: SmoothActionMenuViewBinding =
+        SmoothActionMenuViewBinding.inflate(LayoutInflater.from(context), this, true)
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
         context, attrs, defStyleAttr
     ) {
-        inflate(context, R.layout.smooth_action_menu_view, this)
-
         initView()
     }
 
     private fun initView() {
         popupWindow = createPopupWindow()
-        ivMenuIndicator.setOnClickListener { togglePopupWindow() }
+        viewBinding.ivMenuIndicator.setOnClickListener { togglePopupWindow() }
     }
 
     fun setMenuIndicatorDrawable(drawable: Drawable) {
-        ivMenuIndicator.setImageDrawable(drawable)
+        viewBinding.ivMenuIndicator.setImageDrawable(drawable)
     }
 
     fun setMenuIndicatorDrawable(@DrawableRes id: Int) {
-        ivMenuIndicator.setImageDrawable(context.getDrawableCompat(id))
+        viewBinding.ivMenuIndicator.setImageDrawable(context.getDrawableCompat(id))
     }
 
     fun setMenuIndicatorDrawable(stateListDrawable: StateListDrawable) {
-        ivMenuIndicator.setImageState(stateListDrawable.state, false)
+        viewBinding.ivMenuIndicator.setImageState(stateListDrawable.state, false)
     }
 
     fun setMenuIndicatorColor(@ColorInt color: Int) {
-        ivMenuIndicator.imageTintList = ColorStateList.valueOf(color)
+        viewBinding.ivMenuIndicator.imageTintList = ColorStateList.valueOf(color)
     }
 
     fun setMenuIndicatorColorRes(@ColorRes id: Int) {
@@ -80,11 +97,11 @@ class SmoothActionMenuView : LinearLayout {
     }
 
     fun setMenuIndicatorColorStateList(colorStateList: ColorStateList) {
-        ivMenuIndicator.imageTintList = colorStateList
+        viewBinding.ivMenuIndicator.imageTintList = colorStateList
     }
 
     fun setMenuIndicatorColorStateList(id: Int) {
-        ivMenuIndicator.imageTintList = context.getColorStateListCompat(id)
+        viewBinding.ivMenuIndicator.imageTintList = context.getColorStateListCompat(id)
     }
 
     fun setMenu(menu: Menu) {
@@ -112,7 +129,7 @@ class SmoothActionMenuView : LinearLayout {
             popupWindowIsShown = false
         } else {
             popupWindow!!.showAsDropDown(
-                ivMenuIndicator.cast(),
+                viewBinding.ivMenuIndicator.cast(),
                 DisplayUtil.dp2px(context, 0f),
                 DisplayUtil.dp2px(context, 20f)
             )

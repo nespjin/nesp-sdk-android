@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2021 The NESP Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
 <resources>
     <color name="colorPrimary">@color/smoothSystemBlue</color>
     <color name="colorPrimaryDark">@color/smoothSystemBlue</color>
@@ -58,9 +74,10 @@
     <color name="smooth_switch_text_color_active">@color/white</color>
     <color name="smooth_switch_text_color_inactive">@color/gray</color>
     <color name="smooth_switch_thumb_color">@color/white</color>
+    <color name="smooth_switch_track_inactive_color">@color/smoothSystemGray16</color>
 
     <color name="smooth_slider_progress_color">@color/smoothSystemBlue</color>
-    <color name="smooth_progress_background_color">@color/smoothSystemGray</color>
+    <color name="smooth_progress_background_color">@color/smoothSystemGray16</color>
     <color name="smooth_slider_thumb_color">@color/white</color>
 
     <color name="smooth_action_sheet_dialog_action_text_color">@color/smoothSystemBlue</color>
