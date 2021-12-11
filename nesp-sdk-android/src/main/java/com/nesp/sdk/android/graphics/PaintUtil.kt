@@ -25,17 +25,15 @@ import android.graphics.Paint
  * Project: NespAndroidSdk
  * Description:
  **/
-class PaintUtil {
-    companion object {
+object PaintUtil {
+    @JvmStatic
+    fun getPaintHeight(paint: Paint): Float {
+        val fontMetrics = paint.fontMetrics
+        return fontMetrics.descent - fontMetrics.ascent
+    }
 
-        fun getPaintHeight(paint: Paint): Float {
-            val fontMetrics = paint.fontMetrics
-            return fontMetrics.descent - fontMetrics.ascent
-        }
-
-        fun getPaintWidth(paint: Paint, text: String): Float {
-            return paint.measureText(text)
-        }
-
+    @JvmStatic
+    fun getPaintWidth(paint: Paint, text: String): Float {
+        return paint.measureText(text)
     }
 }

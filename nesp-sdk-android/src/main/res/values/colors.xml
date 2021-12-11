@@ -98,4 +98,72 @@
     <color name="search_hint_color">#8E8E93</color>
     <color name="search_text_color">@color/black</color>
 
+    <!-- Old Sdk -->
+    <color name="textColorPrimary">@color/colorBlack</color>
+    <color name="actionBarBgColor">#c3ffffff</color>
+    <color name="windowBackground">#c3ffffff</color>
+
+    <color name="colorVip">#d4b078</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorLightBlack">#ff232222</color>
+    <color name="colorDarkWhite">#aff4f4f4</color>
+    <color name="colorLightGrayness">#87b9b9b9</color>
+    <color name="colorIosBlue">#007aff</color>
+    <color name="colorIOSRed">#FF3B30</color>
+    <color name="colorIosGrayness">#F0F0F0</color>
+    <color name="colorDarkGrayness">#7d7d7d</color>
+    <color name="colorRed">#ff0000</color>
+    <color name="colorTransparent">#00ffffff</color>
+    <color name="antiFlashWhite">#F2F2F2</color>
+
+    <color name="colorGray">#808080</color>
+    <color name="colorLightGray">#AAAAAA</color>
+    <color name="colorGroupTableBackground">#EFEFF4</color>
+    <color name="colorLineColor">#D3D3D3</color>
+    <color name="colorOrange">#FF9300</color>
+    <color name="colorButtonGreen">#4CBD56</color>
+    <color name="colorSortViewBack">#F2F2F2</color>
+
+    <color name="colorBoxYellow">#FFC107</color>
+
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="possible_result_points">#c0ffbd21</color> <!-- Android standard ICS color -->
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color> <!-- Android standard ICS color -->
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
+    <color name="viewfinder_mask">#60000000</color>
+
+
+    <color name="arc1">#099bfb</color>
+    <color name="arc2">#37d547</color>
+    <color name="arc3">#f86669</color>
+    <color name="arc_text">#999999</color>
+    <color name="excel_bg">#bfbfbf</color>
+    <color name="arc_line">#cfcfcf</color>
+    <color name="selectColor">#f96767</color>
+    <color name="arc_bg">#f0f0f0</color>
+    <color name="arc_inteval">#E8e8e8</color>
+    <color name="arc_temp">#333333</color>
+    <color name="content_bg">#eeeeee</color>
+    <color name="column_bg">#099bfb</color>
+    <color name="arc21">#fc843b</color>
+    <color name="arc22">#37d547</color>
+    <color name="arc23">#079df9</color>
+
+    <color name="trans">#00000000</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
+    <color name="main_bg_color">#ffffff</color>
+
+    <color name="crop__button_bar">#f3f3f3</color>
+    <color name="crop__button_text">#666666</color>
+    <color name="crop__selector_pressed">#1a000000</color>
+    <color name="crop__selector_focused">#77000000</color>
 </resources>

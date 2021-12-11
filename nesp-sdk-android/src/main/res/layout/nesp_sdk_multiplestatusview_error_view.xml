@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nesp_sdk_multiplestatusview_error_retry_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_nesp_sdk_multiplestatusview_error"
+        app:tint="@color/colorDarkGrayness" />
+
+    <TextView
+        android:id="@+id/nesp_sdk_multiplestatusview_error_retry_view_tv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="数据获取失败(ㄒoㄒ)~~"
+        android:textColor="#9a9a9a" />
+
+</LinearLayout>

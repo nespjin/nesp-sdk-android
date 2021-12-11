@@ -33,7 +33,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nesp.sdk.android.R
 import com.nesp.sdk.android.core.ktx.widget.closeMenuItemAnimation
 import com.nesp.sdk.android.smooth.widget.SmoothViewPager
-import com.nesp.sdk.android.util.AttrUtil
+import com.nesp.sdk.android.utils.AttrUtil
 
 /**
  *

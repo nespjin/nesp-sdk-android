@@ -16,7 +16,7 @@
 
 package com.nesp.sdk.android.permission
 
-import com.nesp.sdk.android.core.ktx.cast
+import com.nesp.sdk.kotlin.lang.cast
 import java.lang.reflect.Proxy
 
 /**

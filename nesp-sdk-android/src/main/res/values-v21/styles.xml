@@ -1,0 +1,58 @@
+<!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<resources>
+
+    <!-- Base application theme. -->
+
+    <style name="AppTheme.NespSdk.Translucent.NoTitleBar" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/colorTransparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+         <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:windowAnimationStyle">@style/NespSdk_Activity_Anim_Translucent</item>
+        <item name="android:statusBarColor">@color/colorTransparent</item>
+    </style>
+
+    <!--=========================Qmui Theme=============================-->
+    <!--<style name="QmuiAppTheme" parent="QMUI.Compat.NoActionBar">-->
+    <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+    <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+    <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--<item name="android:windowContentTransitions">true</item>-->
+    <!--&lt;!&ndash;沉浸导航栏&ndash;&gt;-->
+    <!--<item name="android:windowTranslucentStatus">false</item>-->
+    <!--<item name="android:windowTranslucentNavigation">true</item>-->
+    <!--&lt;!&ndash;Android 5.x开始需要把颜色设置灰色，否则导航栏会呈现系统默认的浅灰色&ndash;&gt;-->
+    <!--<item name="android:statusBarColor">@color/colorIosBlue</item>-->
+
+    <!--<item name="android:windowLightNavigationBar">true</item>-->
+    <!--<item name="android:navigationBarColor">@color/colorIosBlue</item>-->
+    <!--</style>-->
+    <style name="NespSdk_Activity_Anim_Default">
+        <item name="android:activityOpenEnterAnimation">
+            @anim/nesp_sdk_activity_anim_open_enter
+        </item>
+        <item name="android:activityOpenExitAnimation">
+            @anim/nesp_sdk_activity_anim_open_exit
+        </item>
+        <item name="android:activityCloseEnterAnimation">
+            @anim/nesp_sdk_activity_anim_close_enter
+        </item>
+        <item name="android:activityCloseExitAnimation">
+            @anim/nesp_sdk_activity_anim_close_exit
+        </item>
+    </style>
+</resources>

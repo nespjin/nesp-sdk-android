@@ -1,0 +1,24 @@
+<!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <path
+        android:fillColor="#aeaaaa"
+        android:pathData="M512,0h-2.32c-143.36,0.68 -272.86,60.28 -365.43,155.85 -1.64,1.71 -3.35,3.41 -4.98,5.26l-0.41,0.48A510.23,510.23 0,0 0,0 512,512 512,0 0,0 498.07,1024a463.12,463.12 0,0 0,179.13 -41.44c56.93,-25.87 108.54,-63.49 151.07,-109.43a487.7,487.7 0,0 0,125.75 -270.2,66.63 66.63,0 0,0 68.68,-54.82A513.23,513.23 0,0 0,1024 512.07,512 512,0 0,0 512,0zM919.01,710.38v0.07a472.41,472.41 0,0 1,-102.4 150.6,451.52 451.52,0 0,1 -148.82,97.89 434.04,434.04 0,0 1,-341.4 -7.85,440.52 440.52,0 0,1 -140.36,-102.13A454.31,454.31 0,0 1,66.08 529.13,453.29 453.29,0 0,1 102.4,360.93a438.27,438.27 0,0 1,95.23 -139.54A419.64,419.64 0,0 1,335.87 130.87a402.3,402.3 0,0 1,316.07 7.92,408.23 408.23,0 0,1 129.71,94.69 418.88,418.88 0,0 1,110.18 295.59h0.27a67.45,67.45 0,0 0,58.71 73.52,484.01 484.01,0 0,1 -31.81,107.79z" />
+</vector>

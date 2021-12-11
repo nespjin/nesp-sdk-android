@@ -1,0 +1,43 @@
+<!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<resources>
+
+    <!--&lt;!&ndash;=========================Qmui Theme=============================&ndash;&gt;-->
+    <!--<style name="QmuiAppTheme" parent="QMUI.Compat.NoActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <!--&lt;!&ndash;沉浸导航栏&ndash;&gt;-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <!--<item name="android:windowTranslucentNavigation">true</item>-->
+
+    <!--</style>-->
+    <style name="NespSdk_Activity_Anim_Default">
+        <item name="android:activityOpenEnterAnimation">
+            @anim/nesp_sdk_activity_anim_open_enter
+        </item>
+        <item name="android:activityOpenExitAnimation">
+            @anim/nesp_sdk_activity_anim_open_exit
+        </item>
+        <item name="android:activityCloseEnterAnimation">
+            @anim/nesp_sdk_activity_anim_close_enter
+        </item>
+        <item name="android:activityCloseExitAnimation">
+            @anim/nesp_sdk_activity_anim_close_exit
+        </item>
+    </style>
+</resources>

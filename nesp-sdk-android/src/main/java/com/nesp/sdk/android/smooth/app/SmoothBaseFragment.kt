@@ -23,7 +23,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.nesp.sdk.android.lifecycle.DefaultLifecycleObserver
-import com.nesp.sdk.android.util.WindowUtil
+import com.nesp.sdk.android.utils.WindowUtil
 import com.nesp.sdk.android.widget.Toast
 
 /**

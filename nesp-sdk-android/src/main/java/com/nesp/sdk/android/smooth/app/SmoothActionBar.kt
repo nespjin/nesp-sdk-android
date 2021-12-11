@@ -36,8 +36,8 @@ import com.nesp.sdk.android.core.ktx.widget.gone
 import com.nesp.sdk.android.core.ktx.widget.visible
 import com.nesp.sdk.android.databinding.SmoothActionBarBinding
 import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
-import com.nesp.sdk.android.util.AttrUtil
-import com.nesp.sdk.android.util.WindowUtil
+import com.nesp.sdk.android.utils.AttrUtil
+import com.nesp.sdk.android.utils.WindowUtil
 
 /**
  *

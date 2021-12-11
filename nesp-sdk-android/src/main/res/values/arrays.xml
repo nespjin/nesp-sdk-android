@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<resources>
+    <!--=========================广告=============================-->
+
+    <string-array name="adBlockUrl">
+        <item>googleads.g.doubleclick.net/pagead/ads</item>
+        <item>ubmcmm.baidustatic.com</item>
+        <item>cpro2.baidustatic.com</item>
+        <item>cpro.baidustatic.com</item>
+        <item>s.lianmeng.360.cn</item>
+        <item>qr.alipay.com</item>
+        <item>nsclick.baidu.com</item>
+        <item>pos.baidu.com</item>
+        <item>cbjs.baidu.com</item>
+        <item>cpro.baidu.com</item>
+        <item>images.sohu.com/cs/jsfile/js/c.js</item>
+        <item>union.sogou.com/</item>
+        <item>sogou.com/</item>
+        <item>a.baidu.com</item>
+        <item>c.baidu.com</item>
+    </string-array>
+</resources>

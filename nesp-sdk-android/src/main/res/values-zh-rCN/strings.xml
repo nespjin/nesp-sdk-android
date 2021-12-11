@@ -23,4 +23,8 @@
     <string name="smooth_switch_text_on">开</string>
     <string name="smooth_switch_text_off">关</string>
     <string name="cancel">取消</string>
+
+    <string name="package_utils_click_again_to_exit">再按一次退出程序</string>
+    <string name="no_root">你没有获取ROOT权限,该功能无法使用</string>
+    <string name="open_url_by_wechat_toast_no_wechat">请先安装微信</string>
 </resources>

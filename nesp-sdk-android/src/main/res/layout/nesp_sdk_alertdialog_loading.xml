@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="110dp"
+    android:layout_height="110dp"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_alert_dialog_loading_radius_bg"
+    android:gravity="center"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:orientation="vertical">
+
+        <ProgressBar
+            style="@style/Base.Widget.AppCompat.ProgressBar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/nesp_sdk_alert_loading_dialog_progress_ios_loading_bg"
+            android:indeterminateOnly="true" />
+        <!--Dialog Message-->
+        <TextView
+            android:id="@+id/alert_dialog_loading_dg_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Loading..."
+            android:textColor="@color/colorDarkGrayness"
+            android:textSize="13sp" />
+    </LinearLayout>
+</RelativeLayout>

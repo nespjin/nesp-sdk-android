@@ -31,7 +31,7 @@ import com.github.mmin18.widget.RealtimeBlurView
 import com.nesp.sdk.android.R
 import com.nesp.sdk.android.databinding.ActivitySmoothBinding
 import com.nesp.sdk.android.smooth.widget.SmoothActionMenuView
-import com.nesp.sdk.android.util.AttrUtil
+import com.nesp.sdk.android.utils.AttrUtil
 
 /**
  *

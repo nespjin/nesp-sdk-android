@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/nesp_tip_content_root_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff646464"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/nesp_tip_content_tv_message"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/nesp_tip_content_btn_action"
+            android:layout_toLeftOf="@id/nesp_tip_content_btn_action"
+            android:gravity="start"
+            android:padding="10.0dip"
+            android:text="@string/app_name"
+            android:textColor="#ffffffff"
+            android:textSize="13.0sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/nesp_tip_content_btn_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:text=""
+            android:textAllCaps="false"
+            android:textColor="?attr/colorAccent"
+            android:textSize="15.0sp" />
+    </RelativeLayout>
+</RelativeLayout>

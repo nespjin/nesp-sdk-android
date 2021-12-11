@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<resources>
+    <style name="NespSdk_Activity_Anim_Default">
+        <item name="android:activityOpenEnterAnimation">
+            @anim/nesp_sdk_activity_anim_open_enter
+        </item>
+        <item name="android:activityOpenExitAnimation">
+            @anim/nesp_sdk_activity_anim_open_exit
+        </item>
+        <item name="android:activityCloseEnterAnimation">
+            @anim/nesp_sdk_activity_anim_close_enter
+        </item>
+        <item name="android:activityCloseExitAnimation">
+            @anim/nesp_sdk_activity_anim_close_exit
+        </item>
+    </style>
+</resources>

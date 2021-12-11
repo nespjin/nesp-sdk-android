@@ -26,7 +26,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import com.nesp.sdk.android.R
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
-import com.nesp.sdk.android.util.AttrUtil
+import com.nesp.sdk.android.utils.AttrUtil
 import kotlin.math.max
 import kotlin.math.min
 

@@ -42,7 +42,7 @@ import com.nesp.sdk.android.R
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
 import com.nesp.sdk.android.core.ktx.widget.goneIfTextEmpty
 import com.nesp.sdk.android.text.Text
-import com.nesp.sdk.android.util.AttrUtil
+import com.nesp.sdk.android.utils.AttrUtil
 
 /**
  *

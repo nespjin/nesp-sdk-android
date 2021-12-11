@@ -22,8 +22,8 @@ import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.nesp.sdk.android.core.ktx.jvm.reflect.getFieldValue
-import com.nesp.sdk.android.core.ktx.jvm.reflect.setFieldValue
+import com.nesp.sdk.kotlin.jvm.reflect.getFieldValue
+import com.nesp.sdk.kotlin.jvm.reflect.setFieldValue
 
 /**
  *

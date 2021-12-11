@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_dialog_radius_bg">
+
+    <LinearLayout
+        android:id="@+id/progress_dg_ll_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp">
+
+        <ProgressBar
+            android:id="@+id/progress_dg_pb_progress"
+            style="@style/NespProgressBarTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            android:indeterminateOnly="false" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/progress_dg_ll_down"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progress_dg_ll_up"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/progress_dg_tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Downloading..."
+            android:textColor="@color/colorDarkGrayness"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/progress_dg_tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="0%"
+            android:textColor="@color/colorDarkGrayness"
+            android:textSize="15sp" />
+    </RelativeLayout>
+    <!--横线-->
+    <View
+        android:id="@+id/progress_dg_view_hor"
+        android:layout_below="@id/progress_dg_ll_down"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorLightGrayness"/>
+
+    <!--Dialog Button-->
+    <LinearLayout
+        android:layout_below="@id/progress_dg_view_hor"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <!--Button NO-->
+        <Button
+            android:id="@+id/progress_dg_btn_no"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="NO"
+            android:textColor="@color/colorDarkGrayness"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+</RelativeLayout>

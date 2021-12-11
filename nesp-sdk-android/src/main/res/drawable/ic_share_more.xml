@@ -1,0 +1,24 @@
+<!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="M224,608c-52.93,0 -96,-43.07 -96,-96s43.07,-96 96,-96 96,43.07 96,96 -43.07,96 -96,96zM512,608c-52.93,0 -96,-43.07 -96,-96s43.07,-96 96,-96 96,43.07 96,96 -43.07,96 -96,96zM800,608c-52.93,0 -96,-43.07 -96,-96s43.07,-96 96,-96 96,43.07 96,96 -43.07,96 -96,96z"/>
+</vector>

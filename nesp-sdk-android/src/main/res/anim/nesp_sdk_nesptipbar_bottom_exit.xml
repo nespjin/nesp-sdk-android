@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<set android:duration="1000"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate android:fromYDelta="0.0" android:toYDelta="100.0%" />
+    <alpha android:fromAlpha="1.0" android:toAlpha="0.0" />
+</set>

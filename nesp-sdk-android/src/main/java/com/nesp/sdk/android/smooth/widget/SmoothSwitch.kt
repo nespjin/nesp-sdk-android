@@ -33,7 +33,7 @@ import com.nesp.sdk.android.R
 import com.nesp.sdk.android.core.ktx.content.getColorCompat
 import com.nesp.sdk.android.core.ktx.graphics.getFontHeight
 import com.nesp.sdk.android.core.ktx.graphics.getFontWidth
-import com.nesp.sdk.android.util.AttrUtil
+import com.nesp.sdk.android.utils.AttrUtil
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min

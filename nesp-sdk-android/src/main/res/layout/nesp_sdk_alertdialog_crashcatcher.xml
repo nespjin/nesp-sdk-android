@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:ignore="ResourceName">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F0F0F0"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/ic_warning" />
+
+        <TextView
+            android:id="@+id/nesp_sdk_crash_catcher_dialog_textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:gravity="center_vertical"
+            android:text="Title"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/nesp_sdk_crash_catcher_sv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="崩溃信息："
+                android:textColor="#252525"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/nesp_sdk_crash_catcher_dialog_textMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="17sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#efefef" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="包名："
+                    android:textColor="#252525"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_packageName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="类名："
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_className"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="方法："
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_methodName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="行数："
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_lineNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="类型："
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_exceptionType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="时间："
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#efefef" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设备名称："
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="设备厂商："
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="系统版本："
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_sys_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="系统API等级："
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_sys_api_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="软件名："
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_app_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="软件版本："
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_app_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#efefef" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全部信息："
+                android:textColor="#252525"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/nesp_sdk_crash_catcher_dialog_tv_fullException"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/nesp_sdk_crash_catcher_dialog_btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/nesp_sdk_crash_catcher_dialog_btn_upload_message"
+            android:layout_toLeftOf="@id/nesp_sdk_crash_catcher_dialog_btn_upload_message"
+            android:background="@color/colorTransparent"
+            android:foreground="?selectableItemBackground"
+            android:text="取消" />
+
+        <Button
+            android:id="@+id/nesp_sdk_crash_catcher_dialog_btn_upload_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/colorTransparent"
+            android:foreground="?selectableItemBackground"
+            android:text="上传此信息" />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -25,7 +25,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.ColorInt
 import com.nesp.sdk.android.R
-import com.nesp.sdk.android.util.AttrUtil
+import com.nesp.sdk.android.utils.AttrUtil
 import kotlin.math.*
 
 /**

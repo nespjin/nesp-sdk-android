@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 背景 -->
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="0dp" />
+            <gradient
+                android:angle="270"
+                android:centerY="0.75"
+                android:endColor="#D5D5D5"
+                android:startColor="#D5D5D5" />
+        </shape>
+    </item>
+    <!-- 第二进度条样式，用不怎么到直接设置成了和背景色一样的颜色，隐藏起来 -->
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <corners android:radius="0dp" />
+                <gradient
+                    android:angle="270"
+                    android:centerY="0.75"
+                    android:endColor="@color/colorWhite"
+                    android:startColor="@color/colorWhite" />
+            </shape>
+        </clip>
+    </item>
+    <!-- 第一进度条样式，我想修改的，修改成简单的灰色 -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <!-- 圆角设置 -->
+                <corners android:radius="0dp" />
+                <gradient
+                    android:angle="270"
+                    android:centerY="0.75"
+                    android:endColor="#9C9B9B"
+                    android:startColor="#9C9B9B" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

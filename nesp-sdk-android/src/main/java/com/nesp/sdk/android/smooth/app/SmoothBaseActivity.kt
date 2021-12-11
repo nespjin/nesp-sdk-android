@@ -21,7 +21,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.nesp.sdk.android.util.WindowUtil
+import com.nesp.sdk.android.utils.WindowUtil
 import com.nesp.sdk.android.widget.Toast
 
 /**

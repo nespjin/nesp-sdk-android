@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~
+  ~   Copyright (c) 2020  NESP Technology Corporation. All rights reserved.
+  ~
+  ~   This program is not free software; you can't redistribute it and/or modify it
+  ~   without the permit of team manager.
+  ~
+  ~   Unless required by applicable law or agreed to in writing.
+  ~
+  ~   If you have any questions or if you find a bug,
+  ~   please contact the author by email or ask for Issues.
+  ~
+  ~   Author:JinZhaolu <1756404649@qq.com>
+  -->
+
+<paths>
+    <external-path
+        name="image_cache"
+        path="Download" />
+
+    <!--有米sdk会将apk优先下载在sd卡中，如果sd卡不能使用，则会使用应用私有缓存目录context.getCache()-->
+    <!--因此需要开发者配置下面两个路径方便有米sdk在下载完apk之后启动apk的安装页面-->
+    <cache-path
+        name="apk1"
+        path="." />
+    <external-path
+        name="apk2"
+        path="." />
+    <external-path
+        name="files_root"
+        path="mimoDownload" />
+    <external-path
+        name="external_storage_root"
+        path="." />
+
+</paths>
