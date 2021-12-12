@@ -209,11 +209,10 @@ class M3U8Downloader : IDownloader {
         var m3U8DirLength = getM3U8DirLength()
         cachedThreadPool.submit {
             try {
-                FileUtils.write(
+                FileUtils.writeStringToFile(
                     File(m3u8File!!.absolutePath + ".downloading"),
                     generateDownloadM3U8Str(m3U8!!),
-                    StandardCharsets.UTF_8,
-                    false
+                    StandardCharsets.UTF_8.toString()
                 )
             } catch (e: Exception) {
             }

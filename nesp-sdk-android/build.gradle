@@ -57,9 +57,10 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation fileTree(dir: "libs", include: ["*.jar"], excludes: [""])
+    implementation "androidx.core:core-ktx:1.6.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
@@ -106,7 +107,7 @@ dependencies {
     /// Nesp SDK
     ///////////////////////////////////////////////////
     implementation project(':NespRecyclerView')
-    implementation project(':nesp-sdk-java2')
+    implementation project(':nesp-sdk-java')
     implementation project(':nesp-sdk-kotlin')
 
     implementation 'com.github.bumptech.glide:glide:4.12.0'
@@ -123,20 +124,20 @@ dependencies {
     compileOnly files(getLayoutLibFilePath())
 
     // org.apache.commons
-    implementation 'org.apache.commons:commons-lang3:3.12.0'
-    implementation 'org.apache.commons:commons-collections4:4.4'
-    implementation 'org.apache.commons:commons-text:1.9'
-    implementation 'org.apache.commons:commons-compress:1.21'
-    implementation 'org.apache.commons:commons-math3:3.6.1'
-    implementation 'org.apache.commons:commons-pool2:2.11.1'
+//    implementation 'org.apache.commons:commons-lang3:3.12.0'
+//    implementation 'org.apache.commons:commons-collections4:4.4'
+//    implementation 'org.apache.commons:commons-text:1.9'
+//    implementation 'org.apache.commons:commons-compress:1.21'
+//    implementation 'org.apache.commons:commons-math3:3.6.1'
+//    implementation 'org.apache.commons:commons-pool2:2.11.1'
     implementation 'org.apache.commons:commons-io:1.3.2'
-    implementation 'org.apache.commons:commons-csv:1.9.0'
-    implementation 'org.apache.commons:commons-configuration2:2.7'
-    implementation 'org.apache.commons:commons-exec:1.3'
-    implementation 'org.apache.commons:commons-crypto:1.1.0'
-    implementation 'org.apache.commons:commons-jexl3:3.2.1'
-    implementation 'org.apache.commons:commons-vfs2:2.9.0'
-    implementation 'org.apache.commons:commons-email:1.5'
+//    implementation 'org.apache.commons:commons-csv:1.9.0'
+//    implementation 'org.apache.commons:commons-configuration2:2.7'
+//    implementation 'org.apache.commons:commons-exec:1.3'
+//    implementation 'org.apache.commons:commons-crypto:1.1.0'
+//    implementation 'org.apache.commons:commons-jexl3:3.2.1'
+//    implementation 'org.apache.commons:commons-vfs2:2.9.0'
+//    implementation 'org.apache.commons:commons-email:1.5'
 
     // ZXing
     implementation 'com.google.zxing:core:3.4.1'
@@ -164,7 +165,6 @@ dependencies {
     //    implementation 'com.qmuiteam:qmui:1.1.3'
 
     implementation 'org.greenrobot:eventbus:3.1.1'
-    implementation files('libs/commons-io-2.5.jar')
 
     implementation 'com.arialyy.aria:core:3.8.6'
     annotationProcessor 'com.arialyy.aria:compiler:3.8.6'
