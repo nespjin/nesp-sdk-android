@@ -61,12 +61,12 @@ class SmoothActionMenuView : LinearLayout {
     private var popupWindowIsShown = false
 
     private val viewBinding: SmoothActionMenuViewBinding =
-            SmoothActionMenuViewBinding.inflate(LayoutInflater.from(context), this, true)
+        SmoothActionMenuViewBinding.inflate(LayoutInflater.from(context), this, true)
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
-            context, attrs, defStyleAttr
+        context, attrs, defStyleAttr
     ) {
         initView()
     }
@@ -115,8 +115,8 @@ class SmoothActionMenuView : LinearLayout {
     private fun createPopupWindow(): PopupWindow {
         val popupWindowViewContent = inflate(context, R.layout.smooth_action_menu_list, null)
         val popupWindow = PopupWindow(
-                popupWindowViewContent, ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
+            popupWindowViewContent, ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
         )
         popupWindow.isOutsideTouchable = true
         return popupWindow
@@ -129,9 +129,9 @@ class SmoothActionMenuView : LinearLayout {
             popupWindowIsShown = false
         } else {
             popupWindow!!.showAsDropDown(
-                    viewBinding.ivMenuIndicator.cast(),
-                    DisplayUtil.dp2px(context, 0f),
-                    DisplayUtil.dp2px(context, 20f)
+                viewBinding.ivMenuIndicator.cast(),
+                DisplayUtil.dp2px(context, 0f),
+                DisplayUtil.dp2px(context, 20f)
             )
             popupWindowIsShown = true
         }
@@ -139,14 +139,15 @@ class SmoothActionMenuView : LinearLayout {
 
     private fun refreshPopupWindowRecyclerView(menu: Menu) {
         if (popupWindow == null) return
-        val recyclerView = popupWindow?.contentView?.findViewById<RecyclerView>(R.id.recyclerView)
+        val recyclerView =
+            (popupWindow?.contentView?.findViewById(R.id.recyclerView) as RecyclerView?)
                 ?: return
         val realtimeBlurView =
-                popupWindow?.contentView?.findViewById<RealtimeBlurView>(R.id.realtimeBlurView)
-                        ?: return
+            popupWindow?.contentView?.findViewById(R.id.realtimeBlurView) as RealtimeBlurView?
+                ?: return
         val cardView =
-                popupWindow?.contentView?.findViewById<CardView>(R.id.cvRoot)
-                        ?: return
+            popupWindow?.contentView?.findViewById(R.id.cvRoot) as CardView?
+                ?: return
         menuItemAdapter = MenuItemAdapter(menu)
 
         recyclerView.adapter = menuItemAdapter
@@ -163,7 +164,7 @@ class SmoothActionMenuView : LinearLayout {
 
 
     private inner class MenuItemAdapter(
-            private val menu: Menu
+        private val menu: Menu
     ) : RecyclerView.Adapter<MenuItemViewHolder>() {
 
         var onMenuItemClickListener: MenuItem.OnMenuItemClickListener? = null
@@ -192,10 +193,10 @@ class SmoothActionMenuView : LinearLayout {
     }
 
     private class MenuItemViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.smooth_action_menu_item, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.smooth_action_menu_item, parent, false)
     ) {
-        val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
-        val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
+        val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon) as ImageView
+        val tvTitle: TextView = itemView.findViewById(R.id.tvTitle) as TextView
     }
 
 }

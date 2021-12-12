@@ -20,12 +20,13 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 31
+//    buildToolsVersion "30.0.3"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
+
         versionCode 1
         versionName "1.0"
 
@@ -58,12 +59,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"], excludes: [""])
-    implementation "androidx.core:core-ktx:1.6.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "androidx.core:core-ktx:1.7.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.0"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
-    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
@@ -72,18 +73,17 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
-    implementation project(path: ':NespRecyclerView')
 
-    def activity_version = "1.2.0-beta01"
+    def activity_version = '1.4.0'
     implementation "androidx.activity:activity-ktx:$activity_version"
     implementation "androidx.activity:activity-ktx:$activity_version"
 
-    def fragment_version = "1.3.2"
+    def fragment_version = '1.4.0'
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     androidTestImplementation "androidx.fragment:fragment-testing:$fragment_version"
 
-    def lifecycle_version = "2.3.1"
+    def lifecycle_version = '2.4.0'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
@@ -101,7 +101,7 @@ dependencies {
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
     // Jetpack Compose Integration
-    implementation "androidx.navigation:navigation-compose:1.0.0-alpha10"
+    implementation 'androidx.navigation:navigation-compose:2.4.0-beta02'
 
     ///////////////////////////////////////////////////
     /// Nesp SDK
@@ -149,10 +149,10 @@ dependencies {
     // Compressor
     implementation files('libs/compressor-2.1.0.aar')
     //HokoBlur
-    implementation 'com.hoko:hoko-blur:1.3.3'
-    implementation files('libs/open_sdk_r2973327_lite.jar')
-    implementation files('libs/paysdk-release-1.2.5.aar')
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.7.0'
+    api 'com.hoko:hoko-blur:1.3.3'
+    api files('libs/open_sdk_r2973327_lite.jar')
+    api files('libs/paysdk-release-1.2.5.aar')
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.7.9'
 
     // paysdk-release-1.2.1(sdk名称)
     implementation files('libs/alipaySdk-15.6.5-20190718211159-noUtdid.aar')
@@ -164,12 +164,12 @@ dependencies {
     //    QMUI
     //    implementation 'com.qmuiteam:qmui:1.1.3'
 
-    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'org.greenrobot:eventbus:3.3.1'
 
     implementation 'com.arialyy.aria:core:3.8.6'
     annotationProcessor 'com.arialyy.aria:compiler:3.8.6'
     implementation 'com.arialyy.aria:m3u8Component:3.8.6'
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01'
 
     implementation 'com.github.lany192:DateTimePicker:1.0.3'
 //    implementation 'com.github.lany192:NumberPicker:1.0.3'

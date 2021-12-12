@@ -30,15 +30,19 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 
+import com.nesp.sdk.android.R;
 import com.nesp.sdk.android.content.SdkSharedPreferences;
 import com.nesp.sdk.java.text.TextUtil;
 
 import java.io.File;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static androidx.core.content.FileProvider.getUriForFile;
 
@@ -457,4 +461,123 @@ public final class ApplicationUtil {
         }
         return flag;
     }
+
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Double Click to Exit
+    ///////////////////////////////////////////////////////////////////////////
+
+    @Deprecated
+    private static Boolean isExit = false;
+
+    @Deprecated
+    public interface OnAppExitListener {
+
+        void onFirstClick();
+
+        Boolean onAppExit();
+    }
+
+    @Deprecated
+    public static void exitByTwoClick(Context context, OnAppExitListener onAppExitListener) {
+        Timer tExit;
+        if (!isExit) {
+            isExit = true;
+            if (onAppExitListener != null) {
+                onAppExitListener.onFirstClick();
+            }
+            tExit = new Timer();
+            tExit.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isExit = false; // 取消退出
+                }
+            }, 2000); // 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
+
+        } else {
+            if (onAppExitListener == null || onAppExitListener.onAppExit()) {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                if (Build.VERSION.SDK_INT < 8)
+                    ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).restartPackage(context.getPackageName());
+                else
+                    ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).killBackgroundProcesses(context.getPackageName());
+            }
+            System.exit(0);
+        }
+    }
+
+    @Deprecated
+    public static void exitByTwoClick(Activity activity, OnAppExitListener onAppExitListener) {
+        Timer tExit;
+        if (!isExit) {
+            isExit = true; // 准备退出
+            Toast.makeText(activity, R.string.package_utils_click_again_to_exit, Toast.LENGTH_SHORT).show();
+            tExit = new Timer();
+            tExit.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isExit = false; // 取消退出
+                }
+            }, 2000); // 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
+
+        } else {
+            if (onAppExitListener == null || onAppExitListener.onAppExit()) {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                if (Build.VERSION.SDK_INT < 8)
+                    ((ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE)).restartPackage(activity.getPackageName());
+                else
+                    ((ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE)).killBackgroundProcesses(activity.getPackageName());
+                System.exit(0);
+            } else {
+                activity.finish();
+            }
+        }
+    }
+
+    @Deprecated
+    public static void exitByTwoClick(Activity activity, Boolean appExit, OnAppExitListener onAppExitListener) {
+        Timer tExit;
+        if (!isExit) {
+            isExit = true; // 准备退出
+            Toast.makeText(activity, R.string.package_utils_click_again_to_exit, Toast.LENGTH_SHORT).show();
+            tExit = new Timer();
+            tExit.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isExit = false; // 取消退出
+                }
+            }, 2000); // 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
+
+        } else {
+            if (appExit || onAppExitListener == null || onAppExitListener.onAppExit()) {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                if (Build.VERSION.SDK_INT < 8)
+                    ((ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE)).restartPackage(activity.getPackageName());
+                else
+                    ((ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE)).killBackgroundProcesses(activity.getPackageName());
+            } else {
+                activity.finish();
+            }
+            System.exit(0);
+        }
+    }
+
+    @Deprecated
+    public static void finishActivityByTwoClick(Activity activity) {
+        Timer tExit;
+        if (!isExit) {
+            isExit = true; // 准备退出
+            tExit = new Timer();
+            tExit.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isExit = false; // 取消退出
+                }
+            }, 2000); // 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
+
+        } else {
+            activity.finish();
+        }
+    }
+
 }

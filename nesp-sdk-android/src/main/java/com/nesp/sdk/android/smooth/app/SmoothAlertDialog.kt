@@ -45,7 +45,7 @@ import com.nesp.sdk.android.utils.AttrUtil
 /**
  *
  * Author: <a href="mailto:1756404649@qq.com">Jinzhaolu Email:1756404649@qq.com</a>
-* Time: Created 2020/10/13 12:45 PM
+ * Time: Created 2020/10/13 12:45 PM
  * Project: NespAndroidSdk
  * Description:
  **/
@@ -192,16 +192,16 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
     }
 
     private var builder: Builder
-    private val tvTitle: TextView by lazy { findViewById(R.id.tvTitle) }
-    private val tvMessage: TextView by lazy { findViewById(R.id.tvMessage) }
-    private val actionsRecyclerView: RecyclerView by lazy { findViewById(R.id.actionsRecyclerView) }
-    private val cardView: CardView by lazy { findViewById(R.id.cardView) }
-    private val realtimeBlurView: RealtimeBlurView by lazy { findViewById(R.id.realtimeBlurView) }
-    private val rlActionContainer: RelativeLayout by lazy { findViewById(R.id.rlActionContainer) }
-    private val llActionContainer: LinearLayout by lazy { findViewById(R.id.llActionContainer) }
-    private val vActionDivider: View by lazy { findViewById(R.id.vActionDivider) }
-    private val tvAction1: TextView by lazy { findViewById(R.id.tvAction1) }
-    private val tvAction2: TextView by lazy { findViewById(R.id.tvAction2) }
+    private lateinit var tvTitle: TextView
+    private lateinit var tvMessage: TextView
+    private lateinit var actionsRecyclerView: RecyclerView
+    private lateinit var cardView: CardView
+    private lateinit var realtimeBlurView: RealtimeBlurView
+    private lateinit var rlActionContainer: RelativeLayout
+    private lateinit var llActionContainer: LinearLayout
+    private lateinit var vActionDivider: View
+    private lateinit var tvAction1: TextView
+    private lateinit var tvAction2: TextView
     private var actionAdapter: ActionAdapter? = null
 
     private constructor(context: Context, builder: Builder) : super(context) {
@@ -227,6 +227,17 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
         window?.decorView?.setBackgroundColor(Color.TRANSPARENT)
 
         setContentView(R.layout.smooth_alert_dialog)
+
+        tvTitle = findViewById(R.id.tvTitle) as TextView
+        tvMessage = findViewById(R.id.tvMessage) as TextView
+        actionsRecyclerView = findViewById(R.id.actionsRecyclerView) as RecyclerView
+        cardView = findViewById(R.id.cardView) as CardView
+        realtimeBlurView = findViewById(R.id.realtimeBlurView) as RealtimeBlurView
+        rlActionContainer = findViewById(R.id.rlActionContainer) as RelativeLayout
+        llActionContainer = findViewById(R.id.llActionContainer) as LinearLayout
+        vActionDivider = findViewById(R.id.vActionDivider) as View
+        tvAction1 = findViewById(R.id.tvAction1) as TextView
+        tvAction2 = findViewById(R.id.tvAction2) as TextView
 
         tvTitle.text = builder.title.content
         builder.title.textStyle?.setToTextView(tvTitle)
@@ -458,7 +469,7 @@ class SmoothAlertDialog : Dialog, ISmoothDialog {
         LayoutInflater.from(parent.context)
             .inflate(R.layout.smooth_alert_dialog_action_item, parent, false)
     ) {
-        val tvAction: TextView = itemView.findViewById(R.id.tvAction)
+        val tvAction: TextView = itemView.findViewById(R.id.tvAction) as TextView
     }
 
     private class ActionListDividerItemDecoration : RecyclerView.ItemDecoration() {

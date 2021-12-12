@@ -22,14 +22,58 @@
 
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 
-    <application>
-        <activity android:name=".smooth.app.SmoothBaseActivity" />
+    <application android:networkSecurityConfig="@xml/network_security_config">
+
+        <!--Smooth-->
+        <activity
+            android:name=".smooth.app.SmoothBaseActivity"
+            android:exported="false" />
         <activity
             android:name=".smooth.app.SmoothBottomNavigationActivity"
+            android:exported="false"
             android:theme="@style/SmoothAppTheme.Light.BottomNavigationActivity" />
         <activity
             android:name=".smooth.app.SmoothActivity"
+            android:exported="false"
             android:theme="@style/SmoothAppTheme.Light.Activity" />
+
+        <!--Old SDK-->
+
+        <activity
+            android:name=".app.LoadDataActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mvp.BasicActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".app.CrashCatcherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".app.CrashCatcherDialogActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NespSdk.Translucent.NoTitleBar" />
+
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent101531551" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

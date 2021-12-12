@@ -23,6 +23,8 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.nesp.sdk.android.utils.DisplayUtil;
+
 /**
  * Created by xiasuhuei321 on 2017/5/15.
  * author:luo
@@ -76,7 +78,7 @@ public class LoadCircleView extends View {
         } else if (widthSpecMode != MeasureSpec.AT_MOST) {
             mWidth = widthSpecSize;
         } else {
-            mWidth = SizeUtils.dip2px(mContext, 50);
+            mWidth = DisplayUtil.dp2px(mContext, 50);
         }
         setMeasuredDimension(mWidth, mWidth);
         mPadding = 8;

@@ -281,7 +281,7 @@ class SmoothSwitch : View {
         cancel.recycle()
     }
 
-    private fun isLayoutRtl(): Boolean {
+    override fun isLayoutRtl(): Boolean {
         return ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL
     }
 

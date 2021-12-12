@@ -48,7 +48,7 @@ import com.nesp.sdk.android.utils.AttrUtil
  *
  * Team: NESP Technology
  * Author: <a href="mailto:1756404649@qq.com">Jinzhaolu Email:1756404649@qq.com</a>
-* Time: Created 2020/10/19 2:18 PM
+ * Time: Created 2020/10/19 2:18 PM
  * Project: NespAndroidSdkSample
  * Description:
  **/
@@ -237,15 +237,16 @@ class SmoothActionSheetDialog : Dialog, ISmoothActionSheetDialog {
 
 
     private val builder: Builder
-    private val cardViewContent: CardView by lazy { findViewById(R.id.cardViewContent) }
-    private val cardViewCancel: CardView by lazy { findViewById(R.id.cardViewCancel) }
-    private val realtimeBlurViewContent: RealtimeBlurView by lazy { findViewById(R.id.realtimeBlurViewContent) }
-    private val realtimeBlurViewCancel: RealtimeBlurView by lazy { findViewById(R.id.realtimeBlurViewCancel) }
-    private val tvTitle: TextView by lazy { findViewById(R.id.tvTitle) }
-    private val tvDescription: TextView by lazy { findViewById(R.id.tvDescription) }
-    private val actionsRecyclerView: RecyclerView by lazy { findViewById(R.id.actionsRecyclerView) }
-    private val tvActionCancel: TextView by lazy { findViewById(R.id.tvActionCancel) }
-    private val vActionDivider: View by lazy { findViewById(R.id.vActionDivider) }
+
+    private lateinit var cardViewContent: CardView
+    private lateinit var cardViewCancel: CardView
+    private lateinit var realtimeBlurViewContent: RealtimeBlurView
+    private lateinit var realtimeBlurViewCancel: RealtimeBlurView
+    private lateinit var tvTitle: TextView
+    private lateinit var tvDescription: TextView
+    private lateinit var actionsRecyclerView: RecyclerView
+    private lateinit var tvActionCancel: TextView
+    private lateinit var vActionDivider: View
     private var actionAdapter: ActionAdapter? = null
 
     private constructor(context: Context, builder: Builder) : super(context) {
@@ -272,6 +273,16 @@ class SmoothActionSheetDialog : Dialog, ISmoothActionSheetDialog {
         window?.decorView?.setBackgroundColor(Color.TRANSPARENT)
 
         setContentView(R.layout.smooth_action_sheet_dialog)
+
+        cardViewContent = findViewById(R.id.cardViewContent) as CardView
+        cardViewCancel = findViewById(R.id.cardViewCancel) as CardView
+        realtimeBlurViewContent = findViewById(R.id.realtimeBlurViewContent) as RealtimeBlurView
+        realtimeBlurViewCancel = findViewById(R.id.realtimeBlurViewCancel) as RealtimeBlurView
+        tvTitle = findViewById(R.id.tvTitle) as TextView
+        tvDescription = findViewById(R.id.tvDescription) as TextView
+        actionsRecyclerView = findViewById(R.id.actionsRecyclerView) as RecyclerView
+        tvActionCancel = findViewById(R.id.tvActionCancel) as TextView
+        vActionDivider = findViewById(R.id.vActionDivider) as View
 
         tvTitle.text = builder.title.content
         builder.title.textStyle?.setToTextView(tvTitle)
@@ -315,12 +326,16 @@ class SmoothActionSheetDialog : Dialog, ISmoothActionSheetDialog {
 
     private fun setDialogWidth() {
         val dm = DisplayMetrics()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            context.display?.getMetrics(dm)
-        } else {
-            val windowManager = (builder.context as Activity).windowManager
-            windowManager.defaultDisplay.getMetrics(dm)
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            context.display?.getMetrics(dm)
+//        } else {
+//            val windowManager = (builder.context as Activity).windowManager
+//            windowManager.defaultDisplay.getMetrics(dm)
+//        }
+        // TODO: Resolve for R
+        val windowManager = (builder.context as Activity).windowManager
+        windowManager.defaultDisplay.getMetrics(dm)
+
         val lp = window!!.attributes
         lp.width = dm.widthPixels * 99 / 100
         window!!.attributes = lp
@@ -515,7 +530,7 @@ class SmoothActionSheetDialog : Dialog, ISmoothActionSheetDialog {
         LayoutInflater.from(parent.context)
             .inflate(R.layout.smooth_action_sheet_dialog_action_item, parent, false)
     ) {
-        val tvAction: TextView = itemView.findViewById(R.id.tvAction)
+        val tvAction: TextView = itemView.findViewById(R.id.tvAction) as TextView
     }
 
     private class ActionListDividerItemDecoration : RecyclerView.ItemDecoration() {

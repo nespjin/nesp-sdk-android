@@ -62,7 +62,11 @@ public class NespPay extends Pay {
         (shared().mTrPay = TrPay.getInstance(activity)).initPaySdk(appKey, channel);
     }
 
-    public static NespPay shared() {
+    /**
+     * @return Shared instance
+     * @throws PayException if not call initialize
+     */
+    public static NespPay shared() throws PayException {
         if (singleton == null) {
             synchronized (NespPay.class) {
                 if (singleton == null) {
@@ -74,6 +78,10 @@ public class NespPay extends Pay {
     }
 
     private NespPay() {
+
+    }
+
+    private void checkInitialize() throws PayException {
         if (mTrPay == null) {
             throw new PayException("Need to initialize Pay at first.");
         }
@@ -81,6 +89,7 @@ public class NespPay extends Pay {
 
     @Override
     public void payWithAliPay(final PayOptions payOptions) {
+        checkInitialize();
         mTrPay.callAlipay(payOptions.getTradeName(), payOptions.getTradeOrderNo(),
                 payOptions.getAmount(), payOptions.getCallbackParam(), payOptions.getCallbackUrl(),
                 payOptions.getUserId(), mPayResultListener);
@@ -88,6 +97,7 @@ public class NespPay extends Pay {
 
     @Override
     public void payWithWechat(final PayOptions payOptions) {
+        checkInitialize();
         mTrPay.callWxPay(payOptions.getTradeName(), payOptions.getTradeOrderNo(),
                 payOptions.getAmount(), payOptions.getCallbackParam(), payOptions.getCallbackUrl(),
                 payOptions.getUserId(), mPayResultListener);

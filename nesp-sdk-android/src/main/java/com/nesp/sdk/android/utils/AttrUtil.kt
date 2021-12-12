@@ -40,11 +40,13 @@ object AttrUtil {
             context.getSystemService(Context.WINDOW_SERVICE).cast<WindowManager>()
         val outDisplayMetrics = DisplayMetrics()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && context is AppCompatActivity) {
-            context.display!!.getRealMetrics(outDisplayMetrics)
-        } else {
-            windowManager.defaultDisplay!!.getRealMetrics(outDisplayMetrics)
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && context is AppCompatActivity) {
+//            context.display!!.getRealMetrics(outDisplayMetrics)
+//        } else {
+//            windowManager.defaultDisplay!!.getRealMetrics(outDisplayMetrics)
+//        }
+        // TODO: Resolve for R
+        windowManager.defaultDisplay!!.getRealMetrics(outDisplayMetrics)
         return outTypeValue.getDimension(outDisplayMetrics)
     }
 
