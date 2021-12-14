@@ -18,6 +18,8 @@ package com.nesp.sdk.android.view;
 import android.os.Build;
 import android.view.View;
 
+import com.nesp.sdk.java.util.ArrayUtil;
+
 /**
  * @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
  * @team NESP Technology
@@ -29,17 +31,17 @@ public final class ViewUtil {
         //no instance
     }
 
-    public static void visibile(View view) {
+    public static void visible(View view) {
         if (view == null) return;
         if (view.getVisibility() != View.VISIBLE) {
             view.setVisibility(View.VISIBLE);
         }
     }
 
-    public static void visibile(View... views) {
+    public static void visible(View... views) {
         if (views == null || views.length <= 0) return;
         for (View view : views) {
-            visibile(view);
+            visible(view);
         }
     }
 
@@ -53,7 +55,7 @@ public final class ViewUtil {
     public static void invisible(View... views) {
         if (views == null || views.length <= 0) return;
         for (View view : views) {
-            visibile(view);
+            visible(view);
         }
     }
 
@@ -68,6 +70,78 @@ public final class ViewUtil {
         if (views == null || views.length <= 0) return;
         for (View view : views) {
             gone(view);
+        }
+    }
+
+    public static boolean isVisible(final View view) {
+        if (view == null) return false;
+        return view.getVisibility() == View.VISIBLE;
+    }
+
+    public static void isVisible(final View view, final boolean visible) {
+        if (view == null) return;
+        if (visible) {
+            view.setVisibility(View.VISIBLE);
+        } else {
+            view.setVisibility(View.GONE);
+        }
+    }
+
+    public static void isVisible(final View[] views, final boolean visible) {
+        if (ArrayUtil.isEmpty(views)) {
+            return;
+        }
+
+        for (final View view : views) {
+            isVisible(view, visible);
+        }
+    }
+
+    public static boolean isInvisible(final View view) {
+        if (view == null) return false;
+        return view.getVisibility() == View.INVISIBLE;
+    }
+
+    public static void isInvisible(final View view, final boolean visible) {
+        if (view == null) return;
+        if (visible) {
+            view.setVisibility(View.INVISIBLE);
+        } else {
+            view.setVisibility(View.GONE);
+        }
+    }
+
+    public static void isInvisible(final View[] views, final boolean visible) {
+        if (ArrayUtil.isEmpty(views)) {
+            return;
+        }
+
+        for (final View view : views) {
+            isVisible(view, visible);
+        }
+    }
+
+    public static boolean isGone(final View view) {
+        if (view == null) return false;
+        return view.getVisibility() == View.GONE;
+    }
+
+    public static void isGone(final View view, final boolean visible) {
+        if (view == null) return;
+        if (visible) {
+            view.setVisibility(View.GONE);
+        } else {
+            view.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public static void isGone(final View[] views, final boolean visible) {
+        if (ArrayUtil.isEmpty(views)) {
+            return;
+        }
+
+        for (final View view : views) {
+            isGone(view, visible);
         }
     }
 

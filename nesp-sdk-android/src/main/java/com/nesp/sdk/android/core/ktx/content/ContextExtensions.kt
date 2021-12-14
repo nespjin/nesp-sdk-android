@@ -78,11 +78,11 @@ fun Context.getActionBarHeight(): Float {
     return actionBarHeight
 }
 
-fun Context.dip2px(@DimenRes dpValueRes: Int): Int {
-    return dip2px(resources.getDimension(dpValueRes))
+fun Context.dp2px(@DimenRes dpValueRes: Int): Int {
+    return dp2px(resources.getDimension(dpValueRes))
 }
 
-fun Context.dip2px(@Dimension dpValue: Float): Int {
+fun Context.dp2px(@Dimension dpValue: Float): Int {
     val scale = resources.displayMetrics.density
     return (dpValue * scale + 0.5f).toInt()
 }

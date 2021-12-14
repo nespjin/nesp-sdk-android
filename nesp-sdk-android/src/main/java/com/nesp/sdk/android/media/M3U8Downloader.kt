@@ -611,7 +611,7 @@ fun main() {
             super.onNetSpeedChanged(speedSec)
             println(
                 SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(Date()) +
-                        "onNetSpeedChanged:${StorageSizeUtil.formatStorageSize(speedSec)}/s"
+                        "onNetSpeedChanged:${StorageSizeUtil.format(speedSec)}/s"
             )
         }
 
@@ -645,7 +645,7 @@ fun main() {
             println(
                 SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(Date()) + "onProgress:" +
                         "progress:$progress" +
-                        " currentLength:${StorageSizeUtil.formatStorageSize(currentLength)}" +
+                        " currentLength:${StorageSizeUtil.format(currentLength)}" +
                         " fullLength:$fullLength"
             )
 

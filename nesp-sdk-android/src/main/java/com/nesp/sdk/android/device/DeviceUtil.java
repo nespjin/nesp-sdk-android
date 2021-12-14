@@ -26,6 +26,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
 import android.os.SystemProperties;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 
@@ -173,6 +174,17 @@ public final class DeviceUtil {
      */
     public static String getUUID(Context context) {
         return UUID.randomUUID().toString().replace("-", "").toLowerCase();
+    }
+
+    /**
+     * 设备唯一UUID
+     *
+     * @param context context
+     * @return 设备唯一UUID
+     */
+    public static String getDeviceUUID(Context context) {
+        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+//        return "6112415C-6A74-4E46-B7DF-3656249F3E22";
     }
 
     public static class DeviceInfo {

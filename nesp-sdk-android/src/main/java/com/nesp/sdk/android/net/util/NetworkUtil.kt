@@ -22,6 +22,9 @@ import android.net.NetworkCapabilities
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.telephony.TelephonyManager
+import java.net.Inet4Address
+import java.net.NetworkInterface
+import java.net.SocketException
 
 /**
  *
@@ -231,6 +234,43 @@ object NetworkUtil {
         } else {
             ssid
         }
+    }
+
+    @JvmStatic
+    fun getLocalIpAddress(): String {
+        try {
+            val networkInterfaces = NetworkInterface.getNetworkInterfaces()
+            while (networkInterfaces.hasMoreElements()) {
+                val netI = networkInterfaces.nextElement()
+                val enumIpAddr = netI.inetAddresses
+                while (enumIpAddr.hasMoreElements()) {
+                    val inetAddress = enumIpAddr.nextElement()
+                    if (inetAddress is Inet4Address && !inetAddress.isLoopbackAddress()) {
+                        return inetAddress.getHostAddress();
+                    }
+                }
+            }
+        } catch (e: SocketException) {
+            e.printStackTrace();
+        }
+        return "0.0.0.0"
+    }
+
+    @JvmStatic
+    fun getWifiIpAddress(context: Context): String {
+        val wifiManager =
+            context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+        val wifiInfo = wifiManager.connectionInfo
+        val ipAddress = wifiInfo.ipAddress
+        return intToIp(ipAddress)
+    }
+
+    @JvmStatic
+    fun intToIp(ipInt: Int): String {
+        return (ipInt and 0xFF).toString() + "." +
+                (ipInt shr 8 and 0xFF) + "." +
+                (ipInt shr 16 and 0xFF) + "." +
+                (ipInt shr 24 and 0xFF)
     }
 
 }

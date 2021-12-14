@@ -48,7 +48,7 @@ public final class StorageUtil {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             cacheSize += FileUtils.sizeOfDirectory(context.getExternalCacheDir());
         }
-        return StorageSizeUtil.formatStorageSize(cacheSize);
+        return StorageSizeUtil.format(cacheSize);
     }
 
     /**

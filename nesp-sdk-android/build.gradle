@@ -103,6 +103,26 @@ dependencies {
     // Jetpack Compose Integration
     implementation 'androidx.navigation:navigation-compose:2.4.0-beta02'
 
+    def work_version = "2.5.0"
+
+    // (Java only)
+    implementation "androidx.work:work-runtime:$work_version"
+
+    // Kotlin + coroutines
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    // optional - RxJava2 support
+    implementation "androidx.work:work-rxjava2:$work_version"
+
+    // optional - GCMNetworkManager support
+    implementation "androidx.work:work-gcm:$work_version"
+
+    // optional - Test helpers
+    androidTestImplementation "androidx.work:work-testing:$work_version"
+
+    // optional - Multiprocess support
+    implementation "androidx.work:work-multiprocess:$work_version"
+
     ///////////////////////////////////////////////////
     /// Nesp SDK
     ///////////////////////////////////////////////////
@@ -118,6 +138,10 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation 'com.google.guava:guava:24.1-jre'
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+    implementation 'gdut.bsx:share2:0.9.3'
 
     // Old SDK
     // 添加layoutlib.jar
@@ -138,6 +162,7 @@ dependencies {
 //    implementation 'org.apache.commons:commons-jexl3:3.2.1'
 //    implementation 'org.apache.commons:commons-vfs2:2.9.0'
 //    implementation 'org.apache.commons:commons-email:1.5'
+    implementation 'commons-codec:commons-codec:1.15'
 
     // ZXing
     implementation 'com.google.zxing:core:3.4.1'

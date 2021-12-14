@@ -24,22 +24,29 @@ import android.widget.Toast
  *
  * Team: NESP Technology
  * Author: <a href="mailto:1756404649@qq.com">Jinzhaolu Email:1756404649@qq.com</a>
-* Time: Created 2020/10/11 7:29
+ * Time: Created 2020/10/11 7:29
  * Project: NespAndroidSdk
  **/
+@Deprecated(
+    "This is not usable",
+    replaceWith = ReplaceWith(
+        "ToastUtil",
+        imports = ["com.nesp.sdk.android.widget.ToastUtil"]
+    )
+)
 open class Toast(context: Context) : Toast(context) {
     companion object {
 
         @JvmStatic
         fun showShort(context: Context?, msg: String?) {
             if (context == null || msg == null || msg.isEmpty()) return
-            makeText(context.applicationContext, msg, LENGTH_SHORT).show()
+            ToastUtil.showShortToast(context, msg)
         }
 
         @JvmStatic
         fun showLong(context: Context?, msg: String?) {
             if (context == null || msg == null || msg.isEmpty()) return
-            makeText(context.applicationContext, msg, LENGTH_LONG).show()
+            ToastUtil.showLongToast(context, msg)
         }
 
     }

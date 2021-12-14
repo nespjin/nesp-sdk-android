@@ -27,14 +27,24 @@
         <!--        <item name="android:windowTranslucentNavigation">true</item>-->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!--<item name="android:navigationBarColor">@color/colorPrimaryDark</item>-->
-        <item name="smoothBottomNavigationDividerColor">@color/smooth_bottom_navigation_divider_color</item>
+        <item name="smoothBottomNavigationDividerColor">
+            @color/smooth_bottom_navigation_divider_color
+        </item>
         <item name="smoothBottomNavigationDividerWidth">@dimen/smooth_bottom_divider_width</item>
         <item name="smoothBottomNavigationHeight">@dimen/smooth_bottom_view_height</item>
-        <item name="smoothBottomNavigationItemIconSize">@dimen/smooth_bottom_view_item_icon_size</item>
-        <item name="smoothBottomNavigationBackgroundColor">@color/smooth_bottom_navigation_background_color</item>
-        <item name="smoothBottomNavigationBlurColor">@color/smooth_bottom_navigation_blur_color</item>
-        <item name="smoothBottomNavigationItemTextAppearanceActive">@style/SmoothAppTheme.Light.SmoothBottomNavigationViewActiveTextAppearance</item>
-        <item name="smoothBottomNavigationItemTextAppearanceInactive">@style/SmoothAppTheme.Light.SmoothBottomNavigationViewInactiveTextAppearance</item>
+        <item name="smoothBottomNavigationItemIconSize">@dimen/smooth_bottom_view_item_icon_size
+        </item>
+        <item name="smoothBottomNavigationBackgroundColor">
+            @color/smooth_bottom_navigation_background_color
+        </item>
+        <item name="smoothBottomNavigationBlurColor">@color/smooth_bottom_navigation_blur_color
+        </item>
+        <item name="smoothBottomNavigationItemTextAppearanceActive">
+            @style/SmoothAppTheme.Light.SmoothBottomNavigationViewActiveTextAppearance
+        </item>
+        <item name="smoothBottomNavigationItemTextAppearanceInactive">
+            @style/SmoothAppTheme.Light.SmoothBottomNavigationViewInactiveTextAppearance
+        </item>
     </style>
 
     <style name="SmoothAppTheme.Light.Activity" parent="SmoothAppTheme.Light.NoActionBar">
@@ -49,20 +59,39 @@
         <item name="android:fitsSystemWindows">false</item>
         <item name="recyclerViewStyle">@style/SmoothRecycleView</item>
         <item name="smoothActionBarBackIndicator">@drawable/ic_smooth_back_indicator</item>
-        <item name="smoothActionBarBackIndicatorColor">@color/smooth_action_bar_back_indicator_color</item>
-        <item name="smoothActionBarBackIndicatorSize">@dimen/smooth_action_bar_back_indicator_size</item>
-        <item name="smoothActionBarMenuIndicator">@drawable/ic_smooth_action_bar_menu_indicator</item>
-        <item name="smoothActionBarMenuIndicatorColor">@color/smooth_action_bar_menu_indicator_color</item>
-        <item name="smoothActionBarMenuIndicatorSize">@dimen/smooth_action_bar_menu_indicator_size</item>
-        <item name="smoothActionBarMenuCornerRadius">@dimen/smooth_action_bar_menu_corner_radius</item>
+        <item name="smoothActionBarBackIndicatorColor">
+            @color/smooth_action_bar_back_indicator_color
+        </item>
+        <item name="smoothActionBarBackIndicatorSize">@dimen/smooth_action_bar_back_indicator_size
+        </item>
+        <item name="smoothActionBarMenuIndicator">@drawable/ic_smooth_action_bar_menu_indicator
+        </item>
+        <item name="smoothActionBarMenuIndicatorColor">
+            @color/smooth_action_bar_menu_indicator_color
+        </item>
+        <item name="smoothActionBarMenuIndicatorSize">@dimen/smooth_action_bar_menu_indicator_size
+        </item>
+        <item name="smoothActionBarMenuCornerRadius">@dimen/smooth_action_bar_menu_corner_radius
+        </item>
         <item name="smoothActionBarMenuElevation">@dimen/smooth_action_bar_menu_elevation</item>
-        <item name="smoothActionBarMenuBackgroundColor">@color/smooth_action_bar_menu_background_color</item>
-        <item name="smoothActionBarMenuItemTitleStyle">@style/SmoothAppTheme.Light.ActionBarMenuItemTitle</item>
-        <item name="smoothActionBarMenuItemSubtitleStyle">@style/SmoothAppTheme.Light.ActionBarMenuItemSubtitle</item>
+        <item name="smoothActionBarMenuBackgroundColor">
+            @color/smooth_action_bar_menu_background_color
+        </item>
+        <item name="smoothActionBarMenuItemTitleStyle">
+            @style/SmoothAppTheme.Light.ActionBarMenuItemTitle
+        </item>
+        <item name="smoothActionBarMenuItemSubtitleStyle">
+            @style/SmoothAppTheme.Light.ActionBarMenuItemSubtitle
+        </item>
         <item name="smoothActionBarTitleStyle">@style/SmoothAppTheme.Light.ActionBarTitle</item>
-        <item name="smoothActionBarSubtitleStyle">@style/SmoothAppTheme.Light.ActionBarSubtitle</item>
-        <item name="smoothActionBarLeftActionStyle">@style/SmoothAppTheme.Light.ActionBarLeftAction</item>
-        <item name="smoothActionBarRightActionStyle">@style/SmoothAppTheme.Light.ActionBarRightAction</item>
+        <item name="smoothActionBarSubtitleStyle">@style/SmoothAppTheme.Light.ActionBarSubtitle
+        </item>
+        <item name="smoothActionBarLeftActionStyle">
+            @style/SmoothAppTheme.Light.ActionBarLeftAction
+        </item>
+        <item name="smoothActionBarRightActionStyle">
+            @style/SmoothAppTheme.Light.ActionBarRightAction
+        </item>
         <item name="smoothActionBarHeight">?android:actionBarSize</item>
         <item name="smoothActionBarBackground">@color/smooth_action_bar_background_color</item>
         <item name="smoothActionBarTitleSpacing">@dimen/smooth_action_bar_title_spacing</item>
@@ -70,49 +99,96 @@
         <item name="smoothActionBarHorizontalPadding">?attr/smoothActivityHorizontalPadding</item>
         <item name="smoothActivityVerticalPadding">@dimen/smooth_activity_vertical_margin</item>
         <item name="smoothActivityHorizontalPadding">@dimen/smooth_activity_horizontal_margin</item>
-        <item name="smoothWidgetCommonBackgroundColor">@color/smooth_widget_common_background_color</item>
-        <item name="smoothCommonItemBackgroundColor">@color/smooth_common_item_background_color</item>
-        <item name="smoothCommonItemNormalBackgroundColor">@color/smooth_common_item_normal_background_color</item>
-        <item name="smoothCommonItemClickBackgroundColor">@color/smooth_common_item_click_background_color</item>
+        <item name="smoothWidgetCommonBackgroundColor">
+            @color/smooth_widget_common_background_color
+        </item>
+        <item name="smoothCommonItemBackgroundColor">@color/smooth_common_item_background_color
+        </item>
+        <item name="smoothCommonItemNormalBackgroundColor">
+            @color/smooth_common_item_normal_background_color
+        </item>
+        <item name="smoothCommonItemClickBackgroundColor">
+            @color/smooth_common_item_click_background_color
+        </item>
         <item name="smoothRealtimeBlurRadius">@dimen/smooth_real_time_blur_radius</item>
-        <item name="smoothBottomRealtimeBlurRadius">@dimen/smooth_bottom_real_time_blur_radius</item>
-        <item name="smoothWidgetRealtimeBlurRadius">@dimen/smooth_widget_real_time_blur_radius</item>
+        <item name="smoothBottomRealtimeBlurRadius">@dimen/smooth_bottom_real_time_blur_radius
+        </item>
+        <item name="smoothWidgetRealtimeBlurRadius">@dimen/smooth_widget_real_time_blur_radius
+        </item>
         <item name="smoothElevationColor">@color/smooth_elevation_color</item>
 
         <item name="smoothDialogStyle">@style/SmoothAppTheme.Light.SmoothDialog</item>
         <item name="smoothDialogActionStyle">@style/SmoothAppTheme.Light.SmoothDialog.Action</item>
-        <item name="smoothDialogDangerActionStyle">@style/SmoothAppTheme.Light.SmoothDialog.DangerAction</item>
+        <item name="smoothDialogDangerActionStyle">
+            @style/SmoothAppTheme.Light.SmoothDialog.DangerAction
+        </item>
         <item name="smoothDialogTitleStyle">@style/SmoothAppTheme.Light.SmoothDialog.Title</item>
-        <item name="smoothDialogMessageStyle">@style/SmoothAppTheme.Light.SmoothDialog.Message</item>
+        <item name="smoothDialogMessageStyle">@style/SmoothAppTheme.Light.SmoothDialog.Message
+        </item>
         <item name="smoothDialogBackgroundColor">@color/smooth_dialog_background</item>
         <item name="smoothDialogCornerRadius">@dimen/smooth_dialog_corner_radius</item>
         <item name="smoothDialogElevation">@dimen/smooth_dialog_elevation</item>
-        <item name="smoothDialogRealtimeBlurRadius">@dimen/smooth_dialog_real_time_blur_radius</item>
+        <item name="smoothDialogRealtimeBlurRadius">@dimen/smooth_dialog_real_time_blur_radius
+        </item>
         <item name="smoothDialogDividerLineWidth">@dimen/smooth_dialog_divider_line_width</item>
         <item name="smoothDialogDividerLineColor">@color/smooth_dialog_divider_line_color</item>
-        <item name="smoothDialogActionBackgroundColor">@color/smooth_dialog_action_bg_selector</item>
-        <item name="smoothDialogActionClickBackgroundColor">@color/smooth_dialog_action_click_background_color</item>
-        <item name="smoothDialogActionNormalBackgroundColor">@color/smooth_dialog_action_normal_background_color</item>
+        <item name="smoothDialogActionBackgroundColor">@color/smooth_dialog_action_bg_selector
+        </item>
+        <item name="smoothDialogActionClickBackgroundColor">
+            @color/smooth_dialog_action_click_background_color
+        </item>
+        <item name="smoothDialogActionNormalBackgroundColor">
+            @color/smooth_dialog_action_normal_background_color
+        </item>
 
         <item name="smoothSwitchStyle">@style/SmoothAppTheme.Light.SmoothSwitch</item>
         <item name="smoothSliderStyle">@style/SmoothAppTheme.Light.SmoothSlider</item>
 
-        <item name="smoothActionSheetDialogStyle">@style/SmoothAppTheme.Light.SmoothActionSheetDialog</item>
-        <item name="smoothActionSheetDialogActionStyle">@style/SmoothAppTheme.Light.SmoothActionSheetDialog.Action</item>
-        <item name="smoothActionSheetDialogDangerActionStyle">@style/SmoothAppTheme.Light.SmoothActionSheetDialog.DangerAction</item>
-        <item name="smoothActionSheetDialogTitleStyle">@style/SmoothAppTheme.Light.SmoothActionSheetDialog.Title</item>
-        <item name="smoothActionSheetDialogDescriptionStyle">@style/SmoothAppTheme.Light.SmoothActionSheetDialog.Description</item>
-        <item name="smoothActionSheetDialogBackgroundColor">@color/smooth_action_sheet_dialog_background</item>
-        <item name="smoothActionSheetDialogCornerRadius">@dimen/smooth_action_sheet_dialog_corner_radius</item>
-        <item name="smoothActionSheetDialogElevation">@dimen/smooth_action_sheet_dialog_elevation</item>
-        <item name="smoothActionSheetDialogRealtimeBlurRadius">@dimen/smooth_action_sheet_dialog_real_time_blur_radius</item>
-        <item name="smoothActionSheetDialogDividerLineWidth">@dimen/smooth_action_sheet_dialog_divider_line_width</item>
-        <item name="smoothActionSheetDialogDividerLineColor">@color/smooth_action_sheet_dialog_divider_line_color</item>
-        <item name="smoothActionSheetDialogActionBackgroundColor">@color/smooth_action_sheet_dialog_action_bg_selector</item>
-        <item name="smoothActionSheetDialogActionClickBackgroundColor">@color/smooth_action_sheet_dialog_action_click_background_color</item>
-        <item name="smoothActionSheetDialogActionNormalBackgroundColor">@color/smooth_action_sheet_dialog_action_normal_background_color</item>
+        <item name="smoothActionSheetDialogStyle">
+            @style/SmoothAppTheme.Light.SmoothActionSheetDialog
+        </item>
+        <item name="smoothActionSheetDialogActionStyle">
+            @style/SmoothAppTheme.Light.SmoothActionSheetDialog.Action
+        </item>
+        <item name="smoothActionSheetDialogDangerActionStyle">
+            @style/SmoothAppTheme.Light.SmoothActionSheetDialog.DangerAction
+        </item>
+        <item name="smoothActionSheetDialogTitleStyle">
+            @style/SmoothAppTheme.Light.SmoothActionSheetDialog.Title
+        </item>
+        <item name="smoothActionSheetDialogDescriptionStyle">
+            @style/SmoothAppTheme.Light.SmoothActionSheetDialog.Description
+        </item>
+        <item name="smoothActionSheetDialogBackgroundColor">
+            @color/smooth_action_sheet_dialog_background
+        </item>
+        <item name="smoothActionSheetDialogCornerRadius">
+            @dimen/smooth_action_sheet_dialog_corner_radius
+        </item>
+        <item name="smoothActionSheetDialogElevation">@dimen/smooth_action_sheet_dialog_elevation
+        </item>
+        <item name="smoothActionSheetDialogRealtimeBlurRadius">
+            @dimen/smooth_action_sheet_dialog_real_time_blur_radius
+        </item>
+        <item name="smoothActionSheetDialogDividerLineWidth">
+            @dimen/smooth_action_sheet_dialog_divider_line_width
+        </item>
+        <item name="smoothActionSheetDialogDividerLineColor">
+            @color/smooth_action_sheet_dialog_divider_line_color
+        </item>
+        <item name="smoothActionSheetDialogActionBackgroundColor">
+            @color/smooth_action_sheet_dialog_action_bg_selector
+        </item>
+        <item name="smoothActionSheetDialogActionClickBackgroundColor">
+            @color/smooth_action_sheet_dialog_action_click_background_color
+        </item>
+        <item name="smoothActionSheetDialogActionNormalBackgroundColor">
+            @color/smooth_action_sheet_dialog_action_normal_background_color
+        </item>
 
-        <item name="smoothActivityIndicatorStyle">@style/SmoothAppTheme.Light.SmoothActivityIndicator</item>
+        <item name="smoothActivityIndicatorStyle">
+            @style/SmoothAppTheme.Light.SmoothActivityIndicator
+        </item>
 
         <item name="listDividerColor">@color/list_divider_color</item>
         <item name="listDividerWidth">@dimen/list_divider_width</item>
@@ -180,7 +256,9 @@
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothActionSheetDialog" parent="Theme.AppCompat.Light.Dialog">
-        <item name="android:windowAnimationStyle">@style/SmoothAppTheme.Light.SmoothActionSheetDialog.Animation</item>
+        <item name="android:windowAnimationStyle">
+            @style/SmoothAppTheme.Light.SmoothActionSheetDialog.Animation
+        </item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
@@ -195,8 +273,10 @@
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothActionSheetDialog.DangerAction">
-        <item name="android:textColor">@color/smooth_action_sheet_dialog_action_danger_text_color</item>
-        <item name="android:textSize">@dimen/smooth_action_sheet_dialog_action_danger_text_size</item>
+        <item name="android:textColor">@color/smooth_action_sheet_dialog_action_danger_text_color
+        </item>
+        <item name="android:textSize">@dimen/smooth_action_sheet_dialog_action_danger_text_size
+        </item>
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothActionSheetDialog.Title">
@@ -206,12 +286,15 @@
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothActionSheetDialog.Description">
-        <item name="android:textColor">@color/smooth_action_sheet_dialog_description_text_color</item>
+        <item name="android:textColor">@color/smooth_action_sheet_dialog_description_text_color
+        </item>
         <item name="android:textSize">@dimen/smooth_action_sheet_dialog_description_text_size</item>
     </style>
 
     <style name="SmoothAppTheme.Light.SmoothDialog" parent="Theme.AppCompat.Light.Dialog">
-        <item name="android:windowAnimationStyle">@style/SmoothAppTheme.Light.SmoothDialog.Animation</item>
+        <item name="android:windowAnimationStyle">
+            @style/SmoothAppTheme.Light.SmoothDialog.Animation
+        </item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
@@ -283,7 +366,9 @@
     <style name="SmoothAppTheme.DayNight.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 
     <style name="SmoothAppTheme.Light.SmoothBottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="android:windowAnimationStyle">@style/SmoothAppTheme.Light.SmoothBottomSheetAnimation</item>
+        <item name="android:windowAnimationStyle">
+            @style/SmoothAppTheme.Light.SmoothBottomSheetAnimation
+        </item>
         <item name="bottomSheetStyle">@style/SmoothAppTheme.Light.SmoothBottomSheetStyle</item>
     </style>
 
@@ -532,6 +617,112 @@
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="actionMenuTextColor">@color/colorAccent</item>
+    </style>
+
+    <!--Nesp SDK 2-->
+
+    <style name="NespTipDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+<!--        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>-->
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <style name="NespTipDialog.Animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/nesp_sdk_tip_popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/nesp_sdk_tip_popup_exit</item>
+    </style>
+
+    <style name="cornerRoundImageStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <!-- 圆形图片 -->
+    <style name="circleImageStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- 切角图片 -->
+    <style name="cutImageStyle">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">15dp</item>
+    </style>
+
+    <!-- 菱形图片 -->
+    <style name="diamondImageStyle">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- 左上角90度扇形图片 -->
+    <style name="topLeftRoundImageStyle">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">100%</item>
+    </style>
+
+    <!-- 火箭头图片 -->
+    <style name="rocketImageStyle">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopLeft">70%</item>
+        <item name="cornerSizeTopRight">70%</item>
+    </style>
+
+    <!-- 水滴 -->
+    <style name="waterImageStyle">
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeBottomLeft">25dp</item>
+        <item name="cornerSizeBottomRight">25dp</item>
+        <item name="cornerSizeTopLeft">70%</item>
+        <item name="cornerSizeTopRight">70%</item>
+    </style>
+
+    <!-- 叶子图片 -->
+    <style name="leafImageStyle">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeTopLeft">50%</item>
+        <item name="cornerSizeBottomRight">50%</item>
+    </style>
+
+    <!-- tip图片 -->
+    <style name="tipImageStyle">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">50%</item>
+
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">50%</item>
+
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerSizeTopRight">50%</item>
+
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerSizeBottomRight">50%</item>
+    </style>
+
+
+    <style name="NespAppDialog" parent="@android:style/Theme.Holo.Dialog.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="NespAppDialog.FullScreen" parent="NespAppDialog">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="NespAppDialog.Page" parent="NespAppDialog">
+        <item name="android:windowEnterAnimation">@anim/nesp_sdk_activity_enter</item>
+        <item name="android:windowExitAnimation">@anim/nesp_sdk_activity_exit</item>
+    </style>
+
+    <style name="NespAppDialog.Bottom" parent="NespAppDialog">
+        <item name="android:windowEnterAnimation">@anim/nesp_sdk_slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/nesp_sdk_slide_out_bottom</item>
     </style>
 
 </resources>

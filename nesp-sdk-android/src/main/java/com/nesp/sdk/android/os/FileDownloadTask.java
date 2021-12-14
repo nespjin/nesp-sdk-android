@@ -24,7 +24,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -345,7 +344,7 @@ public final class FileDownloadTask extends AsyncTask<String, Long, FileDownload
         final Long downloadSpeed = values[1];
         if (mBuilder.getOnDownloadListener() != null) {
             mBuilder.getOnDownloadListener().onProgress(progress.intValue(), downloadSpeed,
-                    StorageSizeUtil.formatStorageSize(downloadSpeed) + "/s");
+                    StorageSizeUtil.format(downloadSpeed) + "/s");
         }
     }
 

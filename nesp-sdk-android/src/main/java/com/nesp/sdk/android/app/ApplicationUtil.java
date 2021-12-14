@@ -15,6 +15,8 @@
 
 package com.nesp.sdk.android.app;
 
+import static androidx.core.content.FileProvider.getUriForFile;
+
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.DownloadManager;
@@ -43,8 +45,6 @@ import java.io.File;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import static androidx.core.content.FileProvider.getUriForFile;
 
 /**
  * Team: NESP Technology
@@ -91,6 +91,15 @@ public final class ApplicationUtil {
         PackageInfo packageInfo;
         if (context == null || (packageInfo = packageInfo(context)) == null) return "";
         return context.getResources().getString(packageInfo.applicationInfo.labelRes);
+    }
+
+    public static String packageName(final Context context) {
+        if (context == null) return null;
+        try {
+            return packageInfo(context).packageName;
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
 
     public static PackageInfo packageInfo(final Context context) {
@@ -150,6 +159,68 @@ public final class ApplicationUtil {
                 .edit()
                 .putBoolean(key, isEnableNext)
                 .apply();
+    }
+
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Launch
+    ///////////////////////////////////////////////////////////////////////////
+
+    public static LaunchAppResultState launchIQiYiSpeakerApp(Activity activity) {
+        return launchApp(activity, "com.qiyi.video.speaker");
+    }
+
+    public static LaunchAppResultState launchXiMaLaYaPad(Activity activity) {
+        return launchApp(activity, "com.ximalayaos.pad");
+    }
+
+    public static LaunchAppResultState launchXiMaLaYa(Activity activity) {
+        return launchApp(activity, "com.ximalaya.ting.android");
+    }
+
+    public static LaunchAppResultState launchJinRiTouTiao(Activity activity) {
+        return launchApp(activity, "com.ss.android.article.news");
+    }
+
+    public static LaunchAppResultState launchIQiYiApp(Activity activity) {
+        return launchAppForSpecialActivity(activity, "com.qiyi.video",
+                "com.qiyi.video.WelcomeActivity");
+    }
+
+    public static LaunchAppResultState launchQQMusicApp(Activity activity) {
+        return launchAppForSpecialActivity(activity, "com.tencent.qqmusic",
+                "com.tencent.qqmusic.activity.AppStarterActivity");
+    }
+
+    public static LaunchAppResultState launchDouYinApp(Activity activity) {
+        return launchApp(activity, "com.ss.android.ugc.aweme");
+//        return launchAppForSpecialActivity(activity, "com.ss.android.ugc.aweme",
+//                "com.ss.android.ugc.aweme.splash.SplashActivity");
+    }
+
+    public enum LaunchAppResultState {NOT_INSTALLED, SUCCESS, FAILED}
+
+    public static LaunchAppResultState launchApp(Activity activity, final String packageName) {
+        if (!isAppInstalled(activity, packageName)) {
+            return LaunchAppResultState.NOT_INSTALLED;
+        }
+        Intent intent = activity.getPackageManager().getLaunchIntentForPackage(packageName);
+        activity.startActivity(intent);
+        return LaunchAppResultState.SUCCESS;
+    }
+
+    public static LaunchAppResultState launchAppForSpecialActivity(Activity activity,
+                                                                   final String packageName,
+                                                                   final String className) {
+        if (!isAppInstalled(activity, packageName)) {
+            return LaunchAppResultState.NOT_INSTALLED;
+        }
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        ComponentName cn = new ComponentName(packageName, className);
+        intent.setComponent(cn);
+        activity.startActivity(intent);
+        return LaunchAppResultState.SUCCESS;
     }
 
     /**

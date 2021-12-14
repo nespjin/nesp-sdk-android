@@ -21,6 +21,7 @@ import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
+import android.widget.TextView
 import androidx.core.view.isVisible
 
 /**
