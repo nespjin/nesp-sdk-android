@@ -18,7 +18,7 @@
         android:layout_marginTop="20dp"
         android:contentDescription="@null"
         app:tint="#FFF"
-        tools:src="@drawable/ic_nesp_sdk_tip_warning" />
+        tools:src="@drawable/ic_tip_warning" />
 
     <ProgressBar
         android:id="@+id/pb_circle_indicator"

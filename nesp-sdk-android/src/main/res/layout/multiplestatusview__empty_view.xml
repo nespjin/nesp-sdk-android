@@ -24,7 +24,7 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@mipmap/ic_nesp_sdk_multiplestatusview_no_data" />
+        android:src="@mipmap/ic_multiplestatusview_no_data" />
 
     <TextView
         android:layout_width="wrap_content"

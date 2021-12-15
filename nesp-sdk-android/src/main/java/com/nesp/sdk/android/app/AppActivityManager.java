@@ -119,6 +119,7 @@ public class AppActivityManager {
         }
     }
 
+    @Deprecated
     public static void startAppSettingDetailActivity(Context context) {
         Intent mIntent = new Intent();
         mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

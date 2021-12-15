@@ -63,7 +63,7 @@ public class DoubleButtonDialog extends android.app.Dialog implements View.OnCli
             window.setWindowAnimations(R.style.nesp_sdk_center_dialog_animation);
         }
 
-        setContentView(R.layout.nesp_sdk_dialog_double_btn);
+        setContentView(R.layout.dialog_double_btn);
 
         WindowManager windowManager = ((Activity) context).getWindowManager();
         Display display = windowManager.getDefaultDisplay();

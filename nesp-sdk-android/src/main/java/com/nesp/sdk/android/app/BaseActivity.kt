@@ -114,7 +114,7 @@ abstract class BaseActivity : AppCompatActivity(), IComponent, IPermissionReques
         try {
             if (getFragmentContainerId() == -1) return
             val beginTransaction = supportFragmentManager.beginTransaction()
-            beginTransaction.setCustomAnimations(R.anim.nesp_sdk_fast_fade_in, R.anim.nesp_sdk_fast_fade_out)
+            beginTransaction.setCustomAnimations(R.anim.fast_fade_in, R.anim.fast_fade_out)
             beginTransaction.remove(fragment)
             beginTransaction.commit()
         } catch (e: Exception) {

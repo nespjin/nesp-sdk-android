@@ -87,7 +87,7 @@ public final class AlertLoadingDialog extends android.app.Dialog {
         private final Context context;
 
         private Boolean mIsCenter = true;
-        private int mLayoutResId = R.layout.nesp_sdk_alertdialog_loading;
+        private int mLayoutResId = R.layout.alertdialog_loading;
         private int mTextViewLoadMessageId = R.id.alert_dialog_loading_dg_message;
         private String mLoadingMessage;
 

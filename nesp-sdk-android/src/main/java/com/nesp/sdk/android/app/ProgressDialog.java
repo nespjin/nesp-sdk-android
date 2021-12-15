@@ -67,7 +67,7 @@ public class ProgressDialog extends android.app.Dialog implements View.OnClickLi
             window.setWindowAnimations(R.style.nesp_sdk_center_dialog_animation);
         }
 
-        setContentView(R.layout.nesp_sdk_dialog_progress);
+        setContentView(R.layout.dialog_progress);
 
         WindowManager windowManager = ((Activity) context).getWindowManager();
         Display display = windowManager.getDefaultDisplay();

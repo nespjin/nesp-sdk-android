@@ -70,7 +70,7 @@ public class ProgressBarCircleDialog extends android.app.Dialog {
         private final Context context;
 
         private final Boolean isCenter = true;
-        private int layResId = R.layout.nesp_sdk_progressbar_circle_loading;
+        private int layResId = R.layout.progressbar_circle_loading;
 
         public Builder(Context context) {
             this.context = context;

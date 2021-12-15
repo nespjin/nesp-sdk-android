@@ -18,7 +18,7 @@
     android:id="@+id/dialog_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/nesp_sdk_loading_tip_dialog_bg"
+    android:background="@drawable/loading_tip_dialog_bg"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp">

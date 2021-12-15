@@ -65,7 +65,7 @@ public class CrashCatcherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nesp_sdk_activity_crashcatcher);
+        setContentView(R.layout.activity_crashcatcher);
         setTitle("崩溃信息展示");
 
         crashInfo = getIntent().getParcelableExtra(CRASH_MODEL);
@@ -109,7 +109,7 @@ public class CrashCatcherActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.nesp_sdk_menu_crashcatcher_more, menu);
+        getMenuInflater().inflate(R.menu.crashcatcher_more, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

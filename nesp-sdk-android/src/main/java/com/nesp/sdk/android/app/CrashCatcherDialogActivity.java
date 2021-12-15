@@ -84,7 +84,7 @@ public class CrashCatcherDialogActivity extends AppCompatActivity {
     }
 
     private void showCrashCatcherDialog() {
-        root = LayoutInflater.from(context).inflate(R.layout.nesp_sdk_alertdialog_crashcatcher, null);
+        root = LayoutInflater.from(context).inflate(R.layout.alertdialog_crashcatcher, null);
 
         TextView tv_title = root.findViewById(R.id.nesp_sdk_crash_catcher_dialog_textTitle);
         TextView tv_packageName = root.findViewById(R.id.nesp_sdk_crash_catcher_dialog_tv_packageName);

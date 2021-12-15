@@ -25,7 +25,7 @@
         android:layout_height="25dp"
         android:layout_gravity="center"
         android:indeterminate="true"
-        android:indeterminateDrawable="@drawable/nesp_sdk_alert_loading_dialog_progress_ios_loading_bg"
+        android:indeterminateDrawable="@drawable/alert_loading_dialog_progress_ios_loading_bg"
         android:indeterminateOnly="true" />
 
     <TextView

@@ -81,7 +81,7 @@ public class LoadingTipDialog implements FinishDrawListener {
         // 首先得到整个View
         @SuppressWarnings("all")
         View view = LayoutInflater.from(context).inflate(
-                R.layout.nesp_sdk_loading_tip_dialog_view, null);
+                R.layout.loading_tip_dialog_view, null);
         initView(view);
         // 创建自定义样式的Dialog
         mLoadingDialog = new Dialog(context, R.style.nesp_sdk_loading_tip_dialog) {

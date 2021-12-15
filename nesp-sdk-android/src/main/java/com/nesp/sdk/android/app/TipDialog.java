@@ -79,7 +79,7 @@ public class TipDialog extends Dialog {
      * 初始化布局
      */
     private void initView() {
-        setContentView(R.layout.nesp_sdk_dialog_tip);
+        setContentView(R.layout.dialog_tip);
 
         // 设置窗口大小
 //        WindowManager windowManager = getWindow().getWindowManager();
@@ -129,20 +129,20 @@ public class TipDialog extends Dialog {
         if (mIvStatus == null) {
             return;
         }
-        int drawableId = R.drawable.ic_nesp_sdk_tip_success;
+        int drawableId = R.drawable.ic_tip_success;
         mProgressBarCircleIndicator.setVisibility(View.GONE);
         mIvStatus.setVisibility(View.VISIBLE);
         switch (mType) {
             case NONE:
                 break;
             case ERROR:
-                drawableId = R.drawable.ic_nesp_sdk_tip_error;
+                drawableId = R.drawable.ic_tip_error;
                 break;
             case SUCCESS:
-                drawableId = R.drawable.ic_nesp_sdk_tip_success;
+                drawableId = R.drawable.ic_tip_success;
                 break;
             case WARNING:
-                drawableId = R.drawable.ic_nesp_sdk_tip_warning;
+                drawableId = R.drawable.ic_tip_warning;
                 break;
             case LOADING:
 //                drawableId = R.drawable.ic_tip_loading;

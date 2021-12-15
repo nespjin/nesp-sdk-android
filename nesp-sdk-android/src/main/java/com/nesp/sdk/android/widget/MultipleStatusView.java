@@ -51,7 +51,7 @@ public class MultipleStatusView extends RelativeLayout {
     private View mNoNetworkView;
     private View mContentView;
     private int mEmptyViewResId;
-    private final int mErrorViewDefaultResId = R.layout.nesp_sdk_multiplestatusview_error_view;
+    private final int mErrorViewDefaultResId = R.layout.multiplestatusview_error_view;
     private int mErrorViewResId;
     private int mLoadingViewResId;
     private int mNoNetworkViewResId;
@@ -74,10 +74,10 @@ public class MultipleStatusView extends RelativeLayout {
     public MultipleStatusView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MultipleStatusView, defStyleAttr, 0);
-        mEmptyViewResId = a.getResourceId(R.styleable.MultipleStatusView_emptyView, R.layout.nesp_sdk_multiplestatusview__empty_view);
+        mEmptyViewResId = a.getResourceId(R.styleable.MultipleStatusView_emptyView, R.layout.multiplestatusview__empty_view);
         mErrorViewResId = a.getResourceId(R.styleable.MultipleStatusView_errorView, mErrorViewDefaultResId);
-        mLoadingViewResId = a.getResourceId(R.styleable.MultipleStatusView_loadingView, R.layout.nesp_sdk_multiplestatusview_loading_view);
-        mNoNetworkViewResId = a.getResourceId(R.styleable.MultipleStatusView_noNetworkView, R.layout.nesp_sdk_multiplestatusview_network_view);
+        mLoadingViewResId = a.getResourceId(R.styleable.MultipleStatusView_loadingView, R.layout.multiplestatusview_loading_view);
+        mNoNetworkViewResId = a.getResourceId(R.styleable.MultipleStatusView_noNetworkView, R.layout.multiplestatusview_network_view);
         mContentViewResId = a.getResourceId(R.styleable.MultipleStatusView_contentView, NULL_RESOURCE_ID);
         a.recycle();
         mInflater = LayoutInflater.from(getContext());

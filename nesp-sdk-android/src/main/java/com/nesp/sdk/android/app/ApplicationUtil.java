@@ -350,6 +350,20 @@ public final class ApplicationUtil {
         return false;
     }
 
+    public static void startApplicationSettings2(final Activity activity, final int requestCode) {
+        Intent mIntent = new Intent();
+        mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (Build.VERSION.SDK_INT >= 9) {
+            mIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+            mIntent.setData(Uri.fromParts("package", activity.getPackageName(), null));
+        } else if (Build.VERSION.SDK_INT <= 8) {
+            mIntent.setAction(Intent.ACTION_VIEW);
+            mIntent.setClassName("com.android.settings", "com.android.setting.InstalledAppDetails");
+            mIntent.putExtra("com.android.settings.ApplicationPkgName", activity.getPackageName());
+        }
+        activity.startActivity(mIntent);
+    }
+
     /**
      * 打开指定Activity
      *
@@ -506,29 +520,39 @@ public final class ApplicationUtil {
     }
 
     // 判断该文件是否在下载
-    private boolean isDowning(Context context, String uri, DownloadManager downloadManager) {
+    private boolean isDowning(final Context context, final String uri, DownloadManager downloadManager) {
+        if (TextUtil.isEmpty(uri)) return false;
         boolean flag = false;
+        Cursor cursor = null;
         try {
             DownloadManager.Query query = new DownloadManager.Query();
-
             query.setFilterByStatus(DownloadManager.STATUS_RUNNING);
             if (downloadManager == null) {
+                if (context == null) return false;
                 downloadManager = ((DownloadManager) context.getSystemService(Activity.DOWNLOAD_SERVICE));
             }
-            Cursor c = downloadManager.query(query);
+            cursor = downloadManager.query(query);
             String downingURI;
-            while (c.moveToNext()) {
-                downingURI = c.getString(c.getColumnIndex(DownloadManager.COLUMN_URI));
-                if (downingURI.equalsIgnoreCase(uri)) {
-                    flag = true;
-                    break;
+            while (cursor.moveToNext()) {
+                final int columnIndex = cursor.getColumnIndex(DownloadManager.COLUMN_URI);
+                if (columnIndex >= 0) {
+                    downingURI = cursor.getString(columnIndex);
+                    if (downingURI.equalsIgnoreCase(uri)) {
+                        flag = true;
+                        break;
+                    }
                 }
-            }
-            if (c != null) {
-                c.close();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                try {
+                    cursor.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return flag;
     }

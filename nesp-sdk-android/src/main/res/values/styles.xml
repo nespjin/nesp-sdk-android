@@ -444,29 +444,29 @@
     </style>
 
     <style name="NespSdk_Activity_Anim_Default_2">
-        <item name="android:activityOpenEnterAnimation">@anim/nesp_sdk_activity_anim_open_enter_2
+        <item name="android:activityOpenEnterAnimation">@anim/activity_anim_open_enter_2
         </item>
-        <item name="android:activityOpenExitAnimation">@anim/nesp_sdk_activity_anim_open_exit_2
+        <item name="android:activityOpenExitAnimation">@anim/activity_anim_open_exit_2
         </item>
         <item name="android:activityCloseEnterAnimation">
-            @anim/nesp_sdk_activity_anim_close_enter_2
+            @anim/activity_anim_close_enter_2
         </item>
-        <item name="android:activityCloseExitAnimation">@anim/nesp_sdk_activity_anim_close_exit_2
+        <item name="android:activityCloseExitAnimation">@anim/activity_anim_close_exit_2
         </item>
     </style>
 
     <style name="NespSdk_Activity_Anim_Default">
         <item name="android:activityOpenEnterAnimation">
-            @anim/nesp_sdk_activity_anim_open_enter
+            @anim/activity_anim_open_enter
         </item>
         <item name="android:activityOpenExitAnimation">
-            @anim/nesp_sdk_activity_anim_open_exit
+            @anim/activity_anim_open_exit
         </item>
         <item name="android:activityCloseEnterAnimation">
-            @anim/nesp_sdk_activity_anim_close_enter
+            @anim/activity_anim_close_enter
         </item>
         <item name="android:activityCloseExitAnimation">
-            @anim/nesp_sdk_activity_anim_close_exit
+            @anim/activity_anim_close_exit
         </item>
     </style>
 
@@ -545,19 +545,19 @@
 
     <!--Animals--><!--Center Dialog-->
     <style name="nesp_sdk_center_dialog_animation" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/nesp_sdk_center_dialog_enter</item>
-        <item name="android:windowExitAnimation">@anim/nesp_sdk_center_dialog_exit</item>
+        <item name="android:windowEnterAnimation">@anim/center_dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/center_dialog_exit</item>
     </style>
 
     <!--Bottom Dialog-->
     <style name="nesp_sdk_bottom_dialog_animation" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/nesp_sdk_bottom_dialog_enter</item>
-        <item name="android:windowExitAnimation">@anim/nesp_sdk_bottom_dialog_exit</item>
+        <item name="android:windowEnterAnimation">@anim/bottom_dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/bottom_dialog_exit</item>
     </style>
 
     <style name="nesp_sdk_full_screen_dialog_animation" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/nesp_sdk_activity_anim_open_enter</item>
-        <item name="android:windowExitAnimation">@anim/nesp_sdk_activity_anim_close_exit</item>
+        <item name="android:windowEnterAnimation">@anim/activity_anim_open_enter</item>
+        <item name="android:windowExitAnimation">@anim/activity_anim_close_exit</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -565,13 +565,13 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="NespTipbarAnimTop" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/nesp_sdk_nesptipbar_top_enter</item>
-        <item name="android:windowExitAnimation">@anim/nesp_sdk_nesptipbar_top_exit</item>
+        <item name="android:windowEnterAnimation">@anim/nesptipbar_top_enter</item>
+        <item name="android:windowExitAnimation">@anim/nesptipbar_top_exit</item>
     </style>
 
     <style name="NespTipbarAnimBottom" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/nesp_sdk_nesptipbar_bottom_enter</item>
-        <item name="android:windowExitAnimation">@anim/nesp_sdk_nesptipbar_bottom_exit</item>
+        <item name="android:windowEnterAnimation">@anim/nesptipbar_bottom_enter</item>
+        <item name="android:windowExitAnimation">@anim/nesptipbar_bottom_exit</item>
     </style>
 
     <style name="TransparentBottomSheetStyle" parent="Theme.Design.Light.BottomSheetDialog">
@@ -629,8 +629,8 @@
     </style>
 
     <style name="NespTipDialog.Animation" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/nesp_sdk_tip_popup_enter</item>
-        <item name="android:windowExitAnimation">@anim/nesp_sdk_tip_popup_exit</item>
+        <item name="android:windowEnterAnimation">@anim/tip_popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/tip_popup_exit</item>
     </style>
 
     <style name="cornerRoundImageStyle">
@@ -716,13 +716,13 @@
     </style>
 
     <style name="NespAppDialog.Page" parent="NespAppDialog">
-        <item name="android:windowEnterAnimation">@anim/nesp_sdk_activity_enter</item>
-        <item name="android:windowExitAnimation">@anim/nesp_sdk_activity_exit</item>
+        <item name="android:windowEnterAnimation">@anim/activity_enter</item>
+        <item name="android:windowExitAnimation">@anim/activity_exit</item>
     </style>
 
     <style name="NespAppDialog.Bottom" parent="NespAppDialog">
-        <item name="android:windowEnterAnimation">@anim/nesp_sdk_slide_in_bottom</item>
-        <item name="android:windowExitAnimation">@anim/nesp_sdk_slide_out_bottom</item>
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
 
 </resources>

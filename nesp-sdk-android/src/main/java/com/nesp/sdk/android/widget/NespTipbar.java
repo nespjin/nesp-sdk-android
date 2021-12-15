@@ -160,7 +160,7 @@ public class NespTipbar {
         isShown = true;
         if (onShownListener != null) onShownListener.onShown();
         threadDismiss.start();
-        rootView = LayoutInflater.from(context).inflate(R.layout.nesp_sdk_nesptipbar_content, null);
+        rootView = LayoutInflater.from(context).inflate(R.layout.nesptipbar_content, null);
         buttonAction = rootView.findViewById(R.id.nesp_tip_content_btn_action);
         textViewActionMessage = rootView.findViewById(R.id.nesp_tip_content_tv_message);
         rootLayout = rootView.findViewById(R.id.nesp_tip_content_root_layout);

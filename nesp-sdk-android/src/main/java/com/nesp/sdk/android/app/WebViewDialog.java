@@ -150,7 +150,7 @@ public class WebViewDialog extends android.app.Dialog implements View.OnClickLis
         window.setGravity(Gravity.CENTER);
         window.setWindowAnimations(R.style.nesp_sdk_center_dialog_animation);
 
-        setContentView(R.layout.nesp_sdk_webview_dialog);
+        setContentView(R.layout.webview_dialog);
 
         WindowManager windowManager = ((Activity) context).getWindowManager();
         Display display = windowManager.getDefaultDisplay();
