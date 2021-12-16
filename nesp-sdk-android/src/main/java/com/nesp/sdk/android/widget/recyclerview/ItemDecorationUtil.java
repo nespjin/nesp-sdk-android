@@ -33,13 +33,14 @@ public final class ItemDecorationUtil {
     /**
      * 水平平均分配两端对齐
      *
+     * @param spanCount   总列数
      * @param columnIndex 列位置
      * @param itemSpace   间距
-     * @param spanCount   总列数
      * @param outRect     偏移量输出
      */
-    public static void spaceBetweenHorizontal(final int columnIndex, final int itemSpace,
-                                              final int spanCount, final Rect outRect) {
+    public static void spaceBetweenHorizontal(final int spanCount, final int columnIndex,
+                                              final int itemSpace,
+                                              final Rect outRect) {
         outRect.left = columnIndex * itemSpace / spanCount;
         outRect.right = itemSpace - (columnIndex + 1) * itemSpace / spanCount;
     }
