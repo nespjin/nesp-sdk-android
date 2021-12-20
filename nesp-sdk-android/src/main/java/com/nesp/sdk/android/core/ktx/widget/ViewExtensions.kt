@@ -35,6 +35,7 @@ import androidx.core.view.isVisible
 
 fun View.visible(animal: Boolean = false, onAnimationEnd: () -> Unit = {}) {
     if (!animal) {
+        this.alpha = 1f
         this.visibility = View.VISIBLE
         onAnimationEnd()
     } else {
