@@ -114,20 +114,32 @@ abstract class BaseActivity : AppCompatActivity(), IComponent, IPermissionReques
         try {
             if (getFragmentContainerId() == -1) return
             val beginTransaction = supportFragmentManager.beginTransaction()
-            beginTransaction.setCustomAnimations(R.anim.fast_fade_in, R.anim.fast_fade_out)
+            beginTransaction.setCustomAnimations(
+                fragmentPopEnterAnimRes(),
+                fragmentPopExitAnimRes()
+            )
             beginTransaction.remove(fragment)
             beginTransaction.commit()
         } catch (e: Exception) {
         }
     }
 
+    open fun fragmentPopEnterAnimRes(): Int = R.anim.fast_fade_in
+
+    open fun fragmentPopExitAnimRes(): Int = R.anim.fast_fade_out
+
     fun pushFragment(fragment: Fragment) {
         try {
-            if (getFragmentContainerId() == -1 || supportFragmentManager.fragments.contains(fragment)) {
+            if (getFragmentContainerId() == -1
+                || supportFragmentManager.fragments.contains(fragment)
+            ) {
                 return
             }
             val beginTransaction = supportFragmentManager.beginTransaction()
-            beginTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+            beginTransaction.setCustomAnimations(
+                fragmentPushEnterAnimRes(),
+                fragmentPushExitAnimRes()
+            )
             beginTransaction.add(
                 getFragmentContainerId(),
                 fragment, "Fragment." + fragment::class.java.name
@@ -137,6 +149,10 @@ abstract class BaseActivity : AppCompatActivity(), IComponent, IPermissionReques
         } catch (e: Exception) {
         }
     }
+
+    open fun fragmentPushEnterAnimRes(): Int = android.R.anim.fade_in
+
+    open fun fragmentPushExitAnimRes(): Int = android.R.anim.fade_out
 
     open fun getFragmentContainerId(): Int = -1
 
