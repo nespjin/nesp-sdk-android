@@ -1,3 +1,5 @@
+import java.nio.file.Paths
+
 /*
  * Copyright (C) 2021 The NESP Open Source Project
  *
@@ -202,13 +204,7 @@ dependencies {
 }
 
 private String getLayoutLibFilePath() {
-    if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
-        //Windows
-        return android.getSdkDirectory().getAbsolutePath() + "\\platforms\\android-25\\" + "\\data\\layoutlib.jar"
-    } else if (org.gradle.internal.os.OperatingSystem.current().isLinux() || OperatingSystem.current().isUnix()) {
-        //Linux
-        return android.getSdkDirectory().getAbsolutePath() + "/platforms/android-25/" + "/data/layoutlib.jar"
-    }
+    return Paths.get(android.getSdkDirectory().getAbsolutePath(),"platforms","android-25","data","layoutlib.jar").toString()
 }
 
 repositories {
