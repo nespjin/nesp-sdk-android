@@ -16,17 +16,42 @@ abstract class BaseFragment : Fragment(), IComponent {
     override val ctx: Context
         get() = requireContext()
 
-    protected var isFirstStart = true
-        private set
+    private var firstFlags = 0x00
+    protected fun resetFirstFlags() {
+        firstFlags = 0x00
+    }
+
+    protected fun isFirstStart() = firstFlags and 0x01 == 0
+    protected fun setNotFirstStart() {
+        firstFlags = firstFlags or 0x01
+    }
+
+    protected fun isFirstResume() = (firstFlags ushr 1) and 0x01 == 0
+    protected fun setNotFirstResume() {
+        firstFlags = firstFlags or (0x01 shl 1)
+    }
 
     override fun onStart() {
         super.onStart()
-        if (isFirstStart) {
+        if (isFirstStart()) {
             onFirstStart()
+            setNotFirstStart()
         }
     }
 
     open fun onFirstStart() {
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (isFirstResume()) {
+            onFirstResume()
+            setNotFirstResume()
+        }
+    }
+
+    open fun onFirstResume() {
 
     }
 
