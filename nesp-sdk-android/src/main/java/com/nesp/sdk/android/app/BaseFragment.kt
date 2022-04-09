@@ -21,13 +21,13 @@ abstract class BaseFragment : Fragment(), IComponent {
         firstFlags = 0x00
     }
 
-    protected fun isFirstStart() = firstFlags and 0x01 == 0
-    protected fun setNotFirstStart() {
+    private fun isFirstStart() = firstFlags and 0x01 == 0
+    private fun setNotFirstStart() {
         firstFlags = firstFlags or 0x01
     }
 
-    protected fun isFirstResume() = (firstFlags ushr 1) and 0x01 == 0
-    protected fun setNotFirstResume() {
+    private fun isFirstResume() = (firstFlags ushr 1) and 0x01 == 0
+    private fun setNotFirstResume() {
         firstFlags = firstFlags or (0x01 shl 1)
     }
 
