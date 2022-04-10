@@ -25,13 +25,13 @@ interface IComponent {
 
     fun showShortToast(message: String) {
         runOnUIThread {
-            ToastUtil.showTopShortToast(ctx, message)
+            ToastUtil.showShortToast(ctx, message)
         }
     }
 
     fun showLongToast(message: String) {
         runOnUIThread {
-            ToastUtil.showTopLongToast(ctx, message)
+            ToastUtil.showLongToast(ctx, message)
         }
     }
 
