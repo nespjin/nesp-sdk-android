@@ -52,6 +52,7 @@ public final class ShareUtil {
         final Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);//发送多个文件
         intent.setType("*/*");//多个文件格式
         intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, (ArrayList<? extends Parcelable>) uris);//Intent.EXTRA_STREAM同于传输文件流
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
@@ -63,7 +64,9 @@ public final class ShareUtil {
         final Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("*/*");
         intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-        context.startActivity(Intent.createChooser(intent, "分享"));
+        final Intent chooser = Intent.createChooser(intent, "分享");
+        chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(chooser);
     }
 
     public static void shareText(Context context, String shareText, String shareActivityTitle) {
@@ -71,6 +74,8 @@ public final class ShareUtil {
         final Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, shareText);
-        context.startActivity(Intent.createChooser(intent, shareActivityTitle));
+        final Intent chooser = Intent.createChooser(intent, shareActivityTitle);
+        chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(chooser);
     }
 }

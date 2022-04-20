@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * @author <a href="mailto:1756404649@qq.com">靳兆鲁 Email:1756404649@qq.com</a>
@@ -22,7 +22,7 @@ import java.util.Stack;
 public class AppActivityManager {
     private static final String TAG = "ActivityManager";
 
-    private final Stack<Activity> mActivityStack;
+    private final List<Activity> mActivityStack;
     private Application mApplication;
 
     private volatile static AppActivityManager instance;
@@ -30,7 +30,7 @@ public class AppActivityManager {
     private final List<OnAppStateChangedListener> mOnAppStateChangedListeners = new ArrayList<>();
 
     private AppActivityManager() {
-        mActivityStack = new Stack<>();
+        mActivityStack = new LinkedList<>();
     }
 
     public static AppActivityManager getInstance() {
@@ -53,7 +53,7 @@ public class AppActivityManager {
                 if (mActivityStack.isEmpty()) {
                     notifyAppStateChanged(AppState.ENTER);
                 }
-                mActivityStack.push(activity);
+                mActivityStack.add(activity);
             }
 
             @Override
@@ -96,13 +96,13 @@ public class AppActivityManager {
         mApplication.unregisterActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
     }
 
-    public Stack<Activity> getActivityStack() {
+    public List<Activity> getActivityStack() {
         return mActivityStack;
     }
 
     public Activity getTopActivity() {
         if (mActivityStack.isEmpty()) return null;
-        return mActivityStack.peek();
+        return mActivityStack.get(mActivityStack.size() - 1);
     }
 
     public Activity getRootActivity() {
