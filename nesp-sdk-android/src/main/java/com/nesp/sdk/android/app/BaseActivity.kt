@@ -66,7 +66,7 @@ abstract class BaseActivity : AppCompatActivity(), IComponent, IPermissionReques
             fragment.onActivityResult(requestCode, resultCode, data)
             val childFragments = fragment.childFragmentManager.fragments
             if (childFragments.isNotEmpty()) {
-                notifyFragmentsActivityResult(fragments, requestCode, resultCode, data)
+                notifyFragmentsActivityResult(childFragments, requestCode, resultCode, data)
             }
         }
     }
