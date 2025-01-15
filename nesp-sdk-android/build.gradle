@@ -26,6 +26,9 @@ android {
 //    buildToolsVersion "30.0.3"
 
     defaultConfig {
+        if (project.android.hasProperty("namespace")) {
+            namespace 'com.nesp.sdk.android'
+        }
         minSdkVersion 21
         targetSdkVersion 31
 
