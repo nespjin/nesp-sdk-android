@@ -2,6 +2,7 @@ package com.nesp.sdk.android.app
 
 import android.app.Activity
 import android.content.Context
+import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
@@ -82,13 +83,18 @@ abstract class BaseFragment : Fragment(), IComponent {
 
     private fun getStatusBarHeight(): Int {
         if (statusBarHeight > 0) return statusBarHeight
-        //获取状态栏高度的资源id
+        // 获取状态栏高度的资源id
         val resourceId: Int =
             requireActivity().resources.getIdentifier("status_bar_height", "dimen", "android")
         if (resourceId > 0) {
             statusBarHeight = requireActivity().resources.getDimensionPixelSize(resourceId)
         }
         return statusBarHeight
+    }
+
+
+    open fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return false
     }
 
     companion object {

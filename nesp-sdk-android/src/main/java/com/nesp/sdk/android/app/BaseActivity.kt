@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.nesp.sdk.android.R
@@ -109,6 +110,36 @@ abstract class BaseActivity : AppCompatActivity(), IComponent, IPermissionReques
             }
         }
     }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        val fragments = supportFragmentManager.fragments
+        if (fragments.isNotEmpty()) {
+            if (notifyFragmentsOnKeyDown(fragments, keyCode, event)) return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
+    private fun notifyFragmentsOnKeyDown(
+        fragments: MutableList<Fragment>,
+        keyCode: Int,
+        event: KeyEvent?
+    ): Boolean {
+        var ret = false
+        for (fragment in fragments) {
+            if (fragment !is BaseFragment) continue
+            if (fragment.onKeyDown(keyCode, event)) {
+                ret = true
+                continue
+            }
+
+            val childFragments = fragment.childFragmentManager.fragments
+            if (childFragments.isNotEmpty()) {
+                if (notifyFragmentsOnKeyDown(childFragments, keyCode, event)) ret = true
+            }
+        }
+        return ret
+    }
+
 
     fun popFragment(fragment: Fragment) {
         try {
