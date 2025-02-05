@@ -38,7 +38,15 @@ dependencyResolutionManagement {
     }
 }
 
+plugins {
+    id("com.android.library") version "8.8.0" apply false
+    id("org.jetbrains.kotlin.android") version "2.1.0" apply false
+}
+
 rootProject.name = "nesp-sdk-android"
+
+include(":NespRecyclerView")
+project(":NespRecyclerView").projectDir = file("NespRecyclerView/NespRecyclerView")
 
 include(":alipay-sdk-aar")
 include(":compressor-aar")
