@@ -12,3 +12,4 @@
 /captures
 .externalNativeBuild
 .cxx
+/nesp-sdk-android/local.properties
