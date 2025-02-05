@@ -13,3 +13,4 @@
 .externalNativeBuild
 .cxx
 /nesp-sdk-android/local.properties
+/nesp-sdk-android/.kotlin/sessions/

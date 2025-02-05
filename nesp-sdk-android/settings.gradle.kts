@@ -46,7 +46,7 @@ plugins {
 rootProject.name = "nesp-sdk-android"
 
 include(":NespRecyclerView")
-project(":NespRecyclerView").projectDir = file("NespRecyclerView/NespRecyclerView")
+project(":NespRecyclerView").projectDir = file("../NespRecyclerView/NespRecyclerView")
 
 include(":alipay-sdk-aar")
 include(":compressor-aar")
