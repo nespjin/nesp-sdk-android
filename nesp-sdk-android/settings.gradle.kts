@@ -34,10 +34,15 @@ dependencyResolutionManagement {
         maven(url = "https://jitpack.io")
         google()
         mavenCentral()
+        mavenLocal()
     }
 }
 
 rootProject.name = "nesp-sdk-android"
+
+include(":alipay-sdk-aar")
+include(":compressor-aar")
+include(":trpay-sdk-aar")
 
 includeBuild("../nesp-sdk-java/nesp-sdk-java"){
     dependencySubstitution {

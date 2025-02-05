@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.tasks.factory.dependsOn
+
 /*
  * Copyright (C) 2021 The NESP Open Source Project
  *
@@ -15,6 +17,7 @@
  */
 
 plugins {
+    id("maven-publish")
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
@@ -60,6 +63,44 @@ java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
     }
+}
+
+// parent?.allprojects {
+//     repositories {
+//         mavenLocal()
+//     }
+// }
+
+publishing {
+    publications {
+        register<MavenPublication>("alipay-sdk-aar") {
+            groupId = "aar.deps"
+            artifactId = "alipay-sdk-aar"
+            version = "1.0.0"
+            artifact("libs/alipaySdk-15.6.5-20190718211159-noUtdid.aar")
+        }
+
+        register<MavenPublication>("compressor-aar") {
+            groupId = "aar.deps"
+            artifactId = "compressor-aar"
+            version = "1.0.0"
+            artifact("libs/compressor-2.1.0.aar")
+        }
+
+        register<MavenPublication>("trpay-sdk-aar") {
+            groupId = "aar.deps"
+            artifactId = "trpay-sdk-aar"
+            version = "1.0.0"
+            artifact("libs/paysdk-release-1.2.5.aar")
+        }
+    }
+}
+
+// add the publication before the build even starts
+// used ./gradlew mymodule:assemble --dry-run to find where to put it
+afterEvaluate {
+  tasks.clean.dependsOn("publishToMavenLocal")
+  tasks.preBuild.dependsOn("publishToMavenLocal")
 }
 
 dependencies {
@@ -175,15 +216,21 @@ dependencies {
     // Glide
     implementation("com.github.bumptech.glide:glide:4.12.0")
     // Compressor
-    compileOnly(files("libs/compressor-2.1.0.aar"))
+    // compileOnly(files("libs/compressor-2.1.0.aar"))
+    // implementation(project(":compressor-aar"))
+    implementation("aar.deps:compressor-aar:1.0.0")
     // HokoBlur
     api("com.hoko:hoko-blur:1.3.3")
     api(files("libs/open_sdk_r2973327_lite.jar"))
-    compileOnly(files("libs/paysdk-release-1.2.5.aar"))
+    // compileOnly(files("libs/paysdk-release-1.2.5.aar"))
+    // implementation(project(":trpay-sdk-aar"))
+    implementation("aar.deps:trpay-sdk-aar:1.0.0")
     implementation("com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.7.9")
 
     // paysdk-release-1.2.1(sdk名称)
-    compileOnly(files("libs/alipaySdk-15.6.5-20190718211159-noUtdid.aar"))
+    // compileOnly(files("libs/alipaySdk-15.6.5-20190718211159-noUtdid.aar"))
+    // implementation(project(":alipay-sdk-aar"))
+    implementation("aar.deps:alipay-sdk-aar:1.0.0")
     implementation("com.alibaba:fastjson:1.2.79")
 
     // 今日头条适配框架

@@ -34,9 +34,13 @@ dependencyResolutionManagement {
         maven(url = "https://jitpack.io")
         google()
         mavenCentral()
+        mavenLocal()
     }
 }
 
+include(":alipay-sdk-aar")
+include(":compressor-aar")
+include(":trpay-sdk-aar")
 include(":nesp-sdk-android")
 include(":NespRecyclerView")
 project(":NespRecyclerView").projectDir = file("NespRecyclerView/NespRecyclerView")
