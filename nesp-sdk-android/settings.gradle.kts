@@ -39,13 +39,13 @@ dependencyResolutionManagement {
 
 rootProject.name = "nesp-sdk-android"
 
-includeBuild("nesp-sdk-java/nesp-sdk-java"){
+includeBuild("../nesp-sdk-java/nesp-sdk-java"){
     dependencySubstitution {
         substitute(module("com.nesp.sdk.java:nesp-sdk-java")).using(project(":"))
     }
 }
 
-includeBuild("nesp-sdk-kotlin/nesp-sdk-kotlin") {
+includeBuild("../nesp-sdk-kotlin/nesp-sdk-kotlin") {
     dependencySubstitution {
         substitute(module("com.nesp.sdk.kotlin:nesp-sdk-kotlin")).using(project(":"))
     }
