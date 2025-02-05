@@ -4,3 +4,7 @@
 [submodule "nesp-sdk-java"]
 	path = nesp-sdk-java
 	url = git@github.com:nespjin/nesp-sdk-java.git
+[submodule "NespRecyclerView"]
+	path = NespRecyclerView
+	url = https://github.com/nespjin/NespRecyclerView.git
+	branch = master

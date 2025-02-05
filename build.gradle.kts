@@ -14,13 +14,10 @@
  * limitations under the License.
  */
 
-include ':nesp-sdk-android'
-include ':app'
-include ':nesp-sdk-java'
-include ':nesp-sdk-kotlin'
-
-rootProject.name = "NespSdkAndroid"
-
-
-project(':nesp-sdk-java').projectDir = new File("./nesp-sdk-java")
-project(':nesp-sdk-kotlin').projectDir = new File("./nesp-sdk-kotlin")
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.android.test) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+}
