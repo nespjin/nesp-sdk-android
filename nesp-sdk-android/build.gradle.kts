@@ -39,7 +39,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
@@ -172,7 +172,8 @@ dependencies {
     ///////////////////////////////////////////////////
     /// Nesp SDK
     ///////////////////////////////////////////////////
-    implementation(project(":NespRecyclerView"))
+    // implementation(project(":NespRecyclerView"))
+    implementation("com.nesp.sdk.android.widget:NespRecyclerView")
     implementation("com.nesp.sdk.java:nesp-sdk-java")
     implementation("com.nesp.sdk.kotlin:nesp-sdk-kotlin")
 
