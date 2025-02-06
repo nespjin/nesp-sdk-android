@@ -76,7 +76,11 @@ public class CrashCatcherDialogActivity extends AppCompatActivity {
         crashInfo = getIntent().getParcelableExtra(CRASH_MODEL);
         if (crashInfo == null) return;
 
-        Log.e(TAG, Log.getStackTraceString(crashInfo.getEx()));
+        try {
+            Log.e(TAG, Log.getStackTraceString(crashInfo.getEx()));
+        } catch (Exception ignore) {
+
+        }
 
         alertLoadingDialog = new AlertLoadingDialog.Builder(context).setLoadingMessage("正在上传...").create();
 
