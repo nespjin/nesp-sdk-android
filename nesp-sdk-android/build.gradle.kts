@@ -24,6 +24,12 @@ plugins {
     id("kotlin-parcelize")
 }
 
+val artifactGroup = "com.nesp.sdk.android"
+val artifactVersion = "1.0.0"
+
+group = artifactGroup
+version = artifactVersion
+
 android {
     compileSdk = 33
 

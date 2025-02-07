@@ -45,24 +45,28 @@ plugins {
 
 rootProject.name = "nesp-sdk-android"
 
-include(":NespRecyclerView")
-project(":NespRecyclerView").projectDir = file("../NespRecyclerView/NespRecyclerView")
+// include(":NespRecyclerView")
+// project(":NespRecyclerView").projectDir = file("../NespRecyclerView/NespRecyclerView")
 
 include(":alipay-sdk-aar")
 include(":compressor-aar")
 include(":trpay-sdk-aar")
 
-includeBuild("../nesp-sdk-java/nesp-sdk-java"){
-    dependencySubstitution {
-        substitute(module("com.nesp.sdk.java:nesp-sdk-java")).using(project(":"))
-    }
-}
+includeBuild("../nesp-sdk-java")
+includeBuild("../nesp-sdk-kotlin")
+includeBuild("../NespRecyclerView")
 
-includeBuild("../nesp-sdk-kotlin/nesp-sdk-kotlin") {
-    dependencySubstitution {
-        substitute(module("com.nesp.sdk.kotlin:nesp-sdk-kotlin")).using(project(":"))
-    }
-}
+// includeBuild("../nesp-sdk-java/nesp-sdk-java"){
+//     dependencySubstitution {
+//         substitute(module("com.nesp.sdk.java:nesp-sdk-java")).using(project(":"))
+//     }
+// }
+//
+// includeBuild("../nesp-sdk-kotlin/nesp-sdk-kotlin") {
+//     dependencySubstitution {
+//         substitute(module("com.nesp.sdk.kotlin:nesp-sdk-kotlin")).using(project(":"))
+//     }
+// }
 
 check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
     """
